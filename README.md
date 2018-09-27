@@ -33,8 +33,6 @@ Sécuriser l'application
 - Créer de mots de passes sécurisés avec un hachage fiable
 - Créer un système de login / logout
 
-Soutenance
-Pour cette soutenance, vous devrez vous positionner comme un jeune développeur en fin de formation présentant son projet personnel au CTO d’une ESN (ex-SSII) lors d’un entretien de recrutement, pendant 25 minutes. Cette présentation sera suivie de 5 minutes de questions/réponses.
 
 Compétences à valider
 Découper, assembler et programmer les pages
