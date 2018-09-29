@@ -1,4 +1,4 @@
-<?php $title = 'Chapitre ' . htmlspecialchars($post['id']) . ''; ?>
+<?php $title =  htmlspecialchars($post['title']) . ''; ?>
 
 
 <!--///////////////////////// phrase d'accueil///////////////////////////////////////////////////-->
@@ -26,14 +26,14 @@
             
            	else : ?>
 
-			<p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
+			<p><a class="news" href="index.php#films"><i class="fas fa-arrow-left">
 			Retour à la liste des films</i></a></p>
 			  <?php
             endif;
             ?>
 		<h2><?= htmlspecialchars($post['title']) ?></h2>
-		<div>
-
+		<div class ="oneMovieDetail">
+			<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
 <!---///////affichage de l'auteur , de modification ou suppression de l'article  admin////-->				
 			<?php
 			if(isset($_SESSION['pseudo'])) : ?>
@@ -52,13 +52,15 @@
             ?>
 			<div class="news" >	
 			<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
-			</div>	
+			</div>
+			<img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>	
 		</div>
 <?php $header = ob_get_clean(); ?>
+
 <!--/////////////////////////-écrire commentaires admin ou visiteur//////////////////////////-->
 <?php ob_start(); ?>
 
-		<h3 style ="text-align:center;"><span id ="com"><i class="far fa-comments"></i>Commentaires</span></h3>
+		<h2><i class="far fa-comments"></i> Laissez un Commentaire</h2>
 		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
 			
 		<div>
@@ -88,7 +90,7 @@
 	
 <!--///////////////////////// boucle affichage commentaire admin ou visiteur ///////////-->
 
-<?php while ($comment = $comments->fetch())
+<?php while ($comment = $comments->fetch()):
 		 ;?>
 			<div id="ancrecom"></div>
 			<div class = "commentaires">
@@ -106,7 +108,7 @@
 		     	</div>
 			<?php
         	
-       		else : ?>
+       		elseif(isset($_SESSION['pseudo']))  : ?>
 						
 	       				<div class="reponse">				
 	       				<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
@@ -115,12 +117,23 @@
 	       			</div>
 	       				
 		    <?php
+
+		    else : ?>
+					
+       				<div class="reponse">				
+       				<em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login";">connecté </a></br>pour signaler un abus</em> 
+       			
+ 		  
+       			</div>
+	       				
+		    <?php
+
             endif;
             ?>
 			</div>
 		
 		<?php
-	
+	endwhile;
 		$comments->closeCursor();?>
 	
  

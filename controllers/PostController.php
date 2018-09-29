@@ -21,7 +21,7 @@ class PostController
 // Page Afficher un chapitre + ses commentaires
     public function post($post_id,$commentReport)
     {   
-     
+        $postsTotal = $this->_posts->countPosts();  //connaitre le nombre de total films
         $commentsTotal=  $this->_comment->countComments(); //connaitre le nombre total de com 
         $commentReport=$commentReport;//affichage message confirmation signalé
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre nombre total de coms signalés
@@ -36,7 +36,7 @@ class PostController
     public function listPosts()
     {
       
-        $posts = $this->_posts->getAllPosts();//recupère tous les chapitres
+        $posts = $this->_posts->getAllPosts();//recupère tous les films
         $postsTotal = $this->_posts->countPosts();  //connaitre le nombre de total chapitre    
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre de com 
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre nombre total de coms signalés

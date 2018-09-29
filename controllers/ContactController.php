@@ -17,11 +17,7 @@ class ContactController{
 
 
 
-    //page du formulaire
-    public function mailView(){   
-
-       require ('views/contactView.php');
-    }
+   
     //vérifier le $_Post du formulaire de contact et à la reception avec tinymce
  
     public function message(){

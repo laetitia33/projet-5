@@ -12,11 +12,7 @@ class UserController
     {
         $this->_user = new \Laetitia_Bernardi\projet5\Model\UserManager();
     }
-//page formulaire
- public function login()
-    {
-        require('views/loginView.php');
-    }
+
 
 // Connexion
     public function logUser($pseudo,$pass)

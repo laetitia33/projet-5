@@ -1,11 +1,4 @@
 
- // ecriture page d'accueil
-  $(document).ready(function() {
-        $("#os-phrases > h2").lettering('words').children("span").lettering().children("span").lettering(); 
-      });
-
-
-
 
  //ouverture/fermeture des mentions légales
 $( "#legal" ).click(function() {
@@ -59,8 +52,8 @@ $(document).ready(function() {
 //ancre du bouton chapitre vers la liste des chapitres dans la page
 $(document).ready(function() {
  
-     $('a[href=#films]').click(function(){
-          $('html, body').animate({scrollTop:$("#films").offset().top}, 'slow');
+     $('a[href=#episodes]').click(function(){
+          $('html, body').animate({scrollTop:$("#episodes").offset().top}, 'slow');
           return false;
      });
 });
@@ -71,6 +64,9 @@ $(document).ready(function() {
 $(document).ready(function(){
     setTimeout(function(){$("#message").fadeOut('normal');}, 5000);
 });
+
+
+
 
 
 

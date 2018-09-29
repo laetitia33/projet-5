@@ -5,19 +5,20 @@ require('controllers/AdminController.php');
 require('controllers/UserController.php');
 require('controllers/ContactController.php');
 require('controllers/Autoload.php');
+require('controllers/viewController.php');
 
 use \controllers\ContactController;
 use \controllers\UserController;
 use \controllers\PostController;
 use \controllers\CommentController;
 use \controllers\AdminController;
+use \controllers\viewController;
 use \controllers\Autoload;
-
 
 
 class Routeur
 {
-        private $_postCtrl, $_commentCtrl, $_administrationCtrl, $_contactCtrl, $_userCtrl, $_templateCtrl,$_accueilCtrl;
+        private $_postCtrl, $_commentCtrl, $_administrationCtrl, $_contactCtrl, $_userCtrl, $_templateCtrl,$_viewCtrl;
 
 
 
@@ -30,6 +31,7 @@ class Routeur
             $this->_administrationCtrl = new \Laetitia_Bernardi\projet5\Controller\AdministrationController();
             $this->_userCtrl = new \Laetitia_Bernardi\projet5\Controller\UserController();
             $this->_contactCtrl = new \Laetitia_Bernardi\projet5\Controller\ContactController();
+            $this->_viewCtrl = new \Laetitia_Bernardi\projet5\Controller\viewController();
         }
 
 
@@ -48,8 +50,8 @@ class Routeur
                     }
                   
 //redirection concernant les chapitres
-//
-                    // ADMIN - Creation d'un chapitre
+
+                    // ADMIN - Creation d'un film
                     elseif ($_GET['action'] == 'createPost')
                     {
                         if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
@@ -64,21 +66,21 @@ class Routeur
                         }
                     }
 
-                     // ADMIN - Page pour créer un chapitre
+                     // ADMIN - Page pour créer un film
                     elseif ($_GET['action'] == 'adminNewPost')
                     {
                      
                        $this->_administrationCtrl->adminNewPost();
                     }
 
-                    // ADMIN - Liste des chapitres
+                    // ADMIN - Liste des films
                     elseif ($_GET['action'] == 'listPosts')
                     {
                        
                         $this->_postCtrl->listPosts();
                     }
 
-                    //ADMIN - chapitre avec ses commentaires
+                    //ADMIN - film avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
@@ -98,14 +100,14 @@ class Routeur
                         }
                     }
              
-                    // ADMIN - page de MAJ d'un chapitre
+                    // ADMIN - page de MAJ d'un film
                     elseif ($_GET['action'] == 'adminUpdatePost')
                     {
                        
                         $this->_administrationCtrl->adminUpdatePost();
                     }
 
-                    // ADMIN - Mise à jour d'un chapitre
+                    // ADMIN - Mise à jour d'un film
                     elseif ($_GET['action'] == 'updatePost')
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
@@ -126,7 +128,7 @@ class Routeur
                         }
                     }
 
-                    // ADMIN - suppression d'un chapitre
+                    // ADMIN - suppression d'un film
                     elseif ($_GET['action'] == 'deletePost')
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
@@ -141,7 +143,7 @@ class Routeur
                     }
           
 //redirection concernant les commentaires 
-//          
+         
                     // ADMIN - Liste des commentaires
                     elseif ($_GET['action'] == 'adminListComments')
                     {
@@ -149,7 +151,7 @@ class Routeur
                         $this->_administrationCtrl->adminListComments();
                     }
 
-                    // ADMIN - Ajoute un commentaire dans le chapitre selectionné
+                    // ADMIN - Ajoute un commentaire dans le film selectionné
                     elseif ($_GET['action'] == 'addComment')
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
@@ -191,7 +193,7 @@ class Routeur
                         }
                     }
 
-                    // ADMIN - Supprimer un commentaire dans la  page detail 
+                    // ADMIN - Supprimer un commentaire dans la  page detail film
                     elseif ($_GET['action'] == 'deleteOneComment')
                     {
                         if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -319,19 +321,36 @@ class Routeur
                     if ($_GET['action'] == 'accueil')
                     {
                         
-                        $this->_accueilCtrl->accueil();
+                        $this->_viewCtrl->accueil();
+                       
+                    }
+                    //page infos pratiques
+                    
+                    if ($_GET['action'] == 'information')
+                    {
+                        
+                        $this->_viewCtrl->info();
                        
                     }
 
-                    
-                    // Accueil visiteurs /Liste des chapitres
+                    //page information salles de cinemas
+
+                    if ($_GET['action'] == 'cinemas')
+                    {
+                        
+                        $this->_viewCtrl->cinemas();
+                       
+                    }
+
+
+                    // Accueil visiteurs /Liste des films
                    if ($_GET['action'] == 'listPosts') 
                     {
                  
                         $this->_postCtrl->listPosts();
                     }
 
-                    // Affiche le chapitre avec ses commentaires
+                    // Affiche le film avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
@@ -358,11 +377,11 @@ class Routeur
                     elseif ($_GET['action'] == 'login')
                     {
                         
-                        $this->_userCtrl->login();
+                        $this->_viewCtrl->login();
                        
                     }
 
-                     //connexion
+                    //connexion
                     elseif ($_GET['action'] == 'log')
                     {
                    
@@ -388,7 +407,7 @@ class Routeur
                     elseif ($_GET['action'] == 'email') 
                     {
                       
-                        $this->_contactCtrl->mailView();
+                        $this->_viewCtrl->mailView();
                     }
                     
 
@@ -408,7 +427,7 @@ class Routeur
                
                     }
 
-                    // Ajoute un commentaire dans le chapitre selectionné
+                    // Ajoute un commentaire dans le film selectionné
                     elseif ($_GET['action'] == 'addComment') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
@@ -462,7 +481,7 @@ class Routeur
         catch (Exception $e)
         {
             $errorMessage = $e->getMessage();
-            require('views/errorview.php');
+            require('views/errorView.php');
         }
     }
    
