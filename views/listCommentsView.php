@@ -22,7 +22,7 @@
    <?php
     else : ?>
 
-        <em><a href="index.php?action=deleteComments" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires</i></a></em>
+      <div class='listcom'><a href="index.php?action=deleteComments" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires</i></a></div>
 
      <?php
     endif;
@@ -30,6 +30,7 @@
 
 <?php
 
+///////////////////////// liste des commentaires /////////////////////////
 while ($comment = $comments->fetch()):
 
     ?>
@@ -43,8 +44,10 @@ while ($comment = $comments->fetch()):
         </div>
     <?php
 endwhile;
+
 $comments->closeCursor(); ?>
  
 <?php $content = ob_get_clean(); ?>
 
+<!--///////////////////////////////// renvoi vers template //////////////////////////////////-->
 <?php require('views/template.php'); ?>

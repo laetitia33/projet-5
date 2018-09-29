@@ -44,5 +44,6 @@
 
 <?php $content = ob_get_clean(); ?>
 
+<!--///////////////////////////////// renvoi vers template //////////////////////////////////-->
 <?php require('views/template.php'); ?>
 

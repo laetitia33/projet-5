@@ -773,15 +773,17 @@ h2.pageList {
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
+    color:black;
     
 }
 
-
+.oneMovieDetail p{
+    color:black;
+}
 
 .publishDate{
     margin-top:8%;
     font-size:1.2em;
-
 }
 
 .movie h2{
@@ -914,7 +916,7 @@ h2.pageList {
     color:white;
 }
 
-/* auteur ,date, et voir commentaires*/
+
 
 .publishing {
     display: flex;
@@ -940,7 +942,7 @@ h2.pageList {
 }
 
 
-/* -------------- page de detail des films -------*/
+/* ------------ page de detail des films -------*/
 
 .inputbasic {
     margin:1% auto 1%;
@@ -1082,20 +1084,20 @@ input[type=submit]:hover {
 }
 
 .news{
-     transition: all 0.5s ease;
+  
+    transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
-   font-size:1.5em;
+    font-size:1.5em;
     color: white;
 }
+
 .news:hover{
 
     color: #9B0511;
 }
-
-
 
 #message {
     margin-top:1%;
@@ -1124,11 +1126,8 @@ input[type=submit]:hover {
     margin-bottom:2%;
 }
 
-
-
 /*--------------- page contact ----------------*/
 
-/* recaptcha*/
 
 #g-recaptcha{
     display:flex;
@@ -1155,15 +1154,13 @@ input[type=submit]:hover {
     -o-border-radius: 10px;
 }
 
-
-
 #formulaire {
     display: flex;
     display: -ms-flexbox;
     z-index: 4;
     position: fixed;
     top: 250px;
-    left: -100%; /*le faire apparaitre par la gauche*/
+    left: -100%; 
     flex-direction: column;
     width: 22%;
     height: auto;
@@ -1220,7 +1217,7 @@ input[type=submit]:hover {
     -o-box-shadow: none;
 }
 
-/*-------------- page tableau de bord-------------*/
+/*-------------- page tableau de bord------------*/
 .adminPost{
     margin:auto;
     display: flex;
@@ -1294,8 +1291,38 @@ input[type=submit]:hover {
 }
 
 .errorDiv i{
-    color:red;
+    color:#9B0511;
 }
+
+/*--------------- page liste commentaires ------*/
+
+
+.listcom i{
+    color:white;
+    margin-bottom:2%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+
+}
+
+.listcom i:hover{
+    color:silver;
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+  
+}
+
+/*-------- page liste commentaires signalés ------*/
+
+
+
+
+
+
+
+
 
 
 /*---------------- medias queries -----------------*/

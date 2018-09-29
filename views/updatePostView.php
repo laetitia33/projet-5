@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 <div id ="modif"></div>
 
-<h2>Modifier le chapitre: <?= htmlspecialchars($post['title']); ?></h2>
+<h2 class='pageList'>Modifier le film: <?= htmlspecialchars($post['title']); ?></h2>
 
 <?php $header = ob_get_clean(); ?>
 
@@ -24,9 +24,9 @@
      
             <input type="text" name="author" class="inputbasic" id="author"value="<?php
                 if (isset($_SESSION['pseudo']))
-                {
+                :
                     echo htmlspecialchars($_SESSION['pseudo']);
-                }
+                endif;
                 ?>"
                 />
         </div>
@@ -41,7 +41,7 @@
             
         </div>
         <div>
-            <input type="submit" value="envoyez votre Chapitre" OnClick="return confirm('Voulez-vous vraiment modifier le chapitre ?');"></input>
+            <input type="submit" value="envoyez votre Chapitre" OnClick="return confirm('Voulez-vous vraiment modifier ce résumé ?');"></input>
         </div>
     </form>
 

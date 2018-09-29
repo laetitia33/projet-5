@@ -22,7 +22,7 @@
 			if(isset($_SESSION['pseudo'])) : ?>
 			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
 			Retour à votre tableau de bord</i></a></p>
-		 <?php
+		 	<?php
             
            	else : ?>
 
@@ -31,16 +31,17 @@
 			  <?php
             endif;
             ?>
-		<h2><?= htmlspecialchars($post['title']) ?></h2>
+
+<!---///////affichage de l'auteur , de modification ou suppression du film  admin////-->		
 		<div class ="oneMovieDetail">
 			<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
-<!---///////affichage de l'auteur , de modification ou suppression de l'article  admin////-->				
+			<h2><?= htmlspecialchars($post['title']) ?></h2>				
 			<?php
 			if(isset($_SESSION['pseudo'])) : ?>
 				<i class="far fa-calendar-alt"></i> Le <?= htmlspecialchars($post['date_creation_fr'])?>
 				</p>
-				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier le chapitre </i></em></a><br><br>
-               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer le chapitre ?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a><br><br>
+				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film </i></em></a><br><br>
+               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer ce film ?');"><em><i class="fas fa-trash-alt"> Supprimer ce film</i></em></a><br><br>
  			<?php
         	
        		else : ?>
@@ -51,7 +52,7 @@
             endif;
             ?>
 			<div class="news" >	
-			<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
+				<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
 			</div>
 			<img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>	
 		</div>
@@ -59,7 +60,7 @@
 
 <!--/////////////////////////-écrire commentaires admin ou visiteur//////////////////////////-->
 <?php ob_start(); ?>
-
+<?php if(isset($_SESSION['pseudo'])) : ?>
 		<h2><i class="far fa-comments"></i> Laissez un Commentaire</h2>
 		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
 			
@@ -90,54 +91,53 @@
 	
 <!--///////////////////////// boucle affichage commentaire admin ou visiteur ///////////-->
 
-<?php while ($comment = $comments->fetch()):
-		 ;?>
-			<div id="ancrecom"></div>
-			<div class = "commentaires">
-				<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
-				</p>
 
-				<div class="coms"> 
 
-					<span id="confirmsignal"><p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300)));?></p></span>				
-		    	</div>
+
+	<?php while ($comment = $comments->fetch()):
+			 ;?>
+				<div id="ancrecom"></div>
+				<div class = "commentaires">
+					<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
+					</p>
+
+					<div class="coms"> 
+
+						<span id="confirmsignal"><p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300)));?></p></span>				
+			    	</div>
+				<?php
+				if(isset($_SESSION['pseudo'])) : ?>
+					<div class="reponse">     	
+			     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+			     	</div>
+				<?php
+	        	
+	       		else: ?>
+							
+		       				<div class="reponse">				
+		       				<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
+		       				     		  
+		       			</div>
+		       				
+			    <?php
+
+	            endif;
+	            ?>
+				</div>
+			
 			<?php
-			if(isset($_SESSION['pseudo'])) : ?>
-				<div class="reponse">     	
-		     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
-		     	</div>
-			<?php
-        	
-       		elseif(isset($_SESSION['pseudo']))  : ?>
-						
-	       				<div class="reponse">				
-	       				<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
-	       			
-     		  
-	       			</div>
-	       				
-		    <?php
+		endwhile;
+			$comments->closeCursor();?>
 
-		    else : ?>
-					
-       				<div class="reponse">				
-       				<em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login";">connecté </a></br>pour signaler un abus</em> 
-       			
+	<?php
+else : ?>
+					      							
+       	<em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login";">connecté </a></br>pour laisser un commentaire</em>       			
  		  
-       			</div>
 	       				
-		    <?php
-
-            endif;
-            ?>
-			</div>
-		
-		<?php
-	endwhile;
-		$comments->closeCursor();?>
-	
- 
-	
+<?php
+endif;
+?>
 		
 <!--/////////////////////lien retour page précédente selon si visiteur ou admin///////////////////-->	
 

@@ -8,7 +8,7 @@
 <?php $header = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-        <img id="pageArticle" src="public/image/photo4.jpg" alt="photo Alaska"/>
+        
         <form action="index.php?action=log" method="POST">
           
            
@@ -35,4 +35,5 @@
           <p><a class="news" href="index.php"><i class="fas fa-arrow-left">Retour à l'accueil</i></a></p>
 <?php $content = ob_get_clean(); ?>
 
+<!--///////////////////////////////// renvoi vers template //////////////////////////////////-->
 <?php require('views/template.php'); ?>

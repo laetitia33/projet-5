@@ -3,44 +3,42 @@
 <?php ob_start(); ?>
 
     <div id ="reportcom"></div>
-    <h2>Commentaire(s) signalé(s)</h2>
+    <h2 class ='pageList'>Commentaire(s) signalé(s)</h2>
 
 <?php $header = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
 
 
-
-
 <?php
 
-      if(htmlspecialchars($commentsReportTotal['total_comments_report'])> 0){ ;?>
+      if(htmlspecialchars($commentsReportTotal['total_comments_report'])> 0): ;?>
          <em><a href="index.php?action=deleteAllCommentReport" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires signalés ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></em><br><br>
                        
        
                         
    <?php
-    }else { ?>
+    else : ?>
 
         <p> Aucun commentaire signalé .<p>
 
      <?php
-    }
+    endif;
     ?>
 
 <?php
 
-      if(htmlspecialchars($commentsReportTotal['total_comments_report']) > 0) { ;?>
+      if(htmlspecialchars($commentsReportTotal['total_comments_report']) > 0) : ;?>
          <em><a href="index.php?action=approvedComments" OnClick="return confirm('Souhaitez-vous approuver tous les commentaires signalés ?');" ><i class="fas fa-bell-slash"> Approuver tous les commentaires</i></a></em>
-       <?php } ?>
+       <?php endif; ?>
 
 
 
 
         <?php
 
-        while ($comment = $reportComments->fetch())
-        {
+        while ($comment = $reportComments->fetch()):
+        
             ?>
 
         <div class="commentaires">
@@ -53,10 +51,11 @@
             </p>
         </div>
             <?php
-        }
+        endwhile;
         $reportComments->closeCursor(); ?>
 
 
 <?php $content = ob_get_clean(); ?>
 
+<!--///////////////////////////////// renvoi vers template //////////////////////////////////-->
 <?php require('views/template.php'); ?>
