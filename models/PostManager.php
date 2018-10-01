@@ -10,7 +10,7 @@ use \PDO;
 class PostManager extends Manager
 {
 
-    private $_id, $_title,$_author,$c_ontent, $_date_creation;
+    private $_id, $_title,$_author,$c_ontent, $_date_creation, $_image,$_horaires,$_duree;
 
 
     public function __construct()
@@ -24,30 +24,40 @@ class PostManager extends Manager
         return $this->_post_id;
     }
 
-
     public function getTitle()
     {
         return $this->_title;
     }
+
+    public function getHoraires()
+    {
+        return $this->_horaires;
+    }
  
+    public function getDuree()
+    {
+        return $this->_duree;
+    }
+
+     public function getImage()
+    {
+        return $this->_image;
+    }
 
     public function getAuthor()
     {
         return $this->_author;
     }
 
-
     public function getContent()
     {
         return $this->_content;
     }
 
-  
     public function getDateCreation()
     {
         return $this->_date_creation;
     }
-
 
     public function setId($post_id)
     {
@@ -57,7 +67,6 @@ class PostManager extends Manager
         }
     }
 
-
     public function setTitle($title)
     {
         if(is_string($title)) {
@@ -65,7 +74,12 @@ class PostManager extends Manager
         }
     }
 
-   
+    public function setImage($image)
+    {
+        if(is_string($image)) {
+            $this->_image = $image;
+        }
+    }
     public function setAuthor($author)
     {
         if(is_string($author)) {
@@ -73,7 +87,19 @@ class PostManager extends Manager
         }
     }
 
+    public function setHoraires($horaires)
+    {
+        if(is_string($horaires)) {
+            $this->_horaires = $horaires;
+        }
+    }
 
+    public function setDuree($duree)
+    {
+        if(is_string($duree)) {
+            $this->_duree = $duree;
+        }
+    }
     public function setContent($content)
     {
         if(is_string($content)) {
@@ -90,30 +116,30 @@ class PostManager extends Manager
 //fin getters et setters
 
 
-//récupère le dernier article
+//récupère le dernier film
     public function getLastPost()
     {
         $db = $this->dbConnect();
 
-        $post = $db->query('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 1');
+        $post = $db->query('SELECT id, title, image,TIME_FORMAT (duree,\'%H:%i\')AS duree, TIME_FORMAT (horaires,\'%H:%i\')AS horaires ,content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 1');
         return $post;
     }
 
 
 
 
-//récupère tous les articles
+//récupère tous les films
     public function getAllPosts()
     {
         $db = $this->dbConnect();
 
-        $req = $db->query('SELECT b.id, b.title, b.content, b.author, DATE_FORMAT(b.date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr, (SELECT count(*) FROM comments c WHERE c.post_id = b.id) AS nbCommentaires FROM posts b ORDER BY date_creation DESC ');
+        $req = $db->query('SELECT  TIME_FORMAT (b.horaires,\'%H:%i\')AS horaires ,TIME_FORMAT (b.duree,\'%H:%i\')AS duree,b.id, b.title, b.content, b.author, b.image, DATE_FORMAT(b.date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr, (SELECT count(*) FROM comments c WHERE c.post_id = b.id) AS nbCommentaires FROM posts b ORDER BY date_creation DESC ');
 
         return $req;
     }
 
 
-//nombre le nombre de chapitre
+//nombre le nombre de films
     public function countPosts()
     {
         $db = $this->dbConnect();
@@ -123,12 +149,12 @@ class PostManager extends Manager
         return $postsTotal;
     }
 
-//recupere un chapitre
+//recupere un film
     public function getPost($post_id)
     {
         $this->setId($post_id);
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, title,TIME_FORMAT (horaires,\'%H:%i\')AS horaires, image, TIME_FORMAT (duree,\'%H:%i\')AS duree,content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i\') AS date_creation_fr FROM posts WHERE id = ?');
         $req->execute(array($this->getId()));
         $post = $req->fetch();
 
@@ -136,43 +162,57 @@ class PostManager extends Manager
     }
 
 //creation d'un chapitre
-    public function createPost($author, $title, $content)
+    public function createPost($author, $title,$horaires,$duree, $image, $content)
     {
         $this->setAuthor($author);
         $this->setTitle($title);
+        $this->setHoraires($horaires);
+        $this->setDurée($durée);
+        $this->setImage($image);
         $this->setContent($content);
 
         $db = $this->dbConnect();
-        $post = $db->prepare('INSERT INTO posts (author, title, content, date_creation) VALUES ( ?, ?, ?, NOW())');
+        $post = $db->prepare('INSERT INTO posts (author, title,horaires,duree,image, content, date_creation) VALUES ( ?,?,?,?, ?, ?, NOW())');
         $createPost = $post->execute(array(
             $this->getAuthor(),
             $this->getTitle(),
+            $this->getHoraires(),
+            $this->getDurée(),
+            $this->getImage(),
             $this->getContent()
             ));
 
         return $createPost;
     }
 
-//modification de l'article
-  public function updatePost($post_id, $author, $title, $content)
+//modification du film
+  public function updatePost($post_id, $author, $title,$horaires,$duree, $image, $content )
     {
         $this->setId($post_id);
         $this->setAuthor($author);
         $this->setTitle($title);
+        $this->setHoraires($horaires);
+        $this->setDuree($duree);
+        $this->setImage($image);
         $this->setContent($content);
+            
         $db = $this->dbConnect();
-        $post = $db->prepare('UPDATE posts SET title= :title, author= :author, content= :content WHERE id= :post_id');
-        $post->bindValue('title',$this->getTitle(), PDO::PARAM_STR);
+        $post = $db->prepare('UPDATE posts SET  title= :title, author= :author, horaires= :horaires,duree= :duree,image= :image,content= :content WHERE id= :post_id');
         $post->bindValue('author', $this->getAuthor(), PDO::PARAM_STR);
+        $post->bindValue('title',$this->getTitle(), PDO::PARAM_STR);
+        $post->bindValue('horaires', $this->getHoraires(), PDO::PARAM_INT);
+        $post->bindValue('duree', $this->getDuree(), PDO::PARAM_INT);
+        $post->bindValue('image', $this->getImage(), PDO::PARAM_INT);
         $post->bindValue('content',$this->getContent(), PDO::PARAM_STR);
         $post->bindValue('post_id', $this->getId(), PDO::PARAM_INT);
+      
         $updatePost = $post->execute();
 
         return $updatePost;
     }
 
 
-//suppression d'un article
+//suppression d'un film
     public function deletePost($post_id)
     {
         $this->setId($post_id);

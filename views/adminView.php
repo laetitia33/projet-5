@@ -16,20 +16,20 @@
         <h2 class='pageList'>Dernier film en ligne:</h2>
         <div class = "adminPost">
                     <h2><?= htmlspecialchars($data['title']) ?></h2>
-                    <p><span class="publishing"><i class="far fa-calendar-alt"> le <?= htmlspecialchars($data['date_creation_fr']) ?></i></span></p>
+                    <div id="affiche"><?php echo "<img src='".$data['image']."' />";?></div>
+                    <p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($data['horaires']) ?></span></p><br>
                         
             
                 <div class="news" >
                     <p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($data['content']), 0, 500).'...'));?></p>
                  </div>
-                
+                <p><span class="publishing"> Durée du film <?= htmlspecialchars($data['duree']) ?></span></p>
                 <a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>">Plus d'infos</a>
         </div>
  
         <?php
     endwhile;
-    // fin de la boucle des chapitres
-
+    // fin de la boucle des films
     $post->closeCursor();
     ?>
         <?php

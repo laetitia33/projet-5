@@ -17,6 +17,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 		<script src="js/header/accueil.js"></script>
 		<script src="public/js/menu/menu1.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=2swm32qln1jidlv6lurwl2yl39ntbleahzbjufpyp22rtoju"></script>
   		<script src= "public/js/tinymce/tinymce.js"></script>

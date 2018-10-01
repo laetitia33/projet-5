@@ -30,7 +30,35 @@
       
         </form>
 
+<h2 class ='pageList'>Inscription</h2>
+        <form action="index.php?action=register" method="post">
 
+            <div>
+                <label for="pseudo"></label>     
+                <input type="text" name="pseudo"  class="inputbasic" placeholder="Pseudo"/>
+                
+            </div>
+
+            <div>
+                <label for="password"></label>            
+                <input type="password" name="pass" id="password" class="inputbasic" placeholder="Mot de passe"/>
+            </div>
+           
+            <div>
+                <label for="password_confirm"></label>          
+                <input type="password" name="password_confirm" id="password_confirm" class="inputbasic" placeholder="Confirmez votre mot de passe"/>
+            </div>
+           
+            <div>
+                <label for="email"></label>
+                <input type="email" name="email" id="email" class="inputbasic" placeholder="adresse mail"/>          
+            </div>
+
+            <div>
+                <input type="submit" value="Inscription" />
+            </div>
+       
+        </form>
 
           <p><a class="news" href="index.php"><i class="fas fa-arrow-left">Retour à l'accueil</i></a></p>
 <?php $content = ob_get_clean(); ?>

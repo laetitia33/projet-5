@@ -29,6 +29,6 @@
 	<script src ="public/js/placeholder.js"></script>
 	<script src ="public/js/placeholder.min.js"></script>
 	<script src="public/js/menu/menu.js"></script>
-
+	<script src="public/js/pagination/pagination.js"></script>
 	</body>
 </html>

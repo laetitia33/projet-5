@@ -13,7 +13,7 @@
 <?php
 
       if(htmlspecialchars($commentsReportTotal['total_comments_report'])> 0): ;?>
-         <em><a href="index.php?action=deleteAllCommentReport" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires signalés ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></em><br><br>
+         <div class='listcom'><a href="index.php?action=deleteAllCommentReport" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires signalés ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></div>
                        
        
                         
@@ -29,7 +29,7 @@
 <?php
 
       if(htmlspecialchars($commentsReportTotal['total_comments_report']) > 0) : ;?>
-         <em><a href="index.php?action=approvedComments" OnClick="return confirm('Souhaitez-vous approuver tous les commentaires signalés ?');" ><i class="fas fa-bell-slash"> Approuver tous les commentaires</i></a></em>
+         <div class='listcom'><a href="index.php?action=approvedComments" OnClick="return confirm('Souhaitez-vous approuver tous les commentaires signalés ?');" ><i class="fas fa-bell-slash"> Approuver tous les commentaires</i></a></div><br>
        <?php endif; ?>
 
 

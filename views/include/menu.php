@@ -30,8 +30,10 @@ else
 	<ul class="navigation">
 		<img src="public/images/icone.png" class ="popcorn" alt="popcorn"/>
 		<li><a class="btn" href="index.php#films">Films de la semaine</a></li>
+		<li><a class="btn" href="index.php?action=accueil">Accueil</a></li>
+
 		<li><a class="btn" href="index.php?action=information">  En savoir plus</a></li>
-		<li><a class="btn" href="index.php?action=cinemas">  Salles de cinémas</a></li>
+		<li><a class="btn" href="index.php?action=cinemas">  Salles de cinéma</a></li>
 		<li><a class="btn" href="index.php?action=login">  Inscription/connexion</a></li>
 		<li><a class="btn" href="index.php?action=email"><i class="far fa-envelope"></i>  Contactez-nous</a></li>
 		<img src="public/images/icone.png" class ="popcorn" alt="popcorn"/>

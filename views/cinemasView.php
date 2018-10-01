@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>    
 
-<h2 class ='pageList'>Salles de cinemas </h2>
+<h2 class ='pageList'>Salles de cinema </h2>
 
 <?php $header = ob_get_clean(); ?>
 
@@ -27,6 +27,7 @@
 		                    
 		    			</div>
            		 </div>
+
 
    <?php $content = ob_get_clean(); ?>
 

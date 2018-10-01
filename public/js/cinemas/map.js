@@ -5,8 +5,7 @@ var map;
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 13,// ce niveau de zoom se situe entre la ville et ou les rues
       center: {lat: 48.866667, lng: 2.333333},
-      
-
+ 
       //changement de style type nuit
          styles: 
  [
@@ -105,7 +104,7 @@ var map;
           animation: google.maps.Animation.DROP,
           veloDispo: donnees.available_bikes,
           nbPlace: donnees.bike_stands,    
-          icon:"public/images/cluster.png",
+          icon:"public/images/marker.png",
           title: donnees.name,
           address : donnees.address,
           contrat:donnees.contract_name,

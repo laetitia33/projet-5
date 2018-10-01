@@ -35,25 +35,32 @@
 <!---///////affichage de l'auteur , de modification ou suppression du film  admin////-->		
 		<div class ="oneMovieDetail">
 			<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
-			<h2><?= htmlspecialchars($post['title']) ?></h2>				
+			<h2><?= htmlspecialchars($post['title']) ?></h2>	
+			<div id="affiche"><?php echo "<img src='".$post['image']."' />";?></div>		
 			<?php
 			if(isset($_SESSION['pseudo'])) : ?>
-				<i class="far fa-calendar-alt"></i> Le <?= htmlspecialchars($post['date_creation_fr'])?>
-				</p>
-				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film </i></em></a><br><br>
-               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer ce film ?');"><em><i class="fas fa-trash-alt"> Supprimer ce film</i></em></a><br><br>
+				<p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($post['horaires']) ?></span></p><br>
+				<div class='adminCtrl'>
+					<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film </i></em></a>
+				</div>
+
+				<div class='adminCtrl'>
+               		<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer ce film ?');"><em><i class="fas fa-trash-alt"> Supprimer ce film</i></em></a>
+               	</div>
+
  			<?php
         	
        		else : ?>
-				<p>Article écrit par <a href="index.php"><?= $post['author'] ?></a><br></p>
-				<p><i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?></p>
-	
+				<p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($post['horaires']) ?></span></p><br>
 				  <?php
             endif;
             ?>
 			<div class="news" >	
 				<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
 			</div>
+			<p><span class="publishing">Durée du film <?= htmlspecialchars($post['duree']) ?></span></p><br>	
+			<p>Article écrit par <a href="index.php?action=information"><?= $post['author'] ?></a>
+			le <?= $post['date_creation_fr'] ?></p>
 			<img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>	
 		</div>
 <?php $header = ob_get_clean(); ?>

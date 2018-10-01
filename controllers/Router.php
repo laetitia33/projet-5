@@ -54,10 +54,10 @@ class Routeur
                     // ADMIN - Creation d'un film
                     elseif ($_GET['action'] == 'createPost')
                     {
-                        if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
+                        if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['horaires'] != NULL && $_POST['duree'] != NULL && $_POST['image'] != NULL && $_POST['content'] != NULL )
                         {
                            
-                           $this->_administrationCtrl->postAdd($_POST['author'], $_POST['title'], $_POST['content']);
+                           $this->_administrationCtrl->postAdd($_POST['author'], $_POST['title'],$_POST['horaires'], $_POST['duree'],$_POST['image'], $_POST['content']);
                            
                         }
                         else
@@ -112,10 +112,10 @@ class Routeur
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
                         {
-                            if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
+                            if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['horaires'] != NULL && $_POST['duree'] != NULL && $_POST['image'] != NULL && $_POST['content'] != NULL )
                             {
                                 
-                                $this->_administrationCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'], $_POST['content']);
+                                $this->_administrationCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'],$_POST['horaires'],$_POST['duree'], $_POST['image'], $_POST['content']);
                             }
                             else
                             {
@@ -301,6 +301,25 @@ class Routeur
                   
                         $this->_userCtrl->logoutUser();
                     }
+//ADMIN - Utilisateurs
+                    // ADMIN - Page utilisateurs
+                    elseif ($_GET['action'] == 'adminListUsers')
+                    {
+                        $this->_userCtrl->adminListUsers();
+                    }
+
+                     // ADMIN - Supprimer un utilisateur
+                    elseif ($_GET['action'] == 'deleteUser')
+                    {
+                        if (isset($_GET['id_user']) && $_GET['id_user'] > 0)
+                        {
+                            $this->_userCtrl->deleteUser($_GET['id_user']);
+                        }
+                        else
+                        {
+                            throw new Exception('Aucun identifiant d\'utilisateur envoyé !');
+                        }
+                    }
                      
                 }
 
@@ -381,17 +400,34 @@ class Routeur
                        
                     }
 
-                    //connexion
-                    elseif ($_GET['action'] == 'log')
-                    {
-                   
-                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
-                        {
-                          
-                            $this->_userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
+                  // Inscription
+                    elseif ($_GET['action'] == 'register') {
+                        if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_confirm']) && !empty($_POST['email'])) {
+                            // Sécurité
+                            $pseudo = htmlspecialchars($_POST['pseudo']);
+                            $email = htmlspecialchars($_POST['email']);
+                            // Hachage du mot de passe
+                            $password_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                            // On vérifie la Regex pour l'adresse email
+                            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+                                // On vérifie que les 2 mots de passe sont identiques.
+                                if ($_POST['password'] == $_POST['password_confirm']) {
+                                    $this->_userCtrl->registerUser( $pseudo, $password_hache, $email);
+                                } else {
+                                    throw new Exception('Les 2 mots de passe ne sont pas identiques, recommencez !');
+                                }
+                            } else {
+                                throw new Exception('L\'adresse email ' . $email . ' n\'est pas valide, recommencez !');
+                            }
+                        } else {
+                            throw new Exception('Tous les champs doivent être remplis !');
                         }
-                        else
-                        {
+                    }
+                    // Connexion
+                    elseif ($_GET['action'] == 'log') {
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
+                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
+                        } else {
                             throw new Exception('Tous les champs doivent être remplis !');
                         }
                     }

@@ -14,26 +14,29 @@
 	
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 		<link href="public/images/favicon.ico" rel="icon" type="image/x-icon" />
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<script src="js/header/accueil.js"></script>
+		<script src="public/js/menu/menu1.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 		<script src="js/header/modernizr.custom.js"></script>
 			
 		<title><?= isset($title) ? $title : 'cine-cinema';?></title>
 	</head>
-	<body>
-		<div class="container">	
-				
-				<div class="os-phrases" id="os-phrases">
-					<h2>Venez découvrir</h2>
-					<h2>toutes les sorties</h2>
-					<h2>dans votre cinéma</h2>
-					<h2>Un expérience inoubliable !</h2>
-					<h2>Ne restez pas simple spectateur</h2>
-		
-					<a href="#navigation" id = "input1"><i class="fas fa-angle-down">Entrez</i></a>
+	<body class ='welcomePage'>
 
-				</div>
-		</div>
 
+		<h1 class="ml5">
+			  <span class="text-wrapper">
+			    <span class="line line1"></span>
+			    <span class="letters letters-left">Venez redécouvrir</span>
+			    <span class="letters ampersand">&amp;</span>
+			    <span class="letters letters-right">tous vos films préférés</span>
+			    <span class="line line2">Dans notre cinéma d'exception</span>
+			  </span>
+		<a href="index.php#films" id = "input1"><i class="fas fa-angle-down">Entrez</i></a>
+	
+		</h1>
+	  
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="js/header/jquery.lettering.js"></script>
 		<script src = "public/js/script.js"></script>

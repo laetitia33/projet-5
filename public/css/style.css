@@ -15,247 +15,74 @@
 body{
         margin-top:5%;
 }
+/*-------------- phrase d'accueil ----------------*/
+
+    .ml12 {
+      margin-top:2%;
+      font-weight: 200;
+      font-size: 1.6em;
+      font-style:oblique;
+    }
+
+    .ml12 .letter {
+        margin-top:2%;
+        display: inline-block;
+        line-height: 1em;
+    }
 
 
 /*---------------page d'accueil------------------*/
 
-.os-phrases h2 {
-	font-family: tahoma,arial,verdana;
-	font-size: 70px;
-	font-weight: 200;
-	width: 100%;
-	overflow: hidden;
-	text-transform: uppercase;
-	padding: 0;
-	margin: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	letter-spacing: 14px;
-	text-align: center;
-}
-
-.os-phrases h2,
-.os-phrases h2 > span {
-	height: 100%;
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: row;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-webkit-box-pack: center;
-	-moz-box-pack: center;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-moz-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
-}
-
-.os-phrases h2 > span {
-	margin: 0 15px;
-}
-
-.os-phrases h2 > span > span {
-	display: inline-block;
-	-webkit-perspective: 1000px;
-	-moz-perspective: 1000px;
-	perspective: 1000px;
-	-webkit-transform-origin: 50% 50%;
-	-moz-transform-origin: 50% 50%;
-	transform-origin: 50% 50%;
-}
-
-.os-phrases h2 > span > span > span {
-	display: inline-block;
-	color: hsla(0,0%,0%,0);
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-	-webkit-transform: translate3d(0,0,0);
-	-moz-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-	-webkit-animation: header 5.2s linear forwards;
-	-moz-animation: header 5.2s linear forwards;
-	animation: header 5.2s linear forwards;
-}
-
-.os-phrases h2:nth-child(2) > span > span > span {
-	-webkit-animation-delay: 5s;
-	-moz-animation-delay: 5s;
-	animation-delay: 5s;
-}
-
-.os-phrases h2:nth-child(3) > span > span > span {
-	-webkit-animation-delay: 10s;
-	-moz-animation-delay: 10s;
-	animation-delay: 10s;
-}
-
-.os-phrases h2:nth-child(4) > span > span > span {
-	-webkit-animation-delay: 15s;
-	-moz-animation-delay: 15s;
-	animation-delay: 15s;
-}
-
-.os-phrases h2:nth-child(5) > span > span > span {
-	font-size: 150px;
-	-webkit-animation-delay: 21s;
-	-moz-animation-delay: 21s;
-	animation-delay: 21s;
-	-webkit-animation-duration: 8s;
-	-moz-animation-duration: 8s;
-	animation-duration: 8s;
-}
-
-.os-phrases h2:nth-child(6) > span > span > span {
-	-webkit-animation-delay: 30s;
-	-moz-animation-delay: 30s;
-	animation-delay: 30s;
-}
-
-.os-phrases h2:nth-child(7) > span > span > span {
-	-webkit-animation-delay: 34s;
-	-moz-animation-delay: 34s;
-	animation-delay: 34s;
-}
-
-@-webkit-keyframes header {
-	0% {
-		text-shadow: 0 0 50px #fff;
-		letter-spacing: 80px;
-		opacity: 0;
-		-webkit-transform: rotateY(-90deg);
-	}
-	50% {
-		text-shadow: 0 0 1px #fff;
-		letter-spacing: 14px;
-		opacity: 0.8;
-		-webkit-transform: rotateY(0deg);
-	}
-	85% {
-		text-shadow: 0 0 1px #fff;
-		opacity: 0.8;
-		-webkit-transform: rotateY(0deg) translateZ(100px);
-	}
-	100% {
-		text-shadow: 0 0 10px #fff;
-		opacity: 0;
-		-webkit-transform: translateZ(130px);
-		pointer-events: none;
-	}
-}
-
-@-moz-keyframes header {
-	0% {
-		text-shadow: 0 0 50px #fff;
-		letter-spacing: 80px;
-		opacity: 0.2;
-		-moz-transform: rotateY(-90deg);
-	}
-	50% {
-		text-shadow: 0 0 1px #fff;
-		letter-spacing: 14px;
-		opacity: 0.8;
-		-moz-transform: rotateY(0deg);
-	}
-	85% {
-		text-shadow: 0 0 1px #fff;
-		opacity: 0.8;
-		-moz-transform: rotateY(0deg) translateZ(100px);
-	}
-	100% {
-		text-shadow: 0 0 10px #fff;
-		opacity: 0;
-		-moz-transform: translateZ(130px);
-		pointer-events: none;
-	}
-}
-
-@keyframes header {
-	0% {
-		text-shadow: 0 0 50px #fff;
-		letter-spacing: 80px;
-		opacity: 0.2;
-		transform: rotateY(-90deg);
-	}
-	50% {
-		text-shadow: 0 0 1px #fff;
-		letter-spacing: 14px;
-		opacity: 0.8;
-		transform: rotateY(0deg);
-	}
-	85% {
-		text-shadow: 0 0 1px #fff;
-		opacity: 0.8;
-		transform: rotateY(0deg) translateZ(100px);
-	}
-	100% {
-		text-shadow: 0 0 10px #fff;
-		opacity: 0;
-		transform: translateZ(130px);
-		pointer-events: none;
-	}
-}
-
-.os-phrases h2:nth-child(8) > span > span > span {
-	font-size: 30px;
-	-webkit-animation: fade 4s linear 40s forwards;
-	-moz-animation: fade 4s linear 40s forwards;
-	animation: fade 4s linear 40s forwards;
-}
-
-@-webkit-keyframes fade { 
-	0% {
-		opacity: 0;
-		text-shadow: 0 0 50px #fff;
-	}
-	100% {
-		opacity: 0.8;
-		text-shadow: 0 0 1px #fff;
-	}
-}
-
-@-moz-keyframes fade { 
-	0% {
-		opacity: 0;
-		text-shadow: 0 0 50px #fff;
-	}
-	100% {
-		opacity: 0.8;
-		text-shadow: 0 0 1px #fff;
-	}
-}
-
-@keyframes fade { 
-	0% {
-		opacity: 0;
-		text-shadow: 0 0 50px #fff;
-	}
-	100% {
-		opacity: 0.8;
-		text-shadow: 0 0 1px #fff;
-	}
-}
-
-/* Bold words */
-.os-phrases h2:first-child .word3,
-.os-phrases h2:nth-child(2) .word2,
-.os-phrases h2:nth-child(4) .word2 {
-	font-weight: 600;
-}
-
-
+.
 /*--------------------------- fin accueil ------------------------------------*/
 
+.welcomePage{
 
+    background-color:red;
+}
+.ml5 {
+  position: relative;
+  font-weight: 300;
+  font-size: 4.5em;
+  color: #402d2d;
+}
 
+.ml5 .text-wrapper {
+ border:2px solid red;
+
+  position: relative;
+
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 3px;
+  width: 100%;
+  background-color: #402d2d;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 1em;
+  margin-right: -0.1em;
+  margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
 
 /*------------------ menu ----------------*/
 .dr-menu {
@@ -742,49 +569,6 @@ h2.pageList {
     background: white;
 }
 
-.oneMovieDetail{
-    display: flex;
-    display: -ms-flexbox;
-    flex-direction: column;
-    -ms-flex-direction:column;
-    align-items: center;
-    width: 90%;
-    margin:auto;
-    height: auto;
-    margin-bottom: 25px;
-    border: 10px solid white;
-    -webkit-border-radius: 3px;
-    -webkit-border-radius: 14px;
-    -moz-border-radius: 3px;
-    -moz-border-radius: 14px;
-    -o-border-radius: 3px;
-    -o-border-radius: 14px;
-    -ms-border-radius: 3px;
-    -ms-border-radius: 14px;
-    border-radius: 3px;
-    border-radius: 14px;
-    background: white;
-    -webkit-box-shadow: 5px 5px 10px silver;
-    -moz-box-shadow: 5px 5px 10px silver;
-    -o-box-shadow: 5px 5px 10px silver;
-    -ms-box-shadow:5px 5px 10px silver;
-    box-shadow: 5px 5px 10px silver;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    color:black;
-    
-}
-
-.oneMovieDetail p{
-    color:black;
-}
-
-.publishDate{
-    margin-top:8%;
-    font-size:1.2em;
-}
 
 .movie h2{
     color : #cc6633;
@@ -794,24 +578,31 @@ h2.pageList {
     text-align : center;    
 }
 
-.body_card {
-    margin-top:5%;
+#affiche img{
+    margin:1% auto 1%;
+    border : 1px dotted grey;
+    width: 50%;
+    height:10%;
+   
+}
+
+.publishDate{
+    margin-top:8%;
+    font-size:1.2em;
+}
+
+.container{
     display: flex;
     display: -ms-flexbox;
     flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     align-content: space-around;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-around;
     -ms-flex-pack: space-around;
-    margin-bottom: 25px;
-}
+    margin-bottom: 2%;
+    margin-top: 4%;
 
-#affiche{
-    margin:1% auto 1%;
-    border : 1px dotted grey;
-    width: 50%;
-    height:auto;
 }
 
 .movie{
@@ -819,10 +610,11 @@ h2.pageList {
     display: -ms-flexbox;
     flex-direction: column;
     -ms-flex-direction:column;
-    align-items: center;
-    width: 450px;
+    justify-content: space-between;
+    align-items:center;
+    width: 30%;
     height: auto;
-    margin-bottom: 25px;
+    margin-bottom:5%;
     border: 10px solid white;
     -webkit-border-radius: 3px;
     -webkit-border-radius: 14px;
@@ -872,6 +664,7 @@ h2.pageList {
     right:0px;
     left:0px;
 }
+
 .texte {
     margin-bottom:4%;
     margin-right: 12%;
@@ -923,6 +716,8 @@ h2.pageList {
     display: -ms-flexbox;
     flex-direction: column;
     -ms-flex-direction:column;
+    color:black;
+    font-style:oblique;
 }
 
 .coms i,
@@ -944,6 +739,44 @@ h2.pageList {
 
 /* ------------ page de detail des films -------*/
 
+.oneMovieDetail{
+    display: flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    -ms-flex-direction:column;
+    align-items: center;
+    width: 90%;
+    margin:auto;
+    height: auto;
+    margin-bottom: 25px;
+    border: 10px solid white;
+    -webkit-border-radius: 3px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 3px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 3px;
+    -o-border-radius: 14px;
+    -ms-border-radius: 3px;
+    -ms-border-radius: 14px;
+    border-radius: 3px;
+    border-radius: 14px;
+    background: white;
+    -webkit-box-shadow: 5px 5px 10px silver;
+    -moz-box-shadow: 5px 5px 10px silver;
+    -o-box-shadow: 5px 5px 10px silver;
+    -ms-box-shadow:5px 5px 10px silver;
+    box-shadow: 5px 5px 10px silver;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    color:black;
+    
+}
+
+.oneMovieDetail p{
+    color:black;
+}
 .inputbasic {
     margin:1% auto 1%;
     width: 60%;
@@ -1029,6 +862,26 @@ input[type=submit]:hover {
     cursor:pointer; 
 }
 
+.adminCtrl a {
+    color:black;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.adminCtrl a:hover{
+    color:grey;
+}
+
+.adminCtrl {
+
+    -webkit-transform: scale(1);
+    transform: scale(1); 
+}
+
+.adminCtrl :hover{
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+}
 
 .commentaires {
     text-align:left;
@@ -1060,6 +913,17 @@ input[type=submit]:hover {
     -moz-box-shadow: 0 3px 10px #ccc;
     -o-box-shadow: 0 3px 10px #ccc;
 }
+
+
+
+.oneMovieDetail h2{
+    color : #cc6633;
+    font : 150% impact, futura, sans-serif;
+    text-transform : uppercase;
+    letter-spacing : 0.3em;
+    text-align : center; 
+}
+
 
 .commentaires a {
     color: #9B0511;
@@ -1125,6 +989,9 @@ input[type=submit]:hover {
     background-color:white ;
     margin-bottom:2%;
 }
+/*---pagination----*/
+
+
 
 /*--------------- page contact ----------------*/
 
@@ -1283,11 +1150,11 @@ input[type=submit]:hover {
         background: silver url(" ../images/chaplin.gif") no-repeat fixed center; 
         background-size: cover;
 }
-.errorDiv{
-   
+.errorDiv{   
     color:black;
     font-size:35px;
     text-align:center ;
+    margin-top:-2%;
 }
 
 .errorDiv i{

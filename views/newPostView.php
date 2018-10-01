@@ -1,4 +1,4 @@
-<?php $title = 'Créer un nouveau Chapitre '; ?>
+<?php $title = 'Créer une nouvelle séance '; ?>
 
 <?php ob_start(); ?>
 <div id ="create"></div>
@@ -11,6 +11,7 @@
 
 <form action="index.php?action=createPost" method="POST">
         <div>
+            <p>Par :</p>
             <label for="author" ></label>
      
             <input type="text" name="author" class="inputbasic" id="author"value="<?php
@@ -23,14 +24,36 @@
         </div>
 
         <div>
+            <p>Titre du film : </p>
             <label for="title"></label>          
             <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici le titre"/>
 
         </div>
-        
-        <div >
+
+        <div>
             
-        <div class="inputbasic" >
+            <label for="horaires"></label>
+            <p>Horaire de la séance :</p>          
+            <input id="horaires" type="time" name="horaires" value="13:30" class="inputbasic" placeholder="Indiquez les horaires des séances"/>
+
+        </div>
+
+        <div>
+            <p>Durée du film :</p>
+            <label for="duree"></label>          
+            <input id="duree" type="time" name="duree" value="01:30" class="inputbasic" placeholder="Indiquez la durée du film"/>
+
+        </div>
+        <div>
+            <p>Jaquette du film :</p>
+            <label for="image"></label>          
+            <input type="text" name="image" class="inputbasic" id="image" placeholder="Inserer le lien de votre image"/>
+
+        </div>
+   
+        <div >
+            <p>Résumé :</p>           
+            <div class="inputbasic" >
                 <label for="content"></label>
                 <textarea name="content" id="content" placeholder="Indiquez ,ici ,le résumé du film"></textarea>
             </div>

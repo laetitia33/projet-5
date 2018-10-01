@@ -32,9 +32,9 @@ class AdministrationController
 //page d'accueil de l'administrateur
     public function administration()
     {
-        $post = $this->_post->getLastPost();// affichage dernier chapitre
+        $post = $this->_post->getLastPost();// affichage dernier film
         $comment = $this->_comment->getLastComment();//affichage dernier commentaire
-        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de chapitres
+        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsTotal = $this->_comment->countComments();//connaitre le nombre total de commentaires
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
     
@@ -45,7 +45,7 @@ class AdministrationController
     public function adminNewPost(){
        
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
-        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de chapitres
+        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre total de commentaires
         require('views/newPostView.php');
     }
@@ -55,7 +55,7 @@ class AdministrationController
 
     {
        
-        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de chapitres
+        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre total de commentaires
         $comments = $this->_comment->getAllComments();//recupere tous les commentaires
@@ -65,10 +65,10 @@ class AdministrationController
 
 
 
-// Approuver un commentaire en  retirerant le signalement (page du detail de chaque chapitre)
+// Approuver un commentaire en  retirerant le signalement (page du detail de chaque films)
     public function approvedComment()
     {
-        $post = $this->_post->getPost($_GET['post_id']);//récuperer le chapitre selectionné
+        $post = $this->_post->getPost($_GET['post_id']);//récuperer le film selectionné
         $reportComment = $this->_comment->approvedComment($_GET['id']);//approuver un commentaire en fonction de son id
         header('Location: index.php?action=adminCommentsReport');
     }
@@ -92,7 +92,7 @@ class AdministrationController
     {
 
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
-        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de chapitres
+        $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre total de commentaires
         $reportComments = $this->_comment->getReportComments();//récuperer les commentaires signalés
         require ('views/reportCommentsView.php');
@@ -138,7 +138,7 @@ class AdministrationController
         }
     }
 
-// Supprimer un commentaire dans la page article details
+// Supprimer un commentaire dans la page film details
     public function deleteOneComment($id_comment)
     {
         $deleteComment = $this->_comment->deleteComment($id_comment);
@@ -180,35 +180,35 @@ class AdministrationController
 
 
 
-// Ajouter un chapitre (page de creation d'un chapitre)
-    public function postAdd($author, $title, $content)
+// Ajouter un film (page de creation d'un film)
+    public function postAdd($author, $title,$horaires,$duree,$image ,$content)
     {
-        $createPost = $this->_post->createPost($author, $title, $content);
-         echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Chapitre ajouté avec succès</h1>";
+        $createPost = $this->_post->createPost($author, $title,$horaires,$duree,$image, $content);
+         echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Film ajouté avec succès</h1>";
         header('Refresh: 1; url= index.php?action=listPosts#episodes');
     }
 
 
-// Page de modification d'un chapitre
+// Page de modification d'un film
     public function adminUpdatePost()
     {
         $commentsReportTotal = $this->_comment->countCommentsReport();//nombre de commentaires signalés
-        $postsTotal = $this->_post->countPosts();//nombre de chapitres
+        $postsTotal = $this->_post->countPosts();//nombre de films
         $commentsTotal  =$this ->_comment ->countComments();//nombre de commentaires
-        $post = $this->_post->getPost($_GET['post_id']);//récupere un chapitre selectionné
+        $post = $this->_post->getPost($_GET['post_id']);//récupere un film selectionné
         require ('views/updatePostView.php');
     }
 
 
 
 
-// Modification d'un chapitre (page de modification d'un chapitre)
-      public function updatePost($post_id, $author, $title, $content)
+// Modification d'un film (page de modification d'un film)
+      public function updatePost($post_id, $author, $title, $content,$horaires,$duree,$image)
     {
-        $updatePost = $this->_post->updatePost($post_id, $author, $title, $content);
+        $updatePost = $this->_post->updatePost($post_id, $author, $title, $content,$horaires,$duree,$image);
 
         if ($updatePost === false) {
-            throw new Exception('Impossible de mettre à jour le chapitre');
+            throw new Exception('Impossible de mettre à jour le film');
         } else {
             header('Location: index.php?action=listPosts');
         }
@@ -217,16 +217,16 @@ class AdministrationController
 
 
 
-// Supprimer un chapitre (page de la liste des chapitres admin , page du detail du chapitre )
+// Supprimer un film (page de la liste des films admin , page du detail du film )
     public function deletePost($post_id)
     {
-        $deletePost = $this->_post->deletePost($post_id);//supprimé un chapitre selectionné
-        $deleteComments = $this->_comment->deleteAllComments($post_id);//supprimé tous les chapitres 
+        $deletePost = $this->_post->deletePost($post_id);//supprimé un film selectionné
+        $deleteComments = $this->_comment->deleteAllComments($post_id);//supprime tous les films 
 
         if ($deletePost === false) {
-            throw new Exception('Impossible de supprimer le chapitre');
+            throw new Exception('Impossible de supprimer le film');
         } elseif ($deleteComments === false) {
-            throw new Exception('Impossible de supprimer les commentaire du chapitre');
+            throw new Exception('Impossible de supprimer les commentaire du film');
         } else {
             header('Location:index.php?action=listPosts');
         
