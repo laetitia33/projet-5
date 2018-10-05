@@ -167,7 +167,7 @@ class PostManager extends Manager
         $this->setAuthor($author);
         $this->setTitle($title);
         $this->setHoraires($horaires);
-        $this->setDurée($durée);
+        $this->setDuree($duree);
         $this->setImage($image);
         $this->setContent($content);
 
@@ -177,7 +177,7 @@ class PostManager extends Manager
             $this->getAuthor(),
             $this->getTitle(),
             $this->getHoraires(),
-            $this->getDurée(),
+            $this->getDuree(),
             $this->getImage(),
             $this->getContent()
             ));

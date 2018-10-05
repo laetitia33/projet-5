@@ -11,7 +11,6 @@
 	<script src = "public/js/script.js"></script>
 	<script src ="public/js/placeholder.js"></script>
 	<script src ="public/js/placeholder.min.js"></script>
-	<script src="public/js/menu/menu.js"></script>
 		
 	</body>
 </html>

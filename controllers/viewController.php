@@ -5,13 +5,6 @@ namespace Laetitia_Bernardi\projet5\Controller;
 class ViewController{
 
 	
-    // page Accueil
-    public function accueil()
-    {   
-     
-        require('views/accueilView.php');
-    }
-
     //page informations
   	public function info()
     {   

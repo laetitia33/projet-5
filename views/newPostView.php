@@ -45,7 +45,7 @@
 
         </div>
         <div>
-            <p>Jaquette du film :</p>
+            <p>Affiche du film :</p>
             <label for="image"></label>          
             <input type="text" name="image" class="inputbasic" id="image" placeholder="Inserer le lien de votre image"/>
 

@@ -336,13 +336,6 @@ class Routeur
                 {
 
 
-                    // Page d'accueil'
-                    if ($_GET['action'] == 'accueil')
-                    {
-                        
-                        $this->_viewCtrl->accueil();
-                       
-                    }
                     //page infos pratiques
                     
                     if ($_GET['action'] == 'information')

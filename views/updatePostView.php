@@ -53,7 +53,7 @@
         </div> 
 
         <div>
-            <p>Jaquette du film : </p>
+            <p>Affiche du film : </p>
             <label for="image"></label>          
             <input type="text" name="image" class="inputbasic" id="image" value="<?php echo htmlspecialchars($post['image']) ;?>"/>
         </div>

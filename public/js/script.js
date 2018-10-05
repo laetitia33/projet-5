@@ -76,6 +76,13 @@ $( "#closelegal" ).click(function() {
   });
 });
 
+//remonter du bas vers le haut de la page
+$(document).ready(function() {
+     $('a[href=#top]').click(function(){
+          $('html, body').animate({scrollTop:0}, 'slow');
+          return false;
+     });
+});
 
 
 //faire apparaitre et disparaitre le menu en responsive
@@ -94,13 +101,6 @@ $( "#closelegal" ).click(function() {
     });
   });
 
-//remonter du bas vers le haut de la page
-$(document).ready(function() {
-     $('a[href=#top]').click(function(){
-          $('html, body').animate({scrollTop:0}, 'slow');
-          return false;
-     });
-});
 
 
 //ancre vers l'acceuil
@@ -128,67 +128,15 @@ $(document).ready(function(){
 
 
 
-//heure sur formulaire d'entree de film
-var timeControl = document.querySelector('input[type="time"]');
-
-var startTime = document.getElementById("startTime");
-var valueSpan = document.getElementById("value");
-
-startTime.addEventListener("input", function() {
-  valueSpan.innerText = startTime.value;
-}, false);
-
-
-
-
-var NS4 = (document.layers);    // Which browser?
-var IE4 = (document.all);
-var win = window;    // window to search.
-var n   = 0;
-function findInPage(str) {
-var txt, i, found;
-if (str == "")
-return false;
-// Find next occurance of the given string on the page, wrap around to the
-// start of the page if necessary.
-if (NS4) {
-// Look for match starting at the current point. If not found, rewind
-// back to the first match.
-if (!win.find(str))
-while(win.find(str, false, true))
-n++;
-else
-n++;
-// If not found in either direction, give message.
-if (n == 0)
-alert("Je suis navré, je n'ai rien trouvé. Vérifiez l'orthographe.");
-}
-if (IE4) {
-txt = win.document.body.createTextRange();
-// Find the nth match from the top of the page.
-for (i = 0; i <= n && (found = txt.findText(str)) != false; i++) {
-txt.moveStart("character", 1);
-txt.moveEnd("textedit");
-}
-// If found, mark it and scroll it into view.
-if (found) {
-txt.moveStart("character", -1);
-txt.findText(str);
-txt.select();
-txt.scrollIntoView();
-  n++;
-  }
-// Otherwise, start over at the top of the page and find first match.
-
-else {
-if (n > 0) {
-n = 0;
-findInPage(str);
-}
-// Not found anywhere, give message.
-else
-alert("Je suis navré, je n'ai rien trouvé. Vérifiez l'orthographe.");
-}
-}
-return false;
-}
+// On attend que la page soit chargée 
+jQuery(document).ready(function()
+{
+   // On cache la zone de texte
+   jQuery('#toggle').hide();
+   // toggle() lorsque le lien avec l'ID #toggler est cliqué
+   jQuery('a#toggler').click(function()
+  {
+      jQuery('#toggle').toggle(400);
+      return false;
+   });
+});

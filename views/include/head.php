@@ -10,13 +10,21 @@
 		<meta property="og:type" content="website">
 		<meta property="og:image" content="public/images/icone.png">
 		<meta name="Language" CONTENT="fr" />
-	
-		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
 		<link href="public/images/favicon.ico" rel="icon" type="image/x-icon" />
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-		<script src="js/header/accueil.js"></script>
-		<script src="public/js/menu/menu1.js"></script>
+		<!---map -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+		<link href='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+		
+		<!--leaflet-->
+	
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   		crossorigin=""/>
+
+		<!--animation phrase d'accueil-->
+		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=2swm32qln1jidlv6lurwl2yl39ntbleahzbjufpyp22rtoju"></script>
