@@ -37,19 +37,18 @@ body{
 }
 /*-------------- phrase d'accueil ----------------*/
 
-    .ml12 {
+.ml12 {
      
-      font-weight: 200;
-      font-size: 1.6em;
-      font-style:oblique;
-    }
+    font-weight: 200;
+    font-size: 1.6em;
+    font-style:oblique;
+}
 
-    .ml12 .letter {
-        margin-top:2%;
-        display: inline-block;
-        line-height: 1em;
-    }
-
+.ml12 .letter {
+    margin-top:2%;
+    display: inline-block;
+    line-height: 1em;
+}
 
 /*---------------page d'accueil------------------*/
 
@@ -62,47 +61,45 @@ body{
 }
 
 .ml5 {
-  position: relative;
-  font-weight: 300;
-  font-size: 4.5em;
-  color: #402d2d;
+    position: relative;
+    font-weight: 300;
+    font-size: 4.5em;
+    color: #402d2d;
 }
 
 .ml5 .text-wrapper {
- border:2px solid red;
-
-  position: relative;
-
-  padding-top: 0.1em;
-  padding-right: 0.05em;
-  padding-bottom: 0.15em;
-  line-height: 1em;
+    border:2px solid red;
+    position: relative;
+    padding-top: 0.1em;
+    padding-right: 0.05em;
+    padding-bottom: 0.15em;
+    line-height: 1em;
 }
 
 .ml5 .line {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  height: 3px;
-  width: 100%;
-  background-color: #402d2d;
-  transform-origin: 0.5 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 3px;
+    width: 100%;
+    background-color: #402d2d;
+    transform-origin: 0.5 0;
 }
 
 .ml5 .ampersand {
-  font-family: Baskerville, "EB Garamond", serif;
-  font-style: italic;
-  font-weight: 400;
-  width: 1em;
-  margin-right: -0.1em;
-  margin-left: -0.1em;
+    font-family: Baskerville, "EB Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    width: 1em;
+    margin-right: -0.1em;
+    margin-left: -0.1em;
 }
 
 .ml5 .letters {
-  display: inline-block;
-  opacity: 0;
+    display: inline-block;
+    opacity: 0;
 }
 
 /*------------------ menu ----------------*/
@@ -178,11 +175,6 @@ nav a:visited{
     height:3%;
 
 }
-
-
-
-/*------------ menuResponsive-------------*/
-
 
 
 /*----bouton scroll avant footer ---*/
@@ -473,7 +465,7 @@ h2.pageList {
 }
 
 ul.pagination {
- padding-left:0px;
+    padding-left:0px;
 
 }
 
@@ -624,8 +616,6 @@ ul.pagination {
     cursor:pointer;
 }
 
-
-
 .publishing {
     display: flex;
     display: -ms-flexbox;
@@ -643,15 +633,12 @@ ul.pagination {
     margin-bottom:3%;
 }
 
-
 .nbcom{
 
     top:0px;
     color:black;
     font-weight: bold;
 }
-
-
 
 .pagination li{
     list-style-type: none;
@@ -988,16 +975,16 @@ input[type=submit]:hover {
 }
 
 .marker {
-  background-image: url('../images/marker.png');
-  width: 30px;
-  height: 35px;
-  cursor: pointer;
+    background-image: url('../images/marker.png');
+    width: 30px;
+    height: 35px;
+    cursor: pointer;
 }
 
 
 .mapboxgl-popup {
-  max-width: 200px;
-  display: flex;
+    max-width: 200px;
+    display: flex;
     display: -ms-flexbox;
     z-index: 4;
     position: fixed;
@@ -1023,9 +1010,9 @@ input[type=submit]:hover {
 }
 
 .mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  background-color:transparent;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    background-color:transparent;
 }
 
 /*-------------- page tableau de bord------------*/
@@ -1168,7 +1155,7 @@ input[type=submit]:hover {
     }
 .pageInfo li ,.pageInfo p{
 
-    font-size:0.7em;
+        font-size:0.7em;
   
 
 }
@@ -1229,11 +1216,11 @@ input[type=submit]:hover {
     }
     
     .list-group{
-    width: 70%;
-     flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    -ms-flex-direction:column;
-    align-items:center;
+        width: 70%;
+        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        -ms-flex-direction:column;
+        align-items:center;
     }
 
 
