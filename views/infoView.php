@@ -6,8 +6,10 @@
 	
 	<div id="blocpage">
 	
+		<header>
 			<?php include_once 'views/include/menu.php'; ?>
 			<?php include_once 'views/include/menu_responsive.php'; ?>
+		</header>
 
 		<body>
 			<a id="films"></a>
@@ -80,6 +82,7 @@
 		</div>
 			
 	</div>
+	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 
 	<script src="public/js/cinema/map.js"></script>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

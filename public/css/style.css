@@ -50,57 +50,7 @@ body{
     line-height: 1em;
 }
 
-/*---------------page d'accueil------------------*/
 
-.
-/*--------------------------- fin accueil ------------------------------------*/
-
-.welcome{
-
-    bottom:0px;
-}
-
-.ml5 {
-    position: relative;
-    font-weight: 300;
-    font-size: 4.5em;
-    color: #402d2d;
-}
-
-.ml5 .text-wrapper {
-    border:2px solid red;
-    position: relative;
-    padding-top: 0.1em;
-    padding-right: 0.05em;
-    padding-bottom: 0.15em;
-    line-height: 1em;
-}
-
-.ml5 .line {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: 3px;
-    width: 100%;
-    background-color: #402d2d;
-    transform-origin: 0.5 0;
-}
-
-.ml5 .ampersand {
-    font-family: Baskerville, "EB Garamond", serif;
-    font-style: italic;
-    font-weight: 400;
-    width: 1em;
-    margin-right: -0.1em;
-    margin-left: -0.1em;
-}
-
-.ml5 .letters {
-    display: inline-block;
-    opacity: 0;
-}
 
 /*------------------ menu ----------------*/
 
@@ -417,7 +367,7 @@ h2.pageList {
     color : #cc6633;
     font-variant : small-caps;
     letter-spacing : 0.5em;
-    font-size : 100%;
+    font-size : 150%;
     border: 3px solid black;
     background: white;
 }
@@ -435,7 +385,7 @@ h2.pageList {
     margin:1% auto 1%;
     border : 1px dotted grey;
     width: 50%;
-    height:10%;
+   
    
 }
 
@@ -517,7 +467,7 @@ ul.pagination {
     -ms-flex-direction:column;
     justify-content: space-between;
     align-items:center;
-    width: 30%;
+    width: 32%;
     height: auto;
     margin-bottom:5%;
     border: 10px solid white;
@@ -897,7 +847,9 @@ input[type=submit]:hover {
     -o-box-shadow: 0 3px 10px #ccc;
     background-color:white ;
     margin-bottom:2%;
+
 }
+
 /*-------------------page cinemas------------*/
 
 
@@ -905,7 +857,7 @@ input[type=submit]:hover {
     width: 22%;
     display: flex;
     display: -ms-flexbox;
-    z-index: 4;
+    z-index: 999;
     position: fixed;
     top: 10%;    
     flex-direction: column;
@@ -919,7 +871,7 @@ input[type=submit]:hover {
     line-height: 1.5em;
     color: #444444;
     background-color: #ddd;
-    box-shadow: -1px 2px 15px 10px rgba(1.0, 1.0,1.0, 2.8) inset;
+    box-shadow: -1px 2px 15px 10px inset rgba(1.0, 1.0,1.0, 2.8) ;
     transition: 1s all;
     -ms-flex-direction: column;
     -o-border-radius: 14px;
@@ -943,6 +895,65 @@ input[type=submit]:hover {
     height:auto;
 }
 /*--------------- page contact ----------------*/
+#messageMail {
+    margin-top:1%;
+    text-align:center;
+    font-size:1.1em;
+    font-weight: bold;
+    -webkit-border-radius: 3px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 3px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 3px;
+    -o-border-radius: 14px;
+    -ms-border-radius: 3px;
+    -ms-border-radius: 14px;
+    border-radius: 3px;
+    border-radius: 14px;
+    color: #9B0511;
+    padding: 15px;
+    width: 97.5%;
+    box-shadow: 0 3px 10px #ccc;
+    -ms-box-shadow: 0 3px 10px #ccc;
+    -webkit-box-shadow: 0 3px 10px #ccc;
+    -moz-box-shadow: 0 3px 10px #ccc;
+    -o-box-shadow: 0 3px 10px #ccc;
+    background-color:white ;
+    margin-bottom:2%;
+    display:none;
+}
+
+#commentForm {
+    width: 70%;
+    margin:auto;
+}
+
+#commentForm label {
+    width: 250px;
+}
+
+form label {
+  display: inline-block;
+  width: 100px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+.error {
+ 
+    margin-left: 1%;
+    color:white;
+    font-style:italic;
+    background-color:red;
+    border :3px solid red;
+    border-radius : 30px;      
+}
+
+label.error {
+  display: inline;
+}
 
 
 #g-recaptcha{
@@ -1113,7 +1124,7 @@ input[type=submit]:hover {
   
 }
 
-/*-------- page liste commentaires signalés ------*/
+
 
 
 /*---------------- medias queries -----------------*/
@@ -1122,7 +1133,7 @@ input[type=submit]:hover {
         flex-direction: column;
         -ms-flex-direction: column;
     }
-
+    /* div navigation mobile */
     #toggler i{
         margin-top:2%;
         margin-bottom:2%;
@@ -1142,6 +1153,7 @@ input[type=submit]:hover {
 
     }
 
+    
     ul.navigation_mobile{
         padding-left:0px;
         margin-top:0px;
@@ -1153,20 +1165,34 @@ input[type=submit]:hover {
         flex-direction: column;        
         align-items: space-around;
     }
-.pageInfo li ,.pageInfo p{
-
-        font-size:0.7em;
-  
-
-}
-    #map{
-        width: 90%;
-     }
 
     .navigation_mobile li {
         list-style-type: none;
     }
 
+    /* div info meteo */
+    .meteoDiv{
+    width: 60%;
+    position:relative;
+    margin:auto;
+    margin-bottom:2%;
+    }
+
+    .pageInfo li ,.pageInfo p{
+
+        font-size:0.7em;
+    }
+    
+    /* div dans carte dans la page informations*/
+    .mapboxgl-popup {
+        width: 30%;
+    }
+    
+    #map{
+        width: 90%;
+     }
+  
+    /* div footer */
     .footerDown{
 
         position:relative;
@@ -1178,18 +1204,21 @@ input[type=submit]:hover {
         -ms-flex-direction: column;
         text-align: center;
     }
-
+    
+    /* images dans le footer */
     footer img {
         margin-top: 10px;
         margin-left:5%;
     }
-     
+    
+    /* police dans mentions légales */
     #legal,
     h4 {
         margin: auto;
         margin-top: 20px;
     }
-
+    
+    /* div mentions légales */
     #legalnotice {
         z-index: 9999;
         right: 10%;
@@ -1197,24 +1226,35 @@ input[type=submit]:hover {
         height: auto;
     }
 
+    
+    h2.pageList {
+
+        font-size : 100%;
+    }
+    /* remplir les champs */
     .inputbasic {
         width: 90%;
     }
-
+    /* bloc des commentaires*/
     .commentaires {
         width: 90%;
     }
+    /* signalement des commentaires*/
     div#comSignal {
        width: 97%; 
     }
+    
+
     .adminPost{
         width: 90%;
     }
-
+    
+    /* police d' ecriture page d'accueil en jquery*/
     .ml12{
         font-size:1em;
     }
     
+    /* liste des films page d'acceuil */
     .list-group{
         width: 70%;
         flex-wrap: wrap;
@@ -1222,7 +1262,10 @@ input[type=submit]:hover {
         -ms-flex-direction:column;
         align-items:center;
     }
-
+    
+    .error{
+        margin-left:2%;
+    }
 
 }
 

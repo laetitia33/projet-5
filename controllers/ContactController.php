@@ -1,22 +1,11 @@
 <?php
-
-
 namespace Laetitia_Bernardi\projet5\Controller;
-
-
-
-
 class ContactController{
-
     private $_message;
     private $_objet;
     private $_expediteur;
     private $_email;
     private $_destinataire = '33260laetitia.bernardi@gmail.com';
-
-
-
-
    
     //vérifier le $_Post du formulaire de contact et à la reception avec tinymce
  
@@ -84,10 +73,6 @@ public function recaptcha(){
     }
         
 }
-
 public function messag(){
-
-
       echo "<div id ='message'>Message envoyé avec succès</div>";}
-
 }

@@ -8,27 +8,29 @@
 <?php $header = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-        
-        <form action="index.php?action=log" method="POST">
-          
-           
+
+
+<form class="form" id="second_form" action="index.php?action=log" method="POST">
+                    
             <div>
                 <label for="user">Pseudo :</label><br />
-                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo">
+                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo"  >
+          
+              
             </div>
-        
+
             <div>
                 <label for="pass">Mot de passe :</label><br /> 
                 <input type="password" class="inputbasic" id="pass" name="pass"  placeholder="mot de passe">
-               
+
             </div>
             
             <div>
-                <input type="submit" id ="submit" value="Connexion" />
+                <input type="submit" class ="submit" id ="submit" value="Connexion" />
             </div>
 
       
-        </form>
+</form>
 
 <h2 class ='pageList'>Inscription</h2>
         <form action="index.php?action=register" method="post">

@@ -25,7 +25,6 @@ class Routeur
         public function __construct()
         {
             \Laetitia_Bernardi\projet5\Controller\Autoload::register();
-            $this->_accueilCtrl= new \Laetitia_Bernardi\projet5\Controller\AccueilController();
             $this->_postCtrl = new \Laetitia_Bernardi\projet5\Controller\PostController();
             $this->_commentCtrl = new \Laetitia_Bernardi\projet5\Controller\CommentController();
             $this->_administrationCtrl = new \Laetitia_Bernardi\projet5\Controller\AdministrationController();
@@ -60,10 +59,7 @@ class Routeur
                            $this->_administrationCtrl->postAdd($_POST['author'], $_POST['title'],$_POST['horaires'], $_POST['duree'],$_POST['image'], $_POST['content']);
                            
                         }
-                        else
-                        {
-                            throw new Exception('Tous les champs ne sont pas remplis..');
-                        }
+                     
                     }
 
                      // ADMIN - Page pour créer un film
@@ -78,6 +74,29 @@ class Routeur
                     {
                        
                         $this->_postCtrl->listPosts();
+                    }
+
+
+
+                    
+                    // Signaler un commentaire
+                    elseif ($_GET['action'] == 'report') 
+                    {
+                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
+                        {
+                            if (isset($_GET['id']) && $_GET['id'] > 0) 
+                            {                                
+                            
+                                $this->_commentCtrl->reportingComment();             
+                         
+                            }
+                            else
+                            {
+                                throw new Exception('Aucun identifiant de commentaire envoyé pour pouvoir le signaler!');
+                            }
+                        } else {
+                            throw new Exception('Aucun identifiant de chapitre envoyé pour revenir sur la page précédente!');
+                        }
                     }
 
                     //ADMIN - film avec ses commentaires
@@ -117,10 +136,7 @@ class Routeur
                                 
                                 $this->_administrationCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'],$_POST['horaires'],$_POST['duree'], $_POST['image'], $_POST['content']);
                             }
-                            else
-                            {
-                                throw new Exception('Tous les champs ne sont pas remplis..');
-                            }
+                          
                         }
                         else
                         {
@@ -161,10 +177,7 @@ class Routeur
                                 
                                 $this->_commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
                             }
-                            else
-                            {
-                                throw new Exception('Tous les champs doivent être remplis !');
-                            }
+                         
                         }
                         else
                         {
@@ -260,10 +273,7 @@ class Routeur
                                 
                                $this->_commentCtrl->addCommentAdmin($_GET['post_id'], $_POST['comment']);
                             }
-                            else
-                            {
-                                throw new Exception('Tous les champs doivent être remplis !');
-                            }
+                          
                         }
                         else
                         {
@@ -288,11 +298,8 @@ class Routeur
                 
                              
                               $this->_userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
-                        }
-                        else
-                        {
-                            throw new Exception('Tous les champs doivent être remplis !');
-                        }
+                        } 
+                   
                     }
 
                     // ADMIN - Deconnexion
@@ -420,8 +427,6 @@ class Routeur
                     elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
                             $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
-                        } else {
-                            throw new Exception('Tous les champs doivent être remplis !');
                         }
                     }
 
@@ -449,10 +454,7 @@ class Routeur
                           
                             $this->_contactCtrl->sendEmail();
                         }
-                        else
-                        {
-                                throw new Exception('Tous les champs doivent être remplis !');
-                        }   
+                      
                
                     }
 
@@ -466,10 +468,7 @@ class Routeur
                       
                                 $this->_commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
                             } 
-                            else
-                            {
-                                throw new Exception('Tous les champs doivent être remplis !');
-                            }
+                        
                         } 
                         else 
                         {

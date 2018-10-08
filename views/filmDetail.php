@@ -69,17 +69,18 @@
 <?php ob_start(); ?>
 <?php if(isset($_SESSION['pseudo'])) : ?>
 		<h2><i class="far fa-comments"></i> Laissez un Commentaire</h2>
-		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
+		  <form id='thirst_form'action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
 			
 		<div>
             <label for="author" ></label>
         <?php
      	if(isset($_SESSION['pseudo'])) : ?>
-            <input type="text" name="author" class="inputbasic" id="author" value="<?php echo htmlspecialchars($_SESSION['pseudo'])?>"/>
+            <input type="text" name="author" class="inputbasic" id="author" value="<?php echo htmlspecialchars($_SESSION['pseudo'])?>"/ required>
 		<?php
         	
        		else : ?>
-       		<input type="text" name="author" class="inputbasic" id="author" placeholder="Indiquez votre nom" />
+       		<input type="text" name="author" class="inputbasic" id="author" placeholder="Indiquez votre nom" required/>
+       	
        	 <?php
             endif;
             ?>
@@ -92,9 +93,11 @@
 			</div>
 			
 			<div>
-				<input type="submit"  value="Envoyez votre commentaire" />
+				<input type="submit" id="submitCom"  value="Envoyez votre commentaire" />
 			</div>
 		 </form>
+
+
 	
 <!--///////////////////////// boucle affichage commentaire admin ou visiteur ///////////-->
 
@@ -116,6 +119,8 @@
 				if(isset($_SESSION['pseudo'])) : ?>
 					<div class="reponse">     	
 			     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+			     		<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
+		    
 			     	</div>
 				<?php
 	        	
@@ -127,7 +132,6 @@
 		       			</div>
 		       				
 			    <?php
-
 	            endif;
 	            ?>
 				</div>
@@ -135,7 +139,6 @@
 			<?php
 		endwhile;
 			$comments->closeCursor();?>
-
 	<?php
 else : ?>
 					      							

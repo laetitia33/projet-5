@@ -9,7 +9,7 @@
 
 <?php ob_start(); ?>
 
-<form action="index.php?action=createPost" method="POST">
+<form id="four_form"action="index.php?action=createPost" method="POST">
         <div>
             <p>Par :</p>
             <label for="author" ></label>
@@ -20,13 +20,13 @@
                     echo htmlspecialchars($_SESSION['pseudo']);
                 endif;
                 ?>"
-                />
+                required/>
         </div>
 
         <div>
             <p>Titre du film : </p>
             <label for="title"></label>          
-            <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici le titre"/>
+            <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici le titre" />
 
         </div>
 
@@ -34,20 +34,20 @@
             
             <label for="horaires"></label>
             <p>Horaire de la séance :</p>          
-            <input id="horaires" type="time" name="horaires" value="13:30" class="inputbasic" placeholder="Indiquez les horaires des séances"/>
+            <input id="horaires" type="time" name="horaires" value="13:30" class="inputbasic" placeholder="Indiquez les horaires des séances" />
 
         </div>
 
         <div>
             <p>Durée du film :</p>
             <label for="duree"></label>          
-            <input id="duree" type="time" name="duree" value="01:30" class="inputbasic" placeholder="Indiquez la durée du film"/>
+            <input id="duree" type="time" name="duree" value="01:30" class="inputbasic" placeholder="Indiquez la durée du film" />
 
         </div>
         <div>
             <p>Affiche du film :</p>
             <label for="image"></label>          
-            <input type="text" name="image" class="inputbasic" id="image" placeholder="Inserer le lien de votre image"/>
+            <input type="text" name="image" class="inputbasic" id="image" placeholder="Inserer le lien de votre image" />
 
         </div>
    
