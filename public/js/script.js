@@ -1,6 +1,8 @@
 
 
  // ecriture phrase  d'accueil dans la liste des films
+
+
 $('.ml12').each(function(){
   $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
 });
@@ -16,6 +18,7 @@ anime.timeline()
     }
 
   });  
+
 
  //ouverture/fermeture des mentions légales
 $( "#legal" ).click(function() {
@@ -97,7 +100,7 @@ jQuery(document).ready(function()
 });
 
 
-$(document).ready(function() {
+
 //formulaire contact
   $('form[id="first_form"]').validate({
     ignore: "",
@@ -124,7 +127,7 @@ $(document).ready(function() {
       form.submit();
     }
   });
-})
+
 
 //formualire login
 
@@ -243,7 +246,41 @@ $(document).ready(function() {
 })
 
 
+//ouverture de la meteo page information
+
+ $(".accordion").on("click", ".accordion-header", function() {
+  $(this).toggleClass("active").next().slideToggle();
+ });
 
 
+//fenetre modale ouvrant la page youtube
+$(function() {
+
+  $('[data-popup-open]').on('click', function(e) {
+    var targeted_popup_class = jQuery(this).attr('data-popup-open');
+    $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+
+    e.preventDefault();
+  });
+
+  //----- CLOSE
+
+  $('[data-popup-close]').on('click', function(e) {
+    var targeted_popup_class = jQuery(this).attr('data-popup-close');
+    $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+
+
+    e.preventDefault();
+
+  });
+
+//arreter la video a la fermeture de la modale
+jQuery('[data-popup-close]').click(function (e) {
+  var $videoEl = jQuery(this).closest('.popup-inner').find('iframe');
+  $videoEl.attr('src', $videoEl.attr('src'));
+});
+
+  
+});
 
 

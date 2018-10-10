@@ -36,7 +36,7 @@
 		<div class ="oneMovieDetail">
 			<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
 			<h2><?= htmlspecialchars($post['title']) ?></h2>	
-			<div id="affiche"><?php echo "<img src='".$post['image']."' />";?></div>		
+			<div id="affiche2"><?php echo "<img src='".$post['image']."' />";?></div>		
 			<?php
 			if(isset($_SESSION['pseudo'])) : ?>
 				<p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($post['horaires']) ?></span></p><br>
@@ -58,6 +58,18 @@
 			<div class="news" >	
 				<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
 			</div>
+			<a class="btn" data-popup-open="popup-1" href="#">Voir la bande annonce</a>
+
+			<div class="popup" data-popup="popup-1">
+				<div class="popup-inner">
+				
+						<iframe src="https://www.youtube.com/embed/<?= htmlspecialchars($post['video']) ?>?rel=0" frameborder="0" allow="autoplay; encrypted-media"  allowfullscreen id="nofocusvideo"></iframe>
+						<p><a data-popup-close="popup-1" href="#">Close</a></p>
+						
+						<a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+				</div>
+			</div>
+
 			<p><span class="publishing">Durée du film <?= htmlspecialchars($post['duree']) ?></span></p><br>	
 			<p>Article écrit par <a href="index.php?action=information"><?= $post['author'] ?></a>
 			le <?= $post['date_creation_fr'] ?></p>
@@ -71,11 +83,11 @@
 		<h2><i class="far fa-comments"></i> Laissez un Commentaire</h2>
 		  <form id='thirst_form'action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
 			
-		<div>
+		<div class="inputbasic>
             <label for="author" ></label>
         <?php
      	if(isset($_SESSION['pseudo'])) : ?>
-            <input type="text" name="author" class="inputbasic" id="author" value="<?php echo htmlspecialchars($_SESSION['pseudo'])?>"/ required>
+            <input type="text" name="author"  id="author" class="inputbasic" value="<?php echo htmlspecialchars($_SESSION['pseudo'])?>"/ required>
 		<?php
         	
        		else : ?>
@@ -95,8 +107,9 @@
 			<div>
 				<input type="submit" id="submitCom"  value="Envoyez votre commentaire" />
 			</div>
-		 </form>
 
+		
+ </form>
 
 	
 <!--///////////////////////// boucle affichage commentaire admin ou visiteur ///////////-->
@@ -120,7 +133,17 @@
 					<div class="reponse">     	
 			     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
 			     		<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
-		    
+
+						<?php
+		
+							if($commentReport===1) : ?>
+			
+			 					<div id="message">Ce commentaire a bien été signalé et sera vérifié par l'administrateur</div>
+		
+						<?php
+            			endif;?>
+
+		       			
 			     	</div>
 				<?php
 	        	

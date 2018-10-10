@@ -9,10 +9,23 @@
 
 
 <?php ob_start(); ?>
+
 <div class= "welcome">
 	<p class="ml12"><i class="fas fa-film"></i> Vous aimez le cinéma et aimeriez voir ou revoir des grands classiques<p>
 	<p class="ml12">Nous vous accueillons dans un cadre d’exception</p>
 </div>
+
+<!--slider-->
+<div align="center">
+  <div class="contener_slideshow">
+    <div class="contener_slide">
+      <div class="slid_1"><img src="public/images/slider1.jpg"></div>
+      <div class="slid_2"><img src="public/images/slider2.jpg"></div>
+      <div class="slid_3"><img src="public/images/slider3.jpg"></div>
+    </div>
+  </div>
+</div>
+
 <?php
 
 		if(isset($_SESSION['pseudo'])) : ?>
@@ -27,7 +40,7 @@
 
 			<p class = "publishDate"> <i class="fas fa-film"></i> Bonjour ,<?php
 			setlocale(LC_TIME, 'fr_FR.utf8','fra');
-			echo "Nous sommes le ".strftime("%d %B %Y");?> , bientôt les prochaines sorties en ligne...patientez ;)  <i class="fas fa-film"></i>          		
+			echo "Nous sommes le ".strftime("%d %B %Y");?> , bientôt les prochaines sorties en ligne...patientez   <i class="fas fa-film"></i>          		
 			</p>
 			  <?php
          endif;

@@ -53,10 +53,10 @@ class Routeur
                     // ADMIN - Creation d'un film
                     elseif ($_GET['action'] == 'createPost')
                     {
-                        if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['horaires'] != NULL && $_POST['duree'] != NULL && $_POST['image'] != NULL && $_POST['content'] != NULL )
+                        if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['horaires'] != NULL && $_POST['duree'] != NULL && $_POST['image'] != NULL && $_POST['video'] != NULL && $_POST['content'] != NULL )
                         {
                            
-                           $this->_administrationCtrl->postAdd($_POST['author'], $_POST['title'],$_POST['horaires'], $_POST['duree'],$_POST['image'], $_POST['content']);
+                           $this->_administrationCtrl->postAdd($_POST['author'], $_POST['title'],$_POST['horaires'], $_POST['duree'],$_POST['image'],$_POST['video'], $_POST['content']);
                            
                         }
                      
@@ -131,10 +131,10 @@ class Routeur
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
                         {
-                            if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['horaires'] != NULL && $_POST['duree'] != NULL && $_POST['image'] != NULL && $_POST['content'] != NULL )
+                            if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['horaires'] != NULL && $_POST['duree'] != NULL && $_POST['image'] != NULL && $_POST['video'] != NULL  && $_POST['content'] != NULL )
                             {
                                 
-                                $this->_administrationCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'],$_POST['horaires'],$_POST['duree'], $_POST['image'], $_POST['content']);
+                                $this->_administrationCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'],$_POST['horaires'],$_POST['duree'], $_POST['image'], $_POST['video'], $_POST['content']);
                             }
                           
                         }

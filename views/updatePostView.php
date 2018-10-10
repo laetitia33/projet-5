@@ -1,4 +1,4 @@
-<?php $title = 'Modification du film' . htmlspecialchars($post['id']) . ' '; ?>
+<?php $title = 'Modification du film : ' . htmlspecialchars($post['title']) . ' '; ?>
 
 <?php ob_start(); ?>
 <div id ="modif"></div>
@@ -10,7 +10,7 @@
 <?php ob_start(); ?>
     <div class ="oneMovieDetail">
         <img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>   
-        <div id="affiche"><?php echo "<img src='".$post['image']."' />";?></div>    
+        <div id="affiche4"><?php echo "<img src='".$post['image']."' />";?></div>    
         <p>
             <p>Mis en ligne le <?= htmlspecialchars($post['date_creation_fr']) ?></p>
             <div class="news" >         
@@ -22,9 +22,9 @@
         
      </div>             
         <div>
-            <p>Par : </p>
+            
             <label for="author" ></label>
-     
+            <p>Par : </p>
             <input type="text" name="author" class="inputbasic" title ='Veuillez entrer un auteur' id="author"value="<?php
                 if (isset($_SESSION['pseudo']))
                 :
@@ -35,28 +35,36 @@
         </div>
         
         <div >
-            <p>Titre du film : </p>
+            <label for="title"></label>  
+             <p>Titre du film : </p>
             <input type="text" name="title" class="inputbasic" id="title" title ='Veuillez entrer un titre ' value="<?php echo htmlspecialchars($post['title']) ;?>"/>
         </div>
   
-        <div>
-            <p>Horaire de la séance : </p>
-            <label for="horaires"></label>          
+        <div>           
+            <label for="horaires"></label>
+             <p>Horaire de la séance : </p>          
             <input id="horaires" type="time" name="horaires" title='Veuillez entrer un horaire' class="inputbasic" value="<?php echo htmlspecialchars($post['horaires']) ;?>" required/>  
         </div>
 
         <div>
-            <p>Durée du film : </p>
-            <label for="duree"></label>          
+            <label for="duree"></label>  
+            <p>Durée du film : </p>        
             <input id="duree" type="time" name="duree" class="inputbasic" title='Veuillez entrer une durée' value="<?php echo htmlspecialchars($post['duree']) ;?>" required/>  
 
         </div> 
 
         <div>
-            <p>Affiche du film : </p>
-            <label for="image"></label>          
+            <label for="image"></label> 
+            <p>Affiche du film : </p>         
             <input type="text" name="image" class="inputbasic" id="image" title ='Veuillez entrer une affiche' value="<?php echo htmlspecialchars($post['image']) ;?>" required/>
         </div>
+
+        <div>
+            <label for="video"></label> 
+            <p>Bande annonce  : </p>         
+            <input type="text" name="video" class="inputbasic" id="video" title ='Veuillez entrer le lien de la bande annonce' value="<?php echo htmlspecialchars($post['video']) ;?>" required/>
+        </div>
+
         <p>Résumé : </p>   
         <div class="inputbasic">            
             <label for="content"></label>

@@ -16,7 +16,7 @@
         <h2 class='pageList'>Dernier film en ligne:</h2>
         <div class = "adminPost">
                     <h2><?= htmlspecialchars($data['title']) ?></h2>
-                    <div id="affiche"><?php echo "<img src='".$data['image']."' />";?></div>
+                    <div id="affiche3"><?php echo "<img src='".$data['image']."' />";?></div>
                     <p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($data['horaires']) ?></span></p><br>
                         
             

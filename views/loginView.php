@@ -36,23 +36,27 @@
         <form action="index.php?action=register" method="post">
 
             <div>
-                <label for="pseudo"></label>     
+                <label for="pseudo"></label>
+                <p>Pseudo :</p>     
                 <input type="text" name="pseudo"  class="inputbasic" placeholder="Pseudo"/>
                 
             </div>
 
             <div>
-                <label for="password"></label>            
+                <label for="password"></label>
+                <p>Mot de passe :</p>            
                 <input type="password" name="pass" id="password" class="inputbasic" placeholder="Mot de passe"/>
             </div>
            
             <div>
-                <label for="password_confirm"></label>          
+                <label for="password_confirm"></label>
+                <p>Confirmation mot de passe :</p>          
                 <input type="password" name="password_confirm" id="password_confirm" class="inputbasic" placeholder="Confirmez votre mot de passe"/>
             </div>
            
             <div>
                 <label for="email"></label>
+                <p>E-mail :</p>
                 <input type="email" name="email" id="email" class="inputbasic" placeholder="adresse mail"/>          
             </div>
 

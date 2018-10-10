@@ -27,7 +27,7 @@ class PostController
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre nombre total de coms signalés
         $post = $this->_post->getPost($post_id);// recuperer le chapitre selectionné
         $comments = $this->_comment->getComments($post_id);//tous les commentaires du chapitre selectionné  
-        $reportComments = $this->_comment->getReportComments();//récuperer les commentaires signalés
+       
         require('views/filmDetail.php');
     }
 

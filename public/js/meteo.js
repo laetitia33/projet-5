@@ -10,7 +10,7 @@ init: function () {
             var temperature = meteo.current_observation.temp_c;
 
            //conditions phrase de présentation
-              if(temperature > 0 && temperature > 15){  
+              if(temperature > 0 && temperature > 22){  
                 document.getElementById("messageMeteo").innerHTML = "Il fait trop chaud ? Venez profiter de notre cinéma avec nos 10 salles climatisées .Des boissons faiches ,glaces vous attendent..<br><img src='public/images/glaces.png'>";
                
               }else{

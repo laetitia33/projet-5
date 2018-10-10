@@ -11,9 +11,9 @@
 
 <form id="four_form"action="index.php?action=createPost" method="POST">
         <div>
-            <p>Par :</p>
+            
             <label for="author" ></label>
-     
+            <p>Par :</p>
             <input type="text" name="author" class="inputbasic" id="author"value="<?php
                 if (isset($_SESSION['pseudo'])):
                 
@@ -23,9 +23,10 @@
                 required/>
         </div>
 
-        <div>
-            <p>Titre du film : </p>
-            <label for="title"></label>          
+        <div >
+          
+            <label for="title"></label>  
+            <p>Titre du film : </p>        
             <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici le titre" />
 
         </div>
@@ -39,28 +40,39 @@
         </div>
 
         <div>
-            <p>Durée du film :</p>
-            <label for="duree"></label>          
+            <label for="duree"></label> 
+            <p>Durée du film :</p>         
             <input id="duree" type="time" name="duree" value="01:30" class="inputbasic" placeholder="Indiquez la durée du film" />
 
         </div>
+
         <div>
-            <p>Affiche du film :</p>
-            <label for="image"></label>          
+    
+            <label for="image"></label>
+            <p>Affiche du film :</p>          
             <input type="text" name="image" class="inputbasic" id="image" placeholder="Inserer le lien de votre image" />
 
         </div>
    
-        <div >
-            <p>Résumé :</p>           
-            <div class="inputbasic" >
-                <label for="content"></label>
-                <textarea name="content" id="content" placeholder="Indiquez ,ici ,le résumé du film"></textarea>
-            </div>
-        </div>
+        <div>
+            
+            <label for="duree"></label>
+            <p>Bande annonce :</p>          
+            <input type="text" name="video" class="inputbasic" id="video" placeholder="Insérer le lien de la bande annonce" />
 
+        </div>
+        
+        
+                    
+        <div class="inputbasic">
+            <label for="content"></label>
+            <p>Résumé :</p> 
+            <textarea name="content" id="content"  placeholder="Indiquez ,ici ,le résumé du film"></textarea>
+        </div>
+        
 
         <div>
+
             <input type="submit" value="envoyez"></input>
         </div>
 </form>

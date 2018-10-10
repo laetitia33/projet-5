@@ -16,7 +16,18 @@
 			<div class ="pageInfo">
 			<h2 class ='pageList'>Infos pratiques</h2>
 		
-			
+
+		
+		<div class="accordion">
+			<div class="accordion-header">Info météo</div>
+			<div class="accordion-content">
+		  		<h3>La météo à Paris</h3>
+				<div id="meteo"></div>		
+				<div id ='messageMeteo'></div>	
+				<div id ='imgMessageMeteo'></div>		
+			</div>
+		</div>
+	
 		<h2 class ='pageList'>Où nous trouver</h2>
 		<div id='map'></div>
 		<h2 class ='pageList'>Tarifs</h2>
@@ -82,14 +93,9 @@
 		</div>
 			
 	</div>
-	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-
+	<script src="public/js/meteo.js"></script>
 	<script src="public/js/cinema/map.js"></script>
-   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src ="public/js/script.js"></script>
-	<script src ="public/js/placeholder.js"></script>
-	<script src ="public/js/placeholder.min.js"></script>
-	<script src="public/js/pagination/pagination.js"></script>
 
 	</body>
 </html>

@@ -203,9 +203,9 @@ class AdministrationController
 
 
 // Modification d'un film (page de modification d'un film)
-      public function updatePost($post_id, $author, $title, $content,$horaires,$duree,$image)
+      public function updatePost($post_id, $author, $title, $content,$horaires,$duree,$image,$video)
     {
-        $updatePost = $this->_post->updatePost($post_id, $author, $title, $content,$horaires,$duree,$image);
+        $updatePost = $this->_post->updatePost($post_id, $author, $title, $content,$horaires,$duree,$image,$video);
 
         if ($updatePost === false) {
             throw new Exception('Impossible de mettre à jour le film');

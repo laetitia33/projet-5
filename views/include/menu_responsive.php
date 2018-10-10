@@ -39,8 +39,11 @@ else
 					<a href="#" id="toggler">
      			 <i class = "fas fa-bars"> </i> 
  		 	</a>
-			<div id="toggle">	
+			<div id="toggle">
 				<img src="public/images/icone.png" class ="popcorn" alt="popcorn"/>
+				<div class ='tarifs'>
+					<a href="public/images/tarifs.jpg" download>Télécharger tarifs <i class="fas fa-download"></i></a>
+				</div>	
 				<li><a class="btn" href="index.php">Films de la semaine</a></li>
 				<li><a class="btn" href="index.php?action=information">  Infos pratiques</a>
 				</li>
