@@ -13,7 +13,7 @@
 			<?php include_once 'views/include/menu_responsive.php'; ?>
 	</header>
 	
-	<body><button class="js-modal-btn" data-video-id="7TUOI23spt0">Open Video</button>
+	<body>
 			<a id="films"></a>
 			<h2 class ='pageList'>Salles de cinema de Paris</h2>
 			
@@ -34,6 +34,6 @@
 	<script src="public/js/cinema/listeCinemas.js"></script>
 	<script src ="public/js/script.js"></script>
 
-</body>
+	</body>
 	
 </html>

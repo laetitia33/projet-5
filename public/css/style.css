@@ -434,6 +434,7 @@ footer img:hover {
   position: relative;
 
 }
+
 .slid_1, .slid_2, .slid_3
 {
   position: absolute;
@@ -1478,12 +1479,6 @@ label.error {
         transform:none;
         margin:auto;
         animation:none;
-    }
-
-    /*slideshow*/
-
-    .contener_slideshow{
-        width: 500px;
     }
 
 
