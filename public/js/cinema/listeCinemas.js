@@ -1,6 +1,6 @@
 
 // création de la carte et paramétrage général : centre et niveau de zoom
-var map = L.map('mapid').setView([48.862162, 2.345818], 12);
+var map = L.map('mapid').setView([48.862162, 2.345818], 13);
 
 
 var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {

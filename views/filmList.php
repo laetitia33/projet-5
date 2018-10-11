@@ -12,8 +12,14 @@
 
 <div class= "welcome">
 	<p class="ml12"><i class="fas fa-film"></i> Vous aimez le cinéma et aimeriez voir ou revoir des grands classiques<p>
-	<p class="ml12">Nous vous accueillons dans un cadre d’exception</p>
+	<p class="ml12">Nous vous accueillons dans un cadre d’exception <br></p>
+	<h2><?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN" OR isset($_SESSION['id']) && $_SESSION['id_group'] == "USER" )   : 
+			echo 'Bienvenue '.$_SESSION['pseudo'] . ' !' ;
+		endif ;?></h2>
 </div>
+
+
+
 
 <!--slider-->
 <div align="center">
@@ -28,7 +34,7 @@
 
 <?php
 
-		if(isset($_SESSION['pseudo'])) : ?>
+		if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
 			<p class = "publishDate">  <i class="fas fa-film"></i> Bonjour, <?php
 			setlocale(LC_TIME, 'fr_FR.utf8','fra');
 			echo "Nous sommes le ".strftime("%d %B %Y");?> , Veillez à ce que la liste des films soit actualisée  <i class="fas fa-film"></i>        		
@@ -91,7 +97,7 @@
 
 				
 												 	
-				<?php if(isset($_SESSION['pseudo'])) : ?>
+				<?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
 			
 		
 					 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film</i></em></a><br>

@@ -1,8 +1,7 @@
 
 <?php
-
-if(isset($_SESSION['pseudo']))
-:
+//si administrateur
+if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN"):
     ?>
 <a id ="top" class="top"></a>
 <div class ="navigation_mob ">
@@ -24,10 +23,41 @@ if(isset($_SESSION['pseudo']))
 	</nav>
 </div>
 
+
+<?php
+//si utilisateur
+elseif(isset($_SESSION['id']) && $_SESSION['id_group'] == "USER")
+:
+    ?>
+
+<a id ="top" class="top"></a>
+<div class ="navigation_mob ">
+	<nav>	
+	
+		<ul class="navigation_mobile">
+					<a href="#" id="toggler">
+     			 <i class = "fas fa-bars"> </i> 
+ 		 	</a>
+			<div id="toggle">
+				<img src="public/images/icone.png" class ="popcorn" alt="popcorn"/>
+				<div class ='tarifs'>
+					<a href="public/images/tarifs.jpg" download>Télécharger tarifs <i class="fas fa-download"></i></a>
+				</div>	
+				<li><a class="btn" href="index.php">Films de la semaine</a></li>
+				<li><a class="btn" href="index.php?action=information">  Infos pratiques</a>
+				</li>
+				<li><a class="btn" href="index.php?action=cinemas">  Salles de cinéma</a></li>
+				<li><a class="btn" href="index.php?action=email"><i class="far fa-envelope"></i>  Contactez-nous</a></li>
+				<img src="public/images/icone.png" class ="popcorn" alt="popcorn"/>
+				<li><a class ="btn" href="index.php?action=logout" OnClick="return confirm('Souhaitez-vous vous déconnecter?')"; ">Déconnexion</a></li>
+			</div>
+		</ul>
+	</nav>
+</div>
+
 <?php
 
-
-
+//si visiteur
 else
 :
     ?>

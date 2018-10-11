@@ -19,7 +19,7 @@
 <!--//////////////lien retour page précédente selon si visiteur ou admin//////////////////-->
 <?php ob_start(); ?>		
 		<?php
-			if(isset($_SESSION['pseudo'])) : ?>
+			if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN"): ?>
 			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
 			Retour à votre tableau de bord</i></a></p>
 		 	<?php
@@ -38,7 +38,7 @@
 			<h2><?= htmlspecialchars($post['title']) ?></h2>	
 			<div id="affiche2"><?php echo "<img src='".$post['image']."' />";?></div>		
 			<?php
-			if(isset($_SESSION['pseudo'])) : ?>
+			if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN"): ?>
 				<p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($post['horaires']) ?></span></p><br>
 				<div class='adminCtrl'>
 					<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film </i></em></a>
@@ -77,9 +77,10 @@
 		</div>
 <?php $header = ob_get_clean(); ?>
 
-<!--/////////////////////////-écrire commentaires admin ou visiteur//////////////////////////-->
+<!--/////////////////////////-écrire commentaires admin ou utilisateur //////////////////////////-->
 <?php ob_start(); ?>
-<?php if(isset($_SESSION['pseudo'])) : ?>
+
+<?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN" OR isset($_SESSION['id']) && $_SESSION['id_group'] == "USER" )   : ?> 
 		<h2><i class="far fa-comments"></i> Laissez un Commentaire</h2>
 		  <form id='thirst_form'action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
 			
@@ -129,7 +130,7 @@
 						<span id="confirmsignal"><p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300)));?></p></span>				
 			    	</div>
 				<?php
-				if(isset($_SESSION['pseudo'])) : ?>
+				if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
 					<div class="reponse">     	
 			     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
 			     		<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
@@ -163,6 +164,7 @@
 		endwhile;
 			$comments->closeCursor();?>
 	<?php
+	//sinon se connecter pour laisser un commentaire
 else : ?>
 					      							
        	<em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login";">connecté </a></br>pour laisser un commentaire</em>       			
@@ -175,7 +177,7 @@ endif;
 <!--/////////////////////lien retour page précédente selon si visiteur ou admin///////////////////-->	
 
 		<?php
-			 if(isset($_SESSION['pseudo'])) : ?>
+			 if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
 				<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
 				Retour à votre tableau de bord</i></a></p>
 		<?php

@@ -1,6 +1,7 @@
 
 <?php $title = 'Bienvenue'; ?>
 
+
 <?php ob_start(); ?>
     <div id="adminView"></div>
 
@@ -79,5 +80,6 @@
         </div>
 
 <?php $content = ob_get_clean(); ?>
+
 
 <?php require('views/template.php'); ?>

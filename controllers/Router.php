@@ -37,7 +37,7 @@ class Routeur
         public function RouteRequest()
         {
         try{
-            if(isset($_SESSION['id']))
+            if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN")
             {
                 if (isset($_GET['action']) && !empty($_GET['action']))
                 {
@@ -48,7 +48,7 @@ class Routeur
                        $this->_administrationCtrl->administration();
                     }
                   
-//redirection concernant les chapitres
+        //redirection concernant les chapitres
 
                     // ADMIN - Creation d'un film
                     elseif ($_GET['action'] == 'createPost')
@@ -77,27 +77,6 @@ class Routeur
                     }
 
 
-
-                    
-                    // Signaler un commentaire
-                    elseif ($_GET['action'] == 'report') 
-                    {
-                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
-                        {
-                            if (isset($_GET['id']) && $_GET['id'] > 0) 
-                            {                                
-                            
-                                $this->_commentCtrl->reportingComment();             
-                         
-                            }
-                            else
-                            {
-                                throw new Exception('Aucun identifiant de commentaire envoyé pour pouvoir le signaler!');
-                            }
-                        } else {
-                            throw new Exception('Aucun identifiant de chapitre envoyé pour revenir sur la page précédente!');
-                        }
-                    }
 
                     //ADMIN - film avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
@@ -158,7 +137,7 @@ class Routeur
                         }
                     }
           
-//redirection concernant les commentaires 
+        //redirection concernant les commentaires 
          
                     // ADMIN - Liste des commentaires
                     elseif ($_GET['action'] == 'adminListComments')
@@ -308,7 +287,7 @@ class Routeur
                   
                         $this->_userCtrl->logoutUser();
                     }
-//ADMIN - Utilisateurs
+        //ADMIN - Utilisateurs
                     // ADMIN - Page utilisateurs
                     elseif ($_GET['action'] == 'adminListUsers')
                     {
@@ -336,8 +315,142 @@ class Routeur
                     $this->_administrationCtrl->administration();
                 }
             }
-//visiteur
+
+
+
+//inscrits
+            elseif(isset($_SESSION['id']) && $_SESSION['id_group'] == "USER")
+            {
+                if (isset($_GET['action']) && !empty($_GET['action']))
+                {
+
+
+                    //page infos pratiques
+                    
+                    if ($_GET['action'] == 'information')
+                    {
+                        
+                        $this->_viewCtrl->info();
+                       
+                    }
+
+                    //page information salles de cinemas
+
+                    if ($_GET['action'] == 'cinemas')
+                    {
+                        
+                        $this->_viewCtrl->cinemas();
+                       
+                    }
+
+
+                    // Accueil visiteurs /Liste des films
+                   if ($_GET['action'] == 'listPosts') 
+                    {
+                 
+                        $this->_postCtrl->listPosts();
+                    }
+
+                    // Affiche le film avec ses commentaires
+                    elseif ($_GET['action'] == 'post') 
+                    {
+                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+
+                        {
+                         
+                            
+                                if(isset($_GET['commentReport']))
+                                {
+                                   $commentReport = true;
+                                }else{
+                                    $commentReport = false;
+                                }
+
+                            $this->_postCtrl->post($_GET['post_id'],$commentReport);
+                              
+                        } else 
+                        {
+                            throw new Exception('Erreur. Pas de chapitre séléctionné !');
+                        }
+                    }
+        
+                    // Deconnexion
+                    elseif ($_GET['action'] == 'logout')
+                    {
+                     
+                        $this->_userCtrl->logoutUser();
+                    }
+
+                    // page mail
+                    elseif ($_GET['action'] == 'email') 
+                    {
+                      
+                        $this->_viewCtrl->mailView();
+                    }
+                    
+
+                    //envoi un mail
+                    elseif ($_GET['action'] == 'addMail') 
+                    {
+                                
+                       if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['message'])) 
+                        {
+                          
+                            $this->_contactCtrl->sendEmail();
+                        }
+                      
+               
+                    }
+
+                    // Ajoute un commentaire dans le film selectionné
+                    elseif ($_GET['action'] == 'addComment') 
+                    {
+                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
+                        {
+                            if (!empty($_POST['author']) && !empty($_POST['comment'])) 
+                            {
+                      
+                                $this->_commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
+                            } 
+                        
+                        } 
+                        else 
+                        {
+                            throw new Exception('Aucun identifiant de chapitre envoyé !');
+                        }
+                    }
+
+                    // Signaler un commentaire
+                    elseif ($_GET['action'] == 'report') 
+                    {
+                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
+                        {
+                            if (isset($_GET['id']) && $_GET['id'] > 0) 
+                            {                                
+                            
+                                $this->_commentCtrl->reportingComment();             
+                         
+                            }
+                            else
+                            {
+                                throw new Exception('Aucun identifiant de commentaire envoyé pour pouvoir le signaler!');
+                            }
+                        } else {
+                            throw new Exception('Aucun identifiant de chapitre envoyé pour revenir sur la page précédente!');
+                        }
+                    }
+                   
+                }
+
+                // Retourne à l'index.Accueil
+                else
+                {
+                   
+                   $this->_postCtrl->listPosts();
+                }
+            }
             else
+
             {
                 if (isset($_GET['action']) && !empty($_GET['action']))
                 {
@@ -430,12 +543,6 @@ class Routeur
                         }
                     }
 
-                    // Deconnexion
-                    elseif ($_GET['action'] == 'logout')
-                    {
-                     
-                        $this->_userCtrl->logoutUser();
-                    }
 
                     // page mail
                     elseif ($_GET['action'] == 'email') 
@@ -458,43 +565,7 @@ class Routeur
                
                     }
 
-                    // Ajoute un commentaire dans le film selectionné
-                    elseif ($_GET['action'] == 'addComment') 
-                    {
-                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
-                        {
-                            if (!empty($_POST['author']) && !empty($_POST['comment'])) 
-                            {
-                      
-                                $this->_commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
-                            } 
-                        
-                        } 
-                        else 
-                        {
-                            throw new Exception('Aucun identifiant de chapitre envoyé !');
-                        }
-                    }
-
-                    // Signaler un commentaire
-                    elseif ($_GET['action'] == 'report') 
-                    {
-                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
-                        {
-                            if (isset($_GET['id']) && $_GET['id'] > 0) 
-                            {                                
-                            
-                                $this->_commentCtrl->reportingComment();             
-                         
-                            }
-                            else
-                            {
-                                throw new Exception('Aucun identifiant de commentaire envoyé pour pouvoir le signaler!');
-                            }
-                        } else {
-                            throw new Exception('Aucun identifiant de chapitre envoyé pour revenir sur la page précédente!');
-                        }
-                    }
+                   
                    
                 }
 
@@ -505,6 +576,7 @@ class Routeur
                    $this->_postCtrl->listPosts();
                 }
             }
+
         }
         catch (Exception $e)
         {

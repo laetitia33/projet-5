@@ -4,22 +4,26 @@ namespace Laetitia_Bernardi\projet5\Controller;
 
 require_once ('models/PostManager.php');
 require_once ('models/CommentManager.php');
+require_once ('models/UserManager.php');
 
 
 use \models\PostManager;
 use \models\CommentManager;
+use \models\UserManager;
 
 
 class AdministrationController
 {
     private $_post;
     private $_comment;
-   
+    private $_user;
+
 
     public function __construct()
     {
         $this->_post = new \Laetitia_Bernardi\projet5\Model\PostManager();
         $this->_comment = new \Laetitia_Bernardi\projet5\Model\CommentManager();
+        $this->_user = new \Laetitia_Bernardi\projet5\Model\UserManager();
        
     }
 
@@ -32,18 +36,20 @@ class AdministrationController
 //page d'accueil de l'administrateur
     public function administration()
     {
+        $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
         $post = $this->_post->getLastPost();// affichage dernier film
         $comment = $this->_comment->getLastComment();//affichage dernier commentaire
         $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsTotal = $this->_comment->countComments();//connaitre le nombre total de commentaires
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
-    
+        
         require('views/adminView.php');
     }
 
 //page pour éditer un article
     public function adminNewPost(){
-       
+
+        $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
         $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre total de commentaires
@@ -54,7 +60,7 @@ class AdministrationController
     public function adminListComments()
 
     {
-       
+        $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
         $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre total de commentaires
@@ -90,7 +96,7 @@ class AdministrationController
 // Liste des commentaires signalés (page des commentaires signalés admin)
     public function adminCommentsReport()
     {
-
+        $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
         $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre total de commentaires
@@ -196,6 +202,8 @@ class AdministrationController
         $postsTotal = $this->_post->countPosts();//nombre de films
         $commentsTotal  =$this ->_comment ->countComments();//nombre de commentaires
         $post = $this->_post->getPost($_GET['post_id']);//récupere un film selectionné
+        $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
+
         require ('views/updatePostView.php');
     }
 

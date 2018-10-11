@@ -8,7 +8,7 @@ use \PDO;
 class UserManager extends Manager
 {
     
-    private $_id_user, $_pseudo, $_pass, $_email, $_registration_date,$id_group;
+    private $_id_user, $_pseudo, $_pass, $_email, $_registration_date,$_id_group;
 
 
     public function getIdUser()
@@ -19,7 +19,7 @@ class UserManager extends Manager
  
     public function getIdGroup()
     {
-        return $this->id_group;
+        return $this->_id_group;
     }
 
     public function getPseudo()
@@ -63,7 +63,7 @@ class UserManager extends Manager
         $id_group = (int) $id_group;
         if($id_group > 0)
         {
-            $this->id_group = $id_group;
+            $this->_id_group = $id_group;
         }
     }
 
@@ -116,7 +116,7 @@ class UserManager extends Manager
         $this->setIdUser($id_user);
 
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, id_group, pseudo, pass, email, DATE_FORMAT(registration_date, \'%d/%m/%Y\') AS registration_date_fr FROM users WHERE id = ?');
+        $req = $db->prepare('SELECT id, id_group, pseudo, pass, email, DATE_FORMAT(registration_date, \'%d/%m/%Y\') AS registration_date FROM users WHERE id = ?');
         $req->execute(array($this->getIdUser()));
         $user = $req->fetch();
 

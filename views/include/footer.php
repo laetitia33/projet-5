@@ -21,11 +21,10 @@
     
 	<p> <?php
     if(empty($_SESSION['pseudo'])) :
-        echo "<a class='' href='index.php?action=login'>Administration</a>";
+        echo "<a class='' href='index.php?action=login'>Se connecter</a>";
     
     else:
                 echo 'Bienvenue sur le site '.$_SESSION['pseudo'] .' - <a href="index.php?action=logout" OnClick="return confirm(\'Souhaitez-vous vous déconnecter?\')"; >Se déconnecter</a>';
-
     endif;?> </p>
     <p id="legal">Mentions légales</p>
 	<div id="legalnotice">

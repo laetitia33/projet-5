@@ -12,21 +12,23 @@
 
 while ($user = $users->fetch()) :
     ?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($user['id']); ?>
-        </h3>
+    <div class="commentaires">
+      
         <p>
-            <?= htmlspecialchars($user['pseudo']); ?>
+            Pseudo : <?= htmlspecialchars($user['pseudo']); ?>
+       
+        </p>
+        <p>
+            Enregistré le : <?= htmlspecialchars($user['registration_date']); ?>
+        </p>
+        <p>
+            Adresse email : <?= htmlspecialchars($user['email']); ?>
+        </p>
+        <div class ="reponse">
             <em><a href="index.php?action=deleteUser&amp;id_user=<?= $user['id']; ?>">Supprimer</a></em>
-        </p>
-        <p>
-            <?= htmlspecialchars($user['registration_date']); ?>
-        </p>
-        <p>
-            <?= htmlspecialchars($user['email']); ?>
-        </p>
+        </div>
     </div>
+
     <?php
 endwhile;
 $users->closeCursor();

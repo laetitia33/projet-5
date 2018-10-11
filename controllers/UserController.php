@@ -43,6 +43,7 @@ class UserController
 // Liste des membres
     public function adminListUsers()
     {
+    	$usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
         $users = $this->_user->getAllUsers();
         $postsTotal = $this->_post->countPosts();//connaitre le nombre total de chapitres
         $commentsTotal = $this->_comment->countComments();//connaitre le nombre total de commentaires
@@ -55,7 +56,7 @@ class UserController
     {
         $user = $this->_user->getUser($pseudo);
    
-        $isPasswordCorrect = password_verify($_POST['pass'], $user['pass']);
+
 
 
 
@@ -64,7 +65,7 @@ class UserController
                 throw new Exception('Pseudo ou mot de passe incorrect');
         }
         else{
-            if($isPasswordCorrect && $user['id_group'] == "USER")
+            if($user['id_group'] == "USER")
             {
                 session_start();
                 $_SESSION['id'] = $user['id'];
@@ -84,7 +85,7 @@ class UserController
 
                 header('Location: index.php');
             }
-            elseif($isPasswordCorrect && $user['id_group'] == "ADMIN")
+            elseif($user['id_group'] == "ADMIN")
             {
                 session_start();
                 $_SESSION['id'] = $user['id'];
