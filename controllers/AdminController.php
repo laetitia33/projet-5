@@ -46,7 +46,7 @@ class AdministrationController
         require('views/adminView.php');
     }
 
-//page pour éditer un article
+//page pour éditer un film
     public function adminNewPost(){
 
         $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
@@ -187,9 +187,9 @@ class AdministrationController
 
 
 // Ajouter un film (page de creation d'un film)
-    public function postAdd($author, $title,$horaires,$duree,$image ,$content)
+    public function postAdd($author, $title,$horaires,$duree,$image,$video , $content )
     {
-        $createPost = $this->_post->createPost($author, $title,$horaires,$duree,$image, $content);
+        $createPost = $this->_post->createPost($author, $title,$horaires,$duree,$image,$video, $content);
          echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Film ajouté avec succès</h1>";
         header('Refresh: 1; url= index.php?action=listPosts#episodes');
     }

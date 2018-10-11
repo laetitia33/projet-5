@@ -101,6 +101,133 @@ jQuery(document).ready(function()
 
 
 
+$(function() {
+
+$('form[id="first_form"]').validate(
+    {
+
+
+        onkeyup : false,    
+        ignore: "",
+
+      
+
+        rules:
+        {
+
+            title :'required',
+
+            horaires:'required',
+
+            duree:'required',
+
+            author:"required",
+
+            image :'required',
+
+            content:'required',
+
+            comment:'required',
+
+            video:'required',
+
+
+            name:
+            {   
+                required: true,
+                regex :/^[a-z0-9] /,
+            
+            } ,    
+
+            email:
+            {
+                required: true,
+                email: true,
+                regex: /^[A-Za-z0-9_]+\@[A-Za-z0-9_]+\.[A-Za-z0-9_]+/,
+            },
+
+            pseudo:
+            {
+                required: true,
+                minlength: 6,
+                maxlength: 15,
+                regex: /^[A-Za-z0-9_]{6,15}$/,
+            },
+
+
+            pass: {
+                required: true,
+                minlength: 6,
+            },
+
+            phoneNum:
+            {
+                required: true,
+                regex: /^[+-]{1}[0-9]{1,3}\-[0-9]{10}$/,
+            },
+
+        },
+        messages: 
+        {
+          
+            title:'Veuillez entrer un titre ',
+
+            horaires:'Veuillez entrer un horaire ',
+
+            duree:'Veuillez entrer une durée ',
+
+            author: 'Veuillez entrer un auteur ',
+
+            image :'veuillez entrer une affiche de film',
+
+            content:'veuillez entrer un résumé',
+
+            name :{
+              required :'Ce champ est requis'
+
+            },
+            video :'veuillez entrer le code de la vidéo',
+
+            comment:'veuillez entrer un commentaire',
+
+            email: 
+            {
+                required: 'Ce champ est requis ',
+                email: 'Veuillez entrer une adresse email valide, Example@gmail.com'
+            },
+
+            pseudo:
+            {
+                required: 'Alphanumeric, _, min:6, max:15',
+                regex: "Please enter any alphaNumeric char of length between 6-15, ie, sbp_arun_2016"
+            },
+
+            pass: 'mot de passe requis',
+
+            phoneNum: 
+            {
+                required: "Please enter your phone number",
+                regex: "e.g. +91-1234567890"    
+            },
+
+        },
+
+        submitHandler: function (form)
+        {
+            return true;
+        }
+    });
+
+
+
+});
+
+
+
+
+
+
+/*
 //formulaire contact
   $('form[id="first_form"]').validate({
     ignore: "",
@@ -125,9 +252,10 @@ jQuery(document).ready(function()
 
      submitHandler: function(form) {
       form.submit();
+      
     }
   });
-
+*/
 
 //formualire login
 

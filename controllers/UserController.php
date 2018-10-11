@@ -16,6 +16,8 @@ class UserController
     private $_user;
     private $_comment;
     private $_post;
+
+
     public function __construct()
     {
         $this->_user = new \Laetitia_Bernardi\projet5\Model\UserManager();
@@ -25,11 +27,12 @@ class UserController
     }
 
 
-
 // Inscription
     public function registerUser($id_group, $pseudo, $password_hache, $email){
 
         $registerUser = $this->_user->createUser($id_group, $pseudo, $password_hache, $email);
+
+        var_dump($password_hache);
         if($registerUser === false)
         {
             throw new Exception('Impossible d\'inscrire le nouvel utilisateur');
@@ -55,17 +58,18 @@ class UserController
     public function logUser($pseudo,$pass)
     {
         $user = $this->_user->getUser($pseudo);
-   
+        
 
+        $isPasswordCorrect  = password_verify($_POST['pass'], $user['pass']);
 
 
 
         if(!$user)
         {
-                throw new Exception('Pseudo ou mot de passe incorrect');
+                throw new Exception('Utilisateur ou mot de passe incorrect');
         }
         else{
-            if($user['id_group'] == "USER")
+            if($isPasswordCorrect && $user['id_group'] == "USER")
             {
                 session_start();
                 $_SESSION['id'] = $user['id'];
@@ -85,7 +89,7 @@ class UserController
 
                 header('Location: index.php');
             }
-            elseif($user['id_group'] == "ADMIN")
+            elseif($isPasswordCorrect && $user['id_group'] == "ADMIN")
             {
                 session_start();
                 $_SESSION['id'] = $user['id'];
@@ -107,12 +111,10 @@ class UserController
             }
             else
             {
-                throw new Exception('Pseudo ou mot de passe incorrect');
+                throw new Exception('Utilisateur  ou mot de passe incorrect');
             }
         }
     }
-
-
 
 
 // Supprimer un membre

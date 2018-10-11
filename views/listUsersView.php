@@ -25,7 +25,10 @@ while ($user = $users->fetch()) :
             Adresse email : <?= htmlspecialchars($user['email']); ?>
         </p>
         <div class ="reponse">
-            <em><a href="index.php?action=deleteUser&amp;id_user=<?= $user['id']; ?>">Supprimer</a></em>
+            <?php if(htmlspecialchars($user['id_group'])== "USER") :?>
+
+            <em><a href="index.php?action=deleteUser&amp;id_user=<?= $user['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">Supprimer</a></em>
+        <?php endif;?>
         </div>
     </div>
 

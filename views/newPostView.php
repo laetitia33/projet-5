@@ -56,7 +56,7 @@
    
         <div>
             
-            <label for="duree"></label>
+            <label for="video"></label>
             <p>Bande annonce :</p>          
             <input type="text" name="video" class="inputbasic" id="video" placeholder="Insérer le lien de la bande annonce" />
 

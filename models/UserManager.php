@@ -127,7 +127,7 @@ class UserManager extends Manager
     public function getAllUsers()
     {
         $db = $this->dbConnect();
-        $users = $db->query('SELECT * FROM users ORDER BY registration_date');
+        $users = $db->query('SELECT * FROM users ORDER BY id_group');
 
         return $users;
     }
@@ -143,17 +143,17 @@ class UserManager extends Manager
     }
 
 
-    public function createUser($pseudo, $password_hache, $email)
+    public function createUser($id_group, $pseudo, $password_hache, $email)
     {
-        
+        $this->setIdGroup($id_group);
         $this->setPseudo($pseudo);
         $this->setPass($password_hache);
         $this->setEmail($email);
 
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO users(pseudo, pass, email) VALUES(?, ?, ?, ?, NOW())');
+        $req = $db->prepare('INSERT INTO users(id_group, pseudo, pass, email, registration_date) VALUES(?, ?, ?, ?, NOW())');
         $registerUser = $req->execute(array(
-          
+            $this->getIdGroup(),
             $this->getPseudo(),
             $this->getPass(),
             $this->getEmail()
@@ -161,7 +161,6 @@ class UserManager extends Manager
 
         return $registerUser;
     }
-
 
     public function deleteUser($id_user)
     {

@@ -33,7 +33,8 @@
   		<script src='https://www.google.com/recaptcha/api.js'></script>
 
   		<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-   		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_fr.min.js.map"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+
   			
 		<title><?= isset($title) ? $title : 'cine-cinema';?></title>
 	</head>

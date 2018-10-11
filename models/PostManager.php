@@ -10,7 +10,7 @@ use \PDO;
 class PostManager extends Manager
 {
 
-    private $_id, $_title,$_author,$c_ontent, $_date_creation, $_image,$_video,$_horaires,$_duree;
+    private $_id, $_title, $_author, $_content, $_date_creation, $_image, $_video, $_horaires, $_duree;
 
 
     public function __construct()
@@ -174,7 +174,7 @@ class PostManager extends Manager
         return $post;
     }
 
-//creation d'un chapitre
+//creation d'un film
     public function createPost($author, $title,$horaires,$duree, $image,$video, $content)
     {
         $this->setAuthor($author);
@@ -182,7 +182,7 @@ class PostManager extends Manager
         $this->setHoraires($horaires);
         $this->setDuree($duree);
         $this->setImage($image);
-        $this->setImage($video);
+        $this->setVideo($video);
         $this->setContent($content);
 
         $db = $this->dbConnect();
