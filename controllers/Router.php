@@ -37,7 +37,7 @@ class Routeur
         public function RouteRequest()
         {
         try{
-            if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN")
+            if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1)
             {
                 if (isset($_GET['action']) && !empty($_GET['action']))
                 {
@@ -116,13 +116,17 @@ class Routeur
                                 $this->_administrationCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'],$_POST['horaires'],$_POST['duree'], $_POST['image'], $_POST['video'], $_POST['content']);
                             }
                           
+                     
+                                 else
+                            {
+                                throw new Exception('Tous les champs ne sont pas remplis..');
+                            }
                         }
                         else
                         {
                             throw new Exception('Aucun identifiant de chapitre envoyé !');
                         }
                     }
-
                     // ADMIN - suppression d'un film
                     elseif ($_GET['action'] == 'deletePost')
                     {
@@ -169,6 +173,25 @@ class Routeur
                     {
                         
                        $this->_administrationCtrl->adminCommentsReport();
+                    }
+                    //  ADMIN - Signaler un commentaire
+                    elseif ($_GET['action'] == 'report') 
+                    {
+                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
+                        {
+                            if (isset($_GET['id']) && $_GET['id'] > 0) 
+                            {                                
+                            
+                                $this->_commentCtrl->reportingComment();             
+                         
+                            }
+                            else
+                            {
+                                throw new Exception('Aucun identifiant de commentaire envoyé pour pouvoir le signaler!');
+                            }
+                        } else {
+                            throw new Exception('Aucun identifiant de chapitre envoyé pour revenir sur la page précédente!');
+                        }
                     }
 
                     // ADMIN - Supprimer un commentaire
@@ -268,7 +291,32 @@ class Routeur
                        
                     }
 
-                    //connexion
+
+                     // ADMIN - Inscription
+                    elseif ($_GET['action'] == 'register') {
+                        if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_confirm']) && !empty($_POST['email'])) {
+                            // Sécurité
+                            $pseudo = htmlspecialchars($_POST['pseudo']);
+                            $email = htmlspecialchars($_POST['email']);
+                            // Hachage du mot de passe
+                            $password_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                            // On vérifie la Regex pour l'adresse email
+                            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+                                // On vérifie que les 2 mots de passe sont identiques.
+                                if ($_POST['password'] == $_POST['password_confirm']) {
+                                    $this->_userCtrl->registerUser(2, $pseudo, $password_hache, $email);
+                                } else {
+                                    throw new Exception('Les 2 mots de passe ne sont pas identiques, recommencez !');
+                                }
+                            } else {
+                                throw new Exception('L\'adresse email ' . $email . ' n\'est pas valide, recommencez !');
+                            }
+                        } else {
+                            throw new Exception('Tous les champs doivent être remplis !');
+                        }
+                    }
+                    
+                   // ADMIN - connexion
                     elseif ($_GET['action'] == 'log')
                     {
                     
@@ -293,8 +341,8 @@ class Routeur
                     {
                         $this->_userCtrl->adminListUsers();
                     }
-
-                     // ADMIN - Supprimer un utilisateur
+              
+                  // ADMIN - Supprimer un utilisateur
                     elseif ($_GET['action'] == 'deleteUser')
                     {
                         if (isset($_GET['id_user']) && $_GET['id_user'] > 0)
@@ -306,9 +354,7 @@ class Routeur
                             throw new Exception('Aucun identifiant d\'utilisateur envoyé !');
                         }
                     }
-                     
                 }
-
                 // ADMIN - Retourne a l'administration.
                 else
                 {
@@ -318,14 +364,14 @@ class Routeur
 
 
 
-//inscrits
-            elseif(isset($_SESSION['id']) && $_SESSION['id_group'] == "USER")
+//INSCRITS
+            elseif(isset($_SESSION['id']) && $_SESSION['id_group'] == "2")
             {
                 if (isset($_GET['action']) && !empty($_GET['action']))
                 {
 
 
-                    //page infos pratiques
+                    // INSCRITS - page infos pratiques
                     
                     if ($_GET['action'] == 'information')
                     {
@@ -334,7 +380,7 @@ class Routeur
                        
                     }
 
-                    //page information salles de cinemas
+                    // INSCRITS - page information salles de cinemas
 
                     if ($_GET['action'] == 'cinemas')
                     {
@@ -344,20 +390,19 @@ class Routeur
                     }
 
 
-                    // Accueil visiteurs /Liste des films
+                    // INSCRITS - Accueil visiteurs /Liste des films
                    if ($_GET['action'] == 'listPosts') 
                     {
                  
                         $this->_postCtrl->listPosts();
                     }
 
-                    // Affiche le film avec ses commentaires
+                    // INSCRITS -  Affiche le film avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
 
                         {
-                         
                             
                                 if(isset($_GET['commentReport']))
                                 {
@@ -374,14 +419,55 @@ class Routeur
                         }
                     }
         
-                    // Deconnexion
+                    // INSCRITS - Page de connexion
+                    elseif ($_GET['action'] == 'login')
+                    {
+                        
+                        $this->_viewCtrl->login();
+                       
+                    }
+
+                    // INSCRITS - Inscription
+                    elseif ($_GET['action'] == 'register') {
+                        if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_confirm']) && !empty($_POST['email'])) {
+                            // Sécurité
+                            $pseudo = htmlspecialchars($_POST['pseudo']);
+
+                            $email = htmlspecialchars($_POST['email']);
+                            // Hachage du mot de passe
+                            $password_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                            // On vérifie la Regex pour l'adresse email
+                            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+                                // On vérifie que les 2 mots de passe sont identiques.
+                                if ($_POST['password'] == $_POST['password_confirm']) {
+                                    $this->_userCtrl->registerUser(2, $pseudo, $password_hache, $email);
+                                } else {
+                                    throw new Exception('Les 2 mots de passe ne sont pas identiques, recommencez !');
+                                }
+                            } else {
+                                throw new Exception('L\'adresse email ' . $email . ' n\'est pas valide, recommencez !');
+                            }
+                        } else {
+                            throw new Exception('Tous les champs doivent être remplis !');
+                        }
+                    }
+                    
+                    // INSCRITS - Connexion
+                    elseif ($_GET['action'] == 'log') {
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
+                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
+                        }
+                    }
+
+
+                    // INSCRITS - Deconnexion
                     elseif ($_GET['action'] == 'logout')
                     {
                      
                         $this->_userCtrl->logoutUser();
                     }
 
-                    // page mail
+                    // INSCRITS - page mail
                     elseif ($_GET['action'] == 'email') 
                     {
                       
@@ -389,20 +475,22 @@ class Routeur
                     }
                     
 
-                    //envoi un mail
+                    // INSCRITS - envoi un mail
                     elseif ($_GET['action'] == 'addMail') 
                     {
                                 
-                       if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['message'])) 
+                       if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['msg'])) 
                         {
                           
                             $this->_contactCtrl->sendEmail();
+                          } else {
+                            throw new Exception('Tous les champs doivent être remplis !');
                         }
                       
                
                     }
 
-                    // Ajoute un commentaire dans le film selectionné
+                    // INSCRITS - Ajoute un commentaire dans le film selectionné
                     elseif ($_GET['action'] == 'addComment') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
@@ -420,7 +508,7 @@ class Routeur
                         }
                     }
 
-                    // Signaler un commentaire
+                    // INSCRITS - Signaler un commentaire
                     elseif ($_GET['action'] == 'report') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
@@ -428,7 +516,7 @@ class Routeur
                             if (isset($_GET['id']) && $_GET['id'] > 0) 
                             {                                
                             
-                                $this->_commentCtrl->reportingComment();             
+                                $this->_commentCtrl->reportingComment();
                          
                             }
                             else
@@ -442,7 +530,7 @@ class Routeur
                    
                 }
 
-                // Retourne à l'index.Accueil
+                // INSCRITS - Retourne à l'index.Accueil
                 else
                 {
                    
@@ -456,7 +544,7 @@ class Routeur
                 {
 
 
-                    //page infos pratiques
+                    // page infos pratiques
                     
                     if ($_GET['action'] == 'information')
                     {
@@ -465,7 +553,7 @@ class Routeur
                        
                     }
 
-                    //page information salles de cinemas
+                    // page information salles de cinemas
 
                     if ($_GET['action'] == 'cinemas')
                     {
@@ -513,11 +601,12 @@ class Routeur
                        
                     }
 
-                  // Inscription
+                     // Inscription
                     elseif ($_GET['action'] == 'register') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_confirm']) && !empty($_POST['email'])) {
                             // Sécurité
                             $pseudo = htmlspecialchars($_POST['pseudo']);
+
                             $email = htmlspecialchars($_POST['email']);
                             // Hachage du mot de passe
                             $password_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -525,7 +614,7 @@ class Routeur
                             if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
                                 // On vérifie que les 2 mots de passe sont identiques.
                                 if ($_POST['password'] == $_POST['password_confirm']) {
-                                    $this->_userCtrl->registerUser( $pseudo, $password_hache, $email);
+                                    $this->_userCtrl->registerUser(2, $pseudo, $password_hache, $email);
                                 } else {
                                     throw new Exception('Les 2 mots de passe ne sont pas identiques, recommencez !');
                                 }
@@ -536,6 +625,7 @@ class Routeur
                             throw new Exception('Tous les champs doivent être remplis !');
                         }
                     }
+
                     // Connexion
                     elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
@@ -556,10 +646,12 @@ class Routeur
                     elseif ($_GET['action'] == 'addMail') 
                     {
                                 
-                       if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['message'])) 
+                       if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['msg'])) 
                         {
                           
                             $this->_contactCtrl->sendEmail();
+                         } else {
+                            throw new Exception('Tous les champs doivent être remplis !');
                         }
                       
                

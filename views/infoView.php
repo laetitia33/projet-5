@@ -17,7 +17,7 @@
 			<h2 class ='pageList'>Infos pratiques</h2>
 		
 
-		
+ <!--////////////////////// API METEO ///////////////////////////-->		
 		<div class="accordion">
 			<div class="accordion-header">Info météo</div>
 			<div class="accordion-content">
@@ -29,6 +29,8 @@
 		</div>
 	
 		<h2 class ='pageList'>Où nous trouver</h2>
+
+ <!--///////////////////////// MAP CINEMA ///////////////////////-->		
 		<div id='map'></div>
 		<h2 class ='pageList'>Tarifs</h2>
 			<ul>

@@ -10,31 +10,31 @@
 
 <?php ob_start(); ?>
 
-<div class= "welcome">
-	<p class="ml12"><i class="fas fa-film"></i> Vous aimez le cinéma et aimeriez voir ou revoir des grands classiques<p>
-	<p class="ml12">Nous vous accueillons dans un cadre d’exception <br></p>
-	<h2><?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN" OR isset($_SESSION['id']) && $_SESSION['id_group'] == "USER" )   : 
-			echo 'Bienvenue '.$_SESSION['pseudo'] . ' !' ;
-		endif ;?></h2>
-</div>
+	<div class= "welcome">
+		<p class="ml12"><i class="fas fa-film"></i> Vous aimez le cinéma et aimeriez voir ou revoir des grands classiques<p>
+		<p class="ml12">Nous vous accueillons dans un cadre d’exception <br></p>
+		<h2><?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']) && $_SESSION['id_group'] == 2 )   : 
+				echo 'Bienvenue '.$_SESSION['pseudo'] . ' !' ;
+			endif ;?></h2>
+	</div>
 
 
 
+	<!--///////////////////////////////slider////////////////////////////////////////////////////-->
+	<div align="center">
+	  <div class="contener_slideshow">
+	    <div class="contener_slide">
+	      <div class="slid_1"><img src="public/images/slider1.jpg"></div>
+	      <div class="slid_2"><img src="public/images/slider2.jpg"></div>
+	      <div class="slid_3"><img src="public/images/slider3.jpg"></div>
+	    </div>
+	  </div>
+	</div>
 
-<!--slider-->
-<div align="center">
-  <div class="contener_slideshow">
-    <div class="contener_slide">
-      <div class="slid_1"><img src="public/images/slider1.jpg"></div>
-      <div class="slid_2"><img src="public/images/slider2.jpg"></div>
-      <div class="slid_3"><img src="public/images/slider3.jpg"></div>
-    </div>
-  </div>
-</div>
 
 <?php
 
-		if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
+		if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
 			<p class = "publishDate">  <i class="fas fa-film"></i> Bonjour, <?php
 			setlocale(LC_TIME, 'fr_FR.utf8','fra');
 			echo "Nous sommes le ".strftime("%d %B %Y");?> , Veillez à ce que la liste des films soit actualisée  <i class="fas fa-film"></i>        		
@@ -55,12 +55,12 @@
 <?php $header = ob_get_clean(); ?>
 
 
-<!--///////////////////////////FILMS///////////////////////////////////////-->
+<!--///////////////////////////LISTE FILMS///////////////////////////////////////-->
 
 <?php ob_start(); ?>
 <div class="container">
 <h2 class="pageList">Liste des films en salle</h2>
-<!--navigation boutons-->
+<!--///////////// pagination ////////////////////////////////////////////////////-->
   <div>
       <ul class="pagination">
         <li id="previous-page"><a href="javascript:void(0)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
@@ -68,7 +68,8 @@
     </div>
 <p class ='comSignal'></p>
 <div id="page">
-	<?php while ($data = $posts->fetch()):?>
+	<?php 
+	while ($data = $posts->fetch()):?>
 			
 			<div class="list-group">
         		<a href="javascript:void(0)" class="list-group-item active">
@@ -84,7 +85,8 @@
 					<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">Plus d'infos</a>
 					<div class="coms">
 
-						<?php if ($data['nbCommentaires'] > 0) : ?>
+						<?php
+						if ($data['nbCommentaires'] > 0) : ?>
 						<p class ="nbcom"><?= htmlspecialchars($data['nbCommentaires'])?> commentaire(s) <i class="far fa-comment"></i></p>
 						 <?php
 			            
@@ -97,9 +99,9 @@
 
 				
 												 	
-				<?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
+				<?php 
+				if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
 			
-		
 					 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film</i></em></a><br>
            			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>#episodes" OnClick="return confirm('Voulez-vous  supprimer ce film?');"><em><i class="fas fa-trash-alt"> Supprimer ce film</i></em></a>
 				
@@ -109,7 +111,7 @@
 	            <img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>
 	        	</a>
 			</div> 		
-				<?php
+	<?php
 	endwhile;?>
 </div>
 		

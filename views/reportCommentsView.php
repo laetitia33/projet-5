@@ -10,36 +10,34 @@
 <?php ob_start(); ?>
 
 
-<?php
+      <?php
+      if(htmlspecialchars($commentsReportTotal['total_comments_report'])> 0): ;?>
+        <div class='listcom'><a href="index.php?action=deleteAllCommentReport" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires signalés ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></div>
+                         
+         
+                          
+      <?php
+      else : ?>
 
-    if(htmlspecialchars($commentsReportTotal['total_comments_report'])> 0): ;?>
-      <div class='listcom'><a href="index.php?action=deleteAllCommentReport" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires signalés ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></div>
-                       
-       
-                        
-   <?php
-    else : ?>
+          <p> Aucun commentaire signalé .<p>
 
-        <p> Aucun commentaire signalé .<p>
+      <?php
+      endif;
+      ?>
 
-     <?php
-    endif;
-    ?>
-
-<?php
-
+      <?php
       if(htmlspecialchars($commentsReportTotal['total_comments_report']) > 0) : ;?>
         <div class='listcom'><a href="index.php?action=approvedComments" OnClick="return confirm('Souhaitez-vous approuver tous les commentaires signalés ?');" ><i class="fas fa-bell-slash"> Approuver tous les commentaires</i></a></div><br>
-       <?php endif; ?>
+      <?php 
+      endif;
+      ?>
 
 
 
 
-        <?php
-
-        while ($comment = $reportComments->fetch()):
-        
-            ?>
+      <?php
+      while ($comment = $reportComments->fetch()):
+      ?>
 
         <div class="commentaires">
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?></p>
@@ -50,7 +48,7 @@
             </div>
             </p>
         </div>
-      <?php
+        <?php
         endwhile;
         $reportComments->closeCursor(); ?>
 

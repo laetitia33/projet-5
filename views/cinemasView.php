@@ -18,7 +18,7 @@
 			<h2 class ='pageList'>Salles de cinema de Paris</h2>
 			
 		
-
+ <!--////////////////////// MAP ///////////////////////////-->
 			<div id="mapid"></div>
 			
 			<span id="btntop">

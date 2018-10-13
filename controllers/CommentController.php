@@ -29,13 +29,18 @@ class CommentController
     }
 // Signaler un commentaire(page du detail de chaque chapitre)
     public function reportingComment()
-    {   
-       
+    {         
         $post = $this->_post->getPost($_GET['post_id']);//recupere un chapitre selectionné
         $reportComment = $this->_comment->reportComment($_GET['id']);//signale un commentaire grace à son id
+            
+           
         header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport");
-        
-        
      
+
     }
+
+
+
+
+
 }

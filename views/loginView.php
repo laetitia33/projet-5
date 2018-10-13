@@ -10,19 +10,16 @@
 <?php ob_start(); ?>
 
 
-<form class="form" id="second_form" action="index.php?action=log" method="POST">
+<form class="formLogin"  action="index.php?action=log" method="POST">
                     
             <div>
                 <label for="user">Pseudo :</label><br />
-                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo"  >
-          
-              
+                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo"  >              
             </div>
 
             <div>
                 <label for="pass">Mot de passe :</label><br /> 
                 <input type="password" class="inputbasic" id="pass" name="pass"  placeholder="mot de passe">
-
             </div>
             
             <div>
@@ -33,19 +30,18 @@
 </form>
 
 <h2 class ='pageList'>Inscription</h2>
-        <form action="index.php?action=register" method="post">
+        <form class ="form" action="index.php?action=register" method="post">
 
             <div>
                 <label for="pseudo"></label>
                 <p>Pseudo :</p>     
-                <input type="text" name="pseudo"  class="inputbasic" placeholder="Pseudo"/>
-                
+                <input type="text" name="pseudo"  class="inputbasic" placeholder="Pseudo"/>               
             </div>
 
             <div>
                 <label for="password"></label>
                 <p>Mot de passe :</p>            
-                <input type="password" name="pass" id="password" class="inputbasic" placeholder="Mot de passe"/>
+                <input type="password" name="password" id="password" class="inputbasic" placeholder="Mot de passe"/>
             </div>
            
             <div>

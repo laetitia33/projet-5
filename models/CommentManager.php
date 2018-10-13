@@ -187,6 +187,8 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
         return $report;
     }
 
+ 
+
 //recupere les commentaires d'un chapitre 
     public function getComments($post_id)
     {

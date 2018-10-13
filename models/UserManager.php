@@ -101,15 +101,26 @@ class UserManager extends Manager
     public function getUser($pseudo)
     {
         $this->setPseudo($pseudo);
-
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT * FROM users WHERE pseudo = ? ');
         $req->execute(array($this->getPseudo()));
         $user = $req->fetch();
+        $pseudoexist = $req->rowcount();
 
         return $user;
     }
 
+    public function getUserByMail($email)
+    {
+        $this->setEmail($email);
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM users WHERE email = ? ');
+        $req->execute(array($this->getEmail()));
+        $user = $req->fetch();
+        $emailexist = $req->rowcount();
+
+        return $user;
+    }
 
     public function getUserById($id_user)
     {
@@ -132,7 +143,6 @@ class UserManager extends Manager
         return $users;
     }
 
-
     public function countUsers()
     {
         $db = $this->dbConnect();
@@ -141,7 +151,6 @@ class UserManager extends Manager
         $usersTotal = $req->fetch();
         return $usersTotal;
     }
-
 
     public function createUser($id_group, $pseudo, $password_hache, $email)
     {

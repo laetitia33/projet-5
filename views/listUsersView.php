@@ -9,31 +9,30 @@
 <?php ob_start(); ?>
 
 <?php
-
 while ($user = $users->fetch()) :
-    ?>
+?>
     <div class="commentaires">
       
-        <p>
-            Pseudo : <?= htmlspecialchars($user['pseudo']); ?>
-       
-        </p>
-        <p>
-            Enregistré le : <?= htmlspecialchars($user['registration_date']); ?>
-        </p>
-        <p>
-            Adresse email : <?= htmlspecialchars($user['email']); ?>
-        </p>
-        <div class ="reponse">
-            <?php if(htmlspecialchars($user['id_group'])== "USER") :?>
+        <p>Pseudo : <?= htmlspecialchars($user['pseudo']); ?></p>
 
+        <p>Enregistré le : <?= htmlspecialchars($user['registration_date']); ?></p>
+
+        <p>Adresse email : <?= htmlspecialchars($user['email']); ?></p>
+
+        <div class ="reponse">
+            <?php 
+            ////////////////////// SUPPRIMER UNIQUEMENT LE GROUPE 2(USER) //////////////////////////
+            if(htmlspecialchars($user['id_group'])== 2) :?>
             <em><a href="index.php?action=deleteUser&amp;id_user=<?= $user['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">Supprimer</a></em>
-        <?php endif;?>
+            <?php 
+            endif;?>
+
         </div>
     </div>
 
-    <?php
+<?php
 endwhile;
+
 $users->closeCursor();
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 //si admin
-if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN")
+if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1)
 :
     ?>
 <a id ="top" class="top"></a>
@@ -21,7 +21,7 @@ if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN")
 
 <?php
 //si utilisateur
-elseif(isset($_SESSION['id']) && $_SESSION['id_group'] == "USER")
+elseif(isset($_SESSION['id']) && $_SESSION['id_group'] == 2)
 :
   ?>
 <a id ="top" class="top"></a>

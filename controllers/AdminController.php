@@ -101,6 +101,7 @@ class AdministrationController
         $postsTotal = $this->_post->countPosts();//connaitre le nombre total de films
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre total de commentaires
         $reportComments = $this->_comment->getReportComments();//récuperer les commentaires signalés
+        
         require ('views/reportCommentsView.php');
     }
 

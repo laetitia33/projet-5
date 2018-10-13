@@ -1171,7 +1171,10 @@ label.error {
     
 }
 
+.rc-anchor-light.rc-anchor-normal a{
 
+    display: none;
+}
 /* --------------- page infos------*/
 
 .accordion {
@@ -1625,14 +1628,105 @@ label.error {
         width:350px ;
     }  
 
-  /*slideshow*/
+  /*slideshow en responsive calculs/2*/
 
-    .contener_slideshow{
-        width: 400px;
+/*-----------slider----------------*/
+
+    .contener_slideshow
+    {
+      width:310px;
+      height:200px;
+      overflow: hidden;
+      position: relative;
+
     }
 
-}
+    .slid_1, .slid_2, .slid_3
+    {
+      position: absolute;
+      width:310px;
+      height:200px;
+    }
 
+    .slid_1 img, .slid_2 img, .slid_3 img
+    {
+        width: 100%;
+
+    }
+    .slid_1{
+        left: 0;
+    }
+
+    .slid_2{
+        left: 310px;
+    }
+
+    .slid_3{
+        left: 620px;
+    }
+
+
+    .contener_slide
+    {
+      width: 620px;
+      height: 200px;
+      left:0px;
+      position: absolute;
+      -webkit-animation-duration: 30s;
+      -webkit-animation-iteration-count:infinite;
+      -webkit-animation-name: anim_slide;
+      -moz-animation-duration: 30s;
+      -moz-animation-iteration-count:infinite;
+      -moz-animation-name: anim_slide;
+      -ms-animation-duration: 30s;
+      -ms-animation-iteration-count:infinite;
+      -ms-animation-name: anim_slide;
+      animation-duration: 30s;
+      animation-iteration-count:infinite;
+      animation-name: anim_slide;
+    }
+    @-webkit-keyframes anim_slide 
+    {
+      0% {left:0px;}
+      22% {left:0px;}
+      33% {left:-310px;}
+      45% {left:-310px;}
+      66% {left:-620px;}
+      90% {left:-620px;}
+    }
+    @-moz-keyframes anim_slide 
+    {
+      0% {left:0px;}
+      22% {left:0px;}
+      33% {left:-310px;}
+      45% {left:-310px;}
+      66% {left:-620px;}
+      90% {left:-620px;}
+    }
+    @-ms-keyframes anim_slide 
+    {
+      0% {left:0px;}
+      22% {left:0px;}
+      33% {left:-310px;}
+      45% {left:-310px;}
+      66% {left:-620px;}
+      90% {left:-620px;}
+    }
+    @keyframes anim_slide 
+    {
+      0% {left:0px;}
+      22% {left:0px;}
+      33% {left:-310px;}
+      45% {left:-310px;}
+      66% {left:-620px;}
+      90% {left:-620px;}
+    }
+
+
+
+    /*-----------fin slider-------*/
+
+}
 
 
 @media screen and (max-width:420px) {
@@ -1647,11 +1741,6 @@ label.error {
         width:210px ;
     }
 
-
-    /*slideshow*/
-    .contener_slideshow{
-        width: 300px;
-    }
 
 
 }

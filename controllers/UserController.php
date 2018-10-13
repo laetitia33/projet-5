@@ -27,21 +27,36 @@ class UserController
     }
 
 
-// Inscription
+// Inscription en exclant les utilsateurs et les adresses mails deja enregistrés
     public function registerUser($id_group, $pseudo, $password_hache, $email){
+        $pseudoexist =$this->_user->getUser($pseudo);
+
+        if($pseudoexist)
+        {
+            throw new Exception('Utilisateur déjà enregistré avec ce pseudo');
+        }
+
+
+        $emailexist =$this->_user->getUserByMail($email);
+          if($emailexist)
+        {
+            throw new Exception('Adresse e-mail deja utilisée');
+        }
 
         $registerUser = $this->_user->createUser($id_group, $pseudo, $password_hache, $email);
-
-        var_dump($password_hache);
         if($registerUser === false)
         {
             throw new Exception('Impossible d\'inscrire le nouvel utilisateur');
         }
         else
         {
-            header('Location: index.php');
+            echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Utilisateur crée avec succès , veuillez vous connecter</h1>";
+            header('Refresh: 1.5; url=index.php?action=login' );
         }
+
     }
+
+
 
 // Liste des membres
     public function adminListUsers()
@@ -58,55 +73,44 @@ class UserController
     public function logUser($pseudo,$pass)
     {
         $user = $this->_user->getUser($pseudo);
-        
-
         $isPasswordCorrect  = password_verify($_POST['pass'], $user['pass']);
-
-
-
         if(!$user)
         {
                 throw new Exception('Utilisateur ou mot de passe incorrect');
         }
         else{
-            if($isPasswordCorrect && $user['id_group'] == "USER")
+            if($isPasswordCorrect && $user['id_group'] == 2)
             {
                 session_start();
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['pseudo'] = $user['pseudo'];
                 $_SESSION['pass'] = $user['pass'];
                 $_SESSION['id_group'] = $user['id_group'];
-
                 $id = $user['id'];
                 $pseudo = $user['pseudo'];
                 $pass_hash = $user['pass'];
                 $group = $user['id_group'];
-
                 setcookie('id', $id, time() + 1800, null, null, false, true);
                 setcookie('pseudo', $pseudo, time() + 1800, null, null, false, true);
                 setcookie('pass', $pass_hash, time() + 1800, null, null, false, true);
                 setcookie('id_group', $group, time() + 1800, null, null, false, true);
-
                 header('Location: index.php');
             }
-            elseif($isPasswordCorrect && $user['id_group'] == "ADMIN")
+            elseif($isPasswordCorrect && $user['id_group'] == 1)
             {
                 session_start();
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['pseudo'] = $user['pseudo'];
                 $_SESSION['pass'] = $user['pass'];
                 $_SESSION['id_group'] = $user['id_group'];
-
                 $id = $user['id'];
                 $pseudo = $user['pseudo'];
                 $pass_hash = $user['pass'];
                 $group = $user['id_group'];
-
                 setcookie('id', $id, time() + 1800, null, null, false, true);
                 setcookie('pseudo', $pseudo, time() + 1800, null, null, false, true);
                 setcookie('pass', $pass_hash, time() + 1800, null, null, false, true);
                 setcookie('id_group', $group, time() + 1800, null, null, false, true);
-
                 header('Location: index.php?action=administration');
             }
             else
@@ -115,7 +119,6 @@ class UserController
             }
         }
     }
-
 
 // Supprimer un membre
     public function deleteUser($id)
@@ -130,6 +133,7 @@ class UserController
             header('Location: index.php?action=adminListUsers');
         }
     }
+
 
 // Deconnexion
     public function logoutUser()

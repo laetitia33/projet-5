@@ -11,7 +11,7 @@
 			 <div id="message">Ce commentaire a bien été signalé et sera vérifié par l'administrateur</div>
 		
 		<?php
-            endif;?>
+        endif;?>
 
 
 
@@ -19,7 +19,7 @@
 <!--//////////////lien retour page précédente selon si visiteur ou admin//////////////////-->
 <?php ob_start(); ?>		
 		<?php
-			if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN"): ?>
+			if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1): ?>
 			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
 			Retour à votre tableau de bord</i></a></p>
 		 	<?php
@@ -36,7 +36,8 @@
 		<div class ="oneMovieDetail">
 			<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
 			<h2><?= htmlspecialchars($post['title']) ?></h2>	
-			<div id="affiche2"><?php echo "<img src='".$post['image']."' />";?></div>		
+			<div id="affiche2"><?php echo "<img src='".$post['image']."' />";?></div>
+
 			<?php
 			if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN"): ?>
 				<p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($post['horaires']) ?></span></p><br>
@@ -55,6 +56,7 @@
 				  <?php
             endif;
             ?>
+
 			<div class="news" >	
 				<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
 			</div>
@@ -80,46 +82,45 @@
 <!--/////////////////////////-écrire commentaires admin ou utilisateur //////////////////////////-->
 <?php ob_start(); ?>
 
-<?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN" OR isset($_SESSION['id']) && $_SESSION['id_group'] == "USER" )   : ?> 
+<?php 
+if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']) && $_SESSION['id_group'] == 2 ): ?> 
+
 		<h2><i class="far fa-comments"></i> Laissez un Commentaire</h2>
-		  <form id='thirst_form'action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
-			
-		<div class="inputbasic>
-            <label for="author" ></label>
-        <?php
-     	if(isset($_SESSION['pseudo'])) : ?>
-            <input type="text" name="author"  id="author" class="inputbasic" value="<?php echo htmlspecialchars($_SESSION['pseudo'])?>"/ required>
-		<?php
-        	
-       		else : ?>
-       		<input type="text" name="author" class="inputbasic" id="author" placeholder="Indiquez votre nom" required/>
-       	
-       	 <?php
-            endif;
-            ?>
-                
-        </div>
+		<form class= 'form' action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
+				
+			<div class="inputbasic>
+	            <label for="author" ></label>
+	        <?php
+	     	if(isset($_SESSION['pseudo'])) : ?>
+	            <input type="text" name="author"  id="author" class="inputbasic" value="<?php echo htmlspecialchars($_SESSION['pseudo'])?>"/ required>
+			<?php
+	        	
+	       	else : ?>
+	       		<input type="text" name="author" class="inputbasic" id="author" placeholder="Indiquez votre nom" required/>
+	       	
+	       	<?php
+	         endif;
+	        ?>
+	                
+	        </div>
 
-			<div class="inputbasic">
-				<label for="comment"></label><br />
-				<textarea name="comment" id="comment"  placeholder="Entrez votre commentaire"></textarea>
-			</div>
-			
-			<div>
-				<input type="submit" id="submitCom"  value="Envoyez votre commentaire" />
-			</div>
-
+				<div class="inputbasic">
+					<label for="comment"></label><br />
+					<textarea name="comment" id="comment"  placeholder="Entrez votre commentaire"></textarea>
+				</div>
+				
+				<div>
+					<input type="submit" id="submitCom"  value="Envoyez votre commentaire" />
+				</div>
 		
- </form>
+ 		</form>
 
 	
 <!--///////////////////////// boucle affichage commentaire admin ou visiteur ///////////-->
-
-
-
-
-	<?php while ($comment = $comments->fetch()):
-			 ;?>
+    
+	<?php 
+	while ($comment = $comments->fetch()):?>
+	
 				<div id="ancrecom"></div>
 				<div class = "commentaires">
 					<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
@@ -130,20 +131,14 @@
 						<span id="confirmsignal"><p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300)));?></p></span>				
 			    	</div>
 				<?php
-				if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
+				if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
 					<div class="reponse">     	
 			     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+			     	<?php if($commentReport == NULL):?>	
 			     		<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
-
-						<?php
-		
-							if($commentReport===1) : ?>
-			
-			 					<div id="message">Ce commentaire a bien été signalé et sera vérifié par l'administrateur</div>
-		
-						<?php
-            			endif;?>
-
+			     	<?php	else : ?>
+               			<p><i class="fas fa-ban"></i> Commentaire signalé</p>
+                 	<?php endif ;?>
 		       			
 			     	</div>
 				<?php
@@ -153,31 +148,36 @@
 		       				<div class="reponse">				
 		       				<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
 		       				     		  
-		       			</div>
-		       				
+		       			</div>		       				
 			    <?php
 	            endif;
 	            ?>
 				</div>
-			
-			<?php
-		endwhile;
-			$comments->closeCursor();?>
+	
+
+
 	<?php
+	endwhile;
+	$comments->closeCursor();?>
+
+
+
+<?php 
 	//sinon se connecter pour laisser un commentaire
-else : ?>
+else : ;
+?>
 					      							
-       	<em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login";">connecté </a></br>pour laisser un commentaire</em>       			
+    <em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login";">connecté </a></br>pour laisser un commentaire</em>       			
  		  
 	       				
-<?php
-endif;
+<?php 
+endif; 
 ?>
 		
 <!--/////////////////////lien retour page précédente selon si visiteur ou admin///////////////////-->	
 
 		<?php
-			 if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN") : ?>
+			if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
 				<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
 				Retour à votre tableau de bord</i></a></p>
 		<?php
@@ -191,4 +191,6 @@ endif;
           ?>
 
   <?php $content = ob_get_clean(); ?>
+
+<!--///////////////////////////////// renvoi vers template //////////////////////////////////-->
 <?php require('views/template.php'); ?>
