@@ -67,6 +67,7 @@ class UserController
         $commentsTotal = $this->_comment->countComments();//connaitre le nombre total de commentaires
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre le nombre total de commentaires
         require ('views/listUsersView.php');
+
     }
 
 // Connexion
@@ -76,8 +77,10 @@ class UserController
         $isPasswordCorrect  = password_verify($_POST['pass'], $user['pass']);
         if(!$user)
         {
-                throw new Exception('Utilisateur ou mot de passe incorrect');
+           throw new Exception('Utilisateur incorrect');   
+
         }
+
         else{
             if($isPasswordCorrect && $user['id_group'] == 2)
             {
@@ -115,7 +118,7 @@ class UserController
             }
             else
             {
-                throw new Exception('Utilisateur  ou mot de passe incorrect');
+                throw new Exception('Mot de passe incorrect');
             }
         }
     }

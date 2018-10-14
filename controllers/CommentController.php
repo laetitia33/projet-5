@@ -14,7 +14,7 @@ class CommentController
         $this->_post = new \Laetitia_Bernardi\projet5\Model\PostManager();
     }
 
-// Ajouter un commentaire(page du detail de chaque chapitre)
+// Ajouter un commentaire(page du detail de chaque film)
     public function addComment($post_id, $author, $comment)
     {
         $postComment = $this->_comment->createComment($post_id, $author, $comment);
@@ -27,20 +27,17 @@ class CommentController
             header('Location: index.php?action=post&post_id=' . $post_id);
         }
     }
-// Signaler un commentaire(page du detail de chaque chapitre)
+
+
+
+// Signaler un commentaire
     public function reportingComment()
     {         
-        $post = $this->_post->getPost($_GET['post_id']);//recupere un chapitre selectionné
+        $post = $this->_post->getPost($_GET['post_id']);//recupere un film selectionné
         $reportComment = $this->_comment->reportComment($_GET['id']);//signale un commentaire grace à son id
-            
-           
+                       
         header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport");
-     
-
     }
-
-
-
 
 
 }

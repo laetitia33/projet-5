@@ -432,13 +432,14 @@ footer img:hover {
   height:300px;
   overflow: hidden;
   position: relative;
-
+  filter: contrast(150%);
 }
 
 .slid_1, .slid_2, .slid_3
 {
   position: absolute;
   width:610px;
+
   height:211px;
 }
 
@@ -542,8 +543,7 @@ h2.pageList {
     margin:1% auto 1%;
     border : 1px dotted grey;
     width: 50%;
-   
-   
+    filter: contrast(150%);  
 }
 
 .publishDate{
@@ -1015,6 +1015,7 @@ input[type=submit]:hover {
 #affiche2 img{
     margin:1% auto 1%;
     width: 300px;
+    filter: contrast(150%);
 }
 
 iframe{
@@ -1198,7 +1199,7 @@ label.error {
     line-height: 1.5em;
     color: #444444;
     background-color: #ddd;
-    box-shadow: -1px 2px 15px 10px inset rgba(1.0, 1.0,1.0, 2.8) ;
+    box-shadow: -1px 2px 18px 10px inset;
     transition: 1s all;
     -ms-flex-direction: column;
     -o-border-radius: 14px;
@@ -1243,7 +1244,7 @@ label.error {
 #map {
     display:flex;
     display: -ms-flexbox;
-    flex-direction: center;
+    text-align: center;
     bottom: 20px;
     left: 0;
     width: 50%;
@@ -1289,7 +1290,7 @@ label.error {
     line-height: 1.5em;
     color: #444444;
     background-color: #ddd;
-    box-shadow: -1px 2px 15px 10px rgba(1.0, 1.0,1.0, 2.8) inset;
+    box-shadow: inset -1px 2px 15px 10px ;
     transition: 1s all;
     -ms-flex-direction: column;
     -o-border-radius: 14px;
@@ -1338,6 +1339,7 @@ label.error {
 #affiche3 img{
     margin:1% auto 1%;
     width: 300px;
+    filter: contrast(150%);
 }
 
 .adminPost h2{
@@ -1411,6 +1413,7 @@ label.error {
 #affiche4 img{
     margin:1% auto 1%;
     width: 300px;
+    filter: contrast(150%);
 }
 
 
@@ -1451,7 +1454,7 @@ label.error {
     .navigation_mobile ul{
         display:block;
         flex-direction: column;        
-        align-items: space-around;
+        justify-content:  space-around;
     }
 
     .navigation_mobile li {
@@ -1545,6 +1548,7 @@ label.error {
     /* affiche film dans film detail*/
     #affiche2 img{
         width: 250px;
+        filter: contrast(150%);
     }
 
     .oneMovieDetail p{
@@ -1722,8 +1726,6 @@ label.error {
       90% {left:-620px;}
     }
 
-
-
     /*-----------fin slider-------*/
 
 }
@@ -1741,14 +1743,12 @@ label.error {
         width:210px ;
     }
 
-
-
 }
 
 
 @media(orientation:landscape) and (max-device-width:650px) {
       .popup-inner{
-        width: 180px
-      top:1%;
+        width: 180px;
+        top:1%;
     }  
 }

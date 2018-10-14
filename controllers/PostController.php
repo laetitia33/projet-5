@@ -29,8 +29,8 @@ class PostController
         $commentsTotal=  $this->_comment->countComments(); //connaitre le nombre total de com 
         $commentReport=$commentReport;//affichage message confirmation signalé
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre nombre total de coms signalés
-        $post = $this->_post->getPost($post_id);// recuperer le chapitre selectionné
-        $comments = $this->_comment->getComments($post_id);//tous les commentaires du chapitre selectionné  
+        $post = $this->_post->getPost($post_id);// recuperer le film selectionné
+        $comments = $this->_comment->getComments($post_id);//tous les commentaires du film selectionné  
         $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits
 
         require('views/filmDetail.php');
@@ -42,7 +42,7 @@ class PostController
     {
         $usersTotal =$this->_user->countUsers();//connaitre le nombre total d'inscrits      
         $posts = $this->_posts->getAllPosts();//recupère tous les films
-        $postsTotal = $this->_posts->countPosts();  //connaitre le nombre de total chapitre    
+        $postsTotal = $this->_posts->countPosts();  //connaitre le nombre de total de films   
         $commentsTotal  =$this ->_comment ->countComments();//connaitre le nombre de com 
         $commentsReportTotal = $this->_comment->countCommentsReport();//connaitre nombre total de coms signalés
         require('views/filmList.php');

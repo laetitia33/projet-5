@@ -134,13 +134,14 @@ if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']
 				if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
 					<div class="reponse">     	
 			     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
-			     	<?php if($commentReport == NULL):?>	
-			     		<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
-			     	<?php	else : ?>
-               			<p><i class="fas fa-ban"></i> Commentaire signalé</p>
-                 	<?php endif ;?>
-		       			
+			     		<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em>
+
+			     		<?php if($getCommentReportById):;?>
+                            <p><i class='fas fa-ban'></i> Commentaire signalé</p>
+                       <?php endif;?>
+                                        		       			
 			     	</div>
+
 				<?php
 	        	
 	       		else: ?>

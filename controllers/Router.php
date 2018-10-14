@@ -87,11 +87,13 @@ class Routeur
                               if(isset($_GET['commentReport']))
                                 {
                                    $commentReport = true;
+                    
                                 }else{
                                     $commentReport = false;
                                 }
                             $this->_postCtrl->post($_GET['post_id'],$commentReport);
-                              
+
+                             
                         } else 
                         {
                             throw new Exception('Erreur. Pas de chapitre séléctionné !');
@@ -182,8 +184,8 @@ class Routeur
                             if (isset($_GET['id']) && $_GET['id'] > 0) 
                             {                                
                             
-                                $this->_commentCtrl->reportingComment();             
-                         
+                                $this->_commentCtrl->reportingComment();
+                                                     
                             }
                             else
                             {

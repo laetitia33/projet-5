@@ -129,7 +129,6 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
     public function getReportComments()
     {
         $db = $this->dbConnect();
-
         $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY comment_date DESC LIMIT 0,10');
         return $reportComments;
     }
@@ -148,9 +147,7 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
     public function reportComment($id_comment)
     {
         $this->setIdComment($id_comment);
-
         $db = $this->dbConnect();
-
         $comments = $db->prepare('UPDATE comments SET reporting= :reporting WHERE id= :id_comment');
         $comments->bindValue(':reporting', 1, \PDO::PARAM_INT);
         $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
@@ -166,8 +163,7 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
        
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET reporting= :reporting ');
-        $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
-   
+        $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);   
         $report = $comments->execute();
     
         return $report;
@@ -189,7 +185,7 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
 
  
 
-//recupere les commentaires d'un chapitre 
+//recupere les commentaires d'un film
     public function getComments($post_id)
     {
         $this->setIdPost($post_id);
@@ -201,7 +197,20 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
         return $comments;
     }
 
+//////////////////////////////////////////////////////
+public function getCommentReportById($reporting)
+{
+      
+        $this->setReporting($reporting);
+        $db = $this->dbConnect();
+        $getCommentReportById = $db->prepare('SELECT  id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE reporting = 1');
+        $getCommentReportById->execute(array($this->getReporting()));
 
+        return $getCommentReportById;
+
+
+}
+////////////////////////////////////////////////////////
 //envoi d'un commentaire
     public function createComment($post_id, $author, $comment)
     {
@@ -235,7 +244,6 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
     public function deleteCommentsReport()
     {
      
-
         $db = $this->dbConnect();
         $comments = $db->prepare('DELETE  FROM comments WHERE reporting = 1');
         $deleteAllCommentReport = $comments->execute();
