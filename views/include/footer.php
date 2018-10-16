@@ -2,7 +2,7 @@
 	
 	<p>&copy; 2018 Cine-Cinema droits réservés<br></p>
 	<p>
-	    <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fcinecinema1.000webhostapp.com%2F&profile=css3svg&usermedium=all&warning=2&vextwarning=&lang=fr">
+	    <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fcinecinemadeparis.000webhostapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=fr">
 	        <img style="border:0;width:88px;height:31px"
 	            src="https://jigsaw.w3.org/css-validator/images/vcss"
 	            alt="CSS Valide !" />
@@ -29,7 +29,7 @@
 		<a href="#ferme" title="fermer" id="closelegal">X</a>
 		<h2 id= "titlenotice">Mentions légales</h2>
 		<h3>Edition du sitep</h3>
-		<P> Editeur du site https://cinecinemadeparis.000webhostapp.com: Madame laetitia bernardi Adresse : 24 rue henri dheurle, 33260 la teste de buch</p>
+		<P> Editeur du site https://cinecinema.000webhostapp.com/: Madame laetitia bernardi Adresse : 24 rue henri dheurle, 33260 la teste de buch</p>
 		<h3>Propriété Intellectuelle</h3>
 		<p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris les représentations iconographiques et photographiques. La reproduction, adaptation et/ou traduction de tout ou partie de ce site sur un support quel qu'il soit, est formellement interdite sauf autorisation expresse du Directeur de la publication.</p>
 		<h3>Modification du site</h3>
