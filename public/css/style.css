@@ -1653,6 +1653,9 @@ label.error {
         width : 80%
     } 
 
+    #legalnotice {
+        font-size: 15px;
+    }
   /*slideshow en responsive calculs/2*/
 
 /*-----------slider----------------*/
@@ -1765,6 +1768,26 @@ label.error {
     .popup-inner{
         width:210px ;
     }
+
+    #legalnotice {
+        top: 35px;
+        font-size: 10px;
+    }
+
+    fieldset{
+        padding:0px;
+        width: 99%;
+    }
+    
+    .ml12{
+    margin:auto;
+    width: 81%;
+    }
+
+    #affiche3 img , #affiche2 img,#affiche4 img{
+        width:200px;
+    }
+
 
 }
 
