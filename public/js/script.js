@@ -35,8 +35,9 @@ $( "#closelegal" ).click(function() {
 });
 
 //remonter du bas vers le haut de la page
-$(document).ready(function() {
-     $('a[href=#top]').click(function(){
+$(document).ready(function() { 
+      $('a[href=#top]').click(function(){
+
           $('html, body').animate({scrollTop:0}, 'slow');
           return false;
      });

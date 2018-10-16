@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="fr" class='template'>
 	<?php include_once 'views/include/head.php';?>
-	
+<body>	
 	<div id="blocpage">
 
 	<header>
@@ -13,7 +13,7 @@
 			<?php include_once 'views/include/menu_responsive.php'; ?>
 	</header>
 	
-	<body>
+
 			<a id="films"></a>
 			<h2 class ='pageList'>Salles de cinema de Paris</h2>
 			
@@ -34,6 +34,6 @@
 	<script src="public/js/cinema/listeCinemas.js"></script>
 	<script src ="public/js/script.js"></script>
 
-	</body>
-	
+
+</body>	
 </html>

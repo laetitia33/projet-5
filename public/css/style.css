@@ -73,18 +73,19 @@ nav{
     right:0px;
     left:0px;
     width: 100%;
+
  }
 
 ul.navigation
  {
-  
+      
     padding:0px;
     display: flex;
     display: -ms-flexbox;
     justify-content: space-around;
-    -ms-flex-pack: justify;
+    -ms-flex-pack: justify; 
     align-content: center;
-    align-items: center;  
+    align-items: center;   
     list-style-type: none;
     font-family: tahoma,arial,verdana;
     font-size: 1em;
@@ -98,7 +99,13 @@ ul.navigation
     -ms-text-shadow: 1px 1px 3px #444;
 }
 
+.navigation a{
+
+    width: 100%;
+}
+
 nav a {
+
     color: white;
     text-decoration: none;
    -webkit-transition: all 1s;
@@ -121,11 +128,10 @@ nav a:visited{
 
 }
 .popcorn{
-    width: 3%;
-    height:3%;
+    width: 45px;
+    height:45px;
 
 }
-
 
 /*----bouton scroll avant footer ---*/
 #btntop i{
@@ -139,13 +145,12 @@ nav a:visited{
     color:grey;
 }
 
-.footerDown{
+
+/*----------- footer------------*/
+footer {
     bottom:0px;
     position:fixed;
     width: 99%;
-}
-/*----------- footer------------*/
-footer {
     z-index: 999;
     display: flex;
     display: -ms-flexbox;
@@ -426,8 +431,11 @@ footer img:hover {
 
 /*-----------slider----------------*/
 
+
 .contener_slideshow
 {
+  padding:0px;
+  margin:auto;
   width:610px;
   height:300px;
   overflow: hidden;
@@ -539,10 +547,10 @@ h2.pageList {
     text-align : center;  
 }
 
-#affiche img{
+.affiche img {
     margin:1% auto 1%;
     border : 1px dotted grey;
-    width: 50%;
+    width: 250px;    
     filter: contrast(150%);  
 }
 
@@ -975,7 +983,7 @@ input[type=submit]:hover {
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
-    font-size:1.5em;
+    font-size:1.2em;
     color: white;
 }
 
@@ -1022,6 +1030,7 @@ iframe{
      
     width:560px;
     height:315px; 
+    border:0px;
 }    
 
     
@@ -1079,8 +1088,6 @@ iframe{
     text-decoration:none;
 }
 
-/*----------notation à étoile ---------*/
-
 
 
 /*-------------------page cinemas------------*/
@@ -1097,10 +1104,12 @@ iframe{
 
 }
 
-#messageMeteo img{
-    width: 75px;
-    height:auto;
+.leaflet-popup-content{
+    color:black;
 }
+
+
+
 /*--------------- page contact ----------------*/
 #messageMail {
     margin-top:1%;
@@ -1162,21 +1171,20 @@ label.error {
   display: inline;
 }
 
-
 #g-recaptcha{
     display:flex;
     display: -ms-flexbox;
     align-items: center;
     justify-content: space-around;
     -ms-flex-pack: justify;
+    height: 250px;
     
 }
-
-.rc-anchor-light.rc-anchor-normal a{
-
-    display: none;
-}
 /* --------------- page infos------*/
+#messageMeteo img{
+    width: 75px;
+    height:auto;
+}
 
 .accordion {
     background: linear-gradient(to bottom right, white, #F8F8F8);
@@ -1294,6 +1302,7 @@ label.error {
     transition: 1s all;
     -ms-flex-direction: column;
     -o-border-radius: 14px;
+    z-index:0;
 
 }
 
@@ -1301,6 +1310,7 @@ label.error {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     background-color:transparent;
+
 }
 
 
@@ -1365,12 +1375,17 @@ label.error {
 /*------------- page info---------------------*/
 
 .pageInfo li ,.pageInfo p{
+
     text-align:center;
     font-size:1.2em;
     margin:auto;
     list-style-type: none;
 
+}
 
+.pageInfo ul{
+
+        padding:0px;
 }
 
 /*--------------- page erreur -----------------*/
@@ -1479,6 +1494,11 @@ label.error {
         -ms-flex-pack: center;  
     }
 
+
+.affiche img {
+    width: 180px;    
+}
+
     /*telechargement tarifs menu responsive*/   
     .tarifs{
 
@@ -1511,10 +1531,7 @@ label.error {
      }
   
     /* div footer */
-    .footerDown{
-
-        position:relative;
-    }
+   
 
     footer {
         position: relative;
@@ -1630,11 +1647,17 @@ label.error {
 
     .popup-inner{
         width:350px ;
-    }  
+    } 
+
+    .accordion {
+        width : 80%
+    } 
 
   /*slideshow en responsive calculs/2*/
 
 /*-----------slider----------------*/
+
+
 
     .contener_slideshow
     {

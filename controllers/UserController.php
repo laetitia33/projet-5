@@ -27,7 +27,7 @@ class UserController
     }
 
 
-// Inscription en exclant les utilsateurs et les adresses mails deja enregistrés
+// Inscription en excluant les utilsateurs et les adresses mails deja enregistrés
     public function registerUser($id_group, $pseudo, $password_hache, $email){
         $pseudoexist =$this->_user->getUser($pseudo);
 

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="fr" class='template'>
 	<?php include_once 'views/include/head.php';?>
-	
+<body>	
 	<div id="blocpage">
 	
 		<header>
@@ -11,7 +11,6 @@
 			<?php include_once 'views/include/menu_responsive.php'; ?>
 		</header>
 
-		<body>
 			<a id="films"></a>
 			<div class ="pageInfo">
 			<h2 class ='pageList'>Infos pratiques</h2>
@@ -90,14 +89,13 @@
 				<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-4x"></i></a>
 			</span>
 
-		<div class='footerDown'>
-			<?php include_once 'views/include/footer.php' ?>			
-		</div>
-			
 	</div>
+			<?php include_once 'views/include/footer.php' ?>			
+		
+			
+	</div>	
 	<script src="public/js/meteo.js"></script>
 	<script src="public/js/cinema/map.js"></script>
 	<script src ="public/js/script.js"></script>
-
-	</body>
+</body>
 </html>

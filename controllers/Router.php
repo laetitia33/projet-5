@@ -303,7 +303,7 @@ class Routeur
                             // Hachage du mot de passe
                             $password_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
                             // On vérifie la Regex pour l'adresse email
-                            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+                            if (preg_match("#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i", $_POST['email'])) {
                                 // On vérifie que les 2 mots de passe sont identiques.
                                 if ($_POST['password'] == $_POST['password_confirm']) {
                                     $this->_userCtrl->registerUser(2, $pseudo, $password_hache, $email);
@@ -319,16 +319,10 @@ class Routeur
                     }
                     
                    // ADMIN - connexion
-                    elseif ($_GET['action'] == 'log')
-                    {
-                    
-                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
-                        {
-                
-                             
-                              $this->_userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
-                        } 
-                   
+                    elseif ($_GET['action'] == 'log') {
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
+                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
+                        }
                     }
 
                     // ADMIN - Deconnexion
@@ -439,7 +433,7 @@ class Routeur
                             // Hachage du mot de passe
                             $password_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
                             // On vérifie la Regex pour l'adresse email
-                            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+                            if (preg_match("#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i", $_POST['email'])) {
                                 // On vérifie que les 2 mots de passe sont identiques.
                                 if ($_POST['password'] == $_POST['password_confirm']) {
                                     $this->_userCtrl->registerUser(2, $pseudo, $password_hache, $email);
@@ -613,7 +607,7 @@ class Routeur
                             // Hachage du mot de passe
                             $password_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
                             // On vérifie la Regex pour l'adresse email
-                            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
+                            if (preg_match("#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i", $_POST['email'])) {
                                 // On vérifie que les 2 mots de passe sont identiques.
                                 if ($_POST['password'] == $_POST['password_confirm']) {
                                     $this->_userCtrl->registerUser(2, $pseudo, $password_hache, $email);

@@ -36,7 +36,7 @@
 		<div class ="oneMovieDetail">
 			<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
 			<h2><?= htmlspecialchars($post['title']) ?></h2>	
-			<div id="affiche2"><?php echo "<img src='".$post['image']."' />";?></div>
+			<div id="affiche2"><?php echo "<img alt='affiche du film' src='".$post['image']."' />";?></div>
 
 			<?php
 			if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN"): ?>
@@ -58,14 +58,15 @@
             ?>
 
 			<div class="news" >	
-				<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
+				<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?>	
 			</div>
 			<a class="btn" data-popup-open="popup-1" href="#">Voir la bande annonce</a>
 
 			<div class="popup" data-popup="popup-1">
 				<div class="popup-inner">
 				
-						<iframe src="https://www.youtube.com/embed/<?= htmlspecialchars($post['video']) ?>?rel=0" frameborder="0" allow="autoplay; encrypted-media"  allowfullscreen id="nofocusvideo"></iframe>
+						<iframe src="https://www.youtube.com/embed/<?= htmlspecialchars($post['video']) ?>?rel=0"  allow="autoplay; encrypted-media"  allowfullscreen id="nofocusvideo"></iframe>
+
 						<p><a data-popup-close="popup-1" href="#">Close</a></p>
 						
 						<a class="popup-close" data-popup-close="popup-1" href="#">x</a>
@@ -168,7 +169,7 @@ if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']
 else : ;
 ?>
 					      							
-    <em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login";">connecté </a></br>pour laisser un commentaire</em>       			
+    <em><i class="fas fa-ban"></i>  Vous devez être <a id='validcom' href="index.php?action=login">connecté </a><br>pour laisser un commentaire</em>       			
  		  
 	       				
 <?php 

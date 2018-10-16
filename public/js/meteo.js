@@ -4,7 +4,7 @@ var Meteo= {
 
 init: function () {
         // Accès à la météo de Paris
-        ajaxGet("http://api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Paris.json", function (reponse) {
+        ajaxGet("//api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Paris.json", function (reponse) {
             var meteo = JSON.parse(reponse);
             // Récupération de certains résultats
             var temperature = meteo.current_observation.temp_c;

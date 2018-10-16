@@ -35,7 +35,7 @@
             <div>
                 <label for="pseudo"></label>
                 <p>Pseudo :</p>     
-                <input type="text" name="pseudo"  class="inputbasic" placeholder="Pseudo"/>               
+                <input type="text" name="pseudo" id="pseudo" class="inputbasic" placeholder="Pseudo"/>               
             </div>
 
             <div>

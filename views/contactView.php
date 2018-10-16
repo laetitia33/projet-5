@@ -32,13 +32,13 @@
                                             
                 <div class="inputbasic">
                     <label for="msg"></label>
-                    <textarea type="text" name="msg" id="msg"  placeholder="Entrez votre message"></textarea>
+                    <textarea  name="msg" id="msg"  placeholder="Entrez votre message"></textarea>
                 </div>
                 
               
                 
                 <div id ="g-recaptcha" >
-                    <div class="g-recaptcha" data-sitekey="6LeNk3EUAAAAAA1T9n_TMoX3E9khL3y9UffDBwv7"></div>
+                   <div class="g-recaptcha" data-sitekey="6LcuTHUUAAAAADovyELFyViiWmcT3zL_L_hW54ef"></div>
                 </div>
 
              <input type="submit" class="submit" value ="Envoyez votre message"  OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
