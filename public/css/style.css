@@ -972,7 +972,8 @@ input[type=submit]:hover {
 }
 
 .reponse {
-    margin-left: 75%;
+    margin-left: 68%;
+    margin-right:5%;
     margin-bottom: 2%;
 }
 
@@ -1621,6 +1622,7 @@ label.error {
         margin-left:2%;
     }
 
+
 }
 
 @media(orientation:landscape) and (max-device-width:850px) {
@@ -1632,9 +1634,6 @@ label.error {
         width: 100%;
     }
 }
-
-
-
 
 
 @media screen and (max-width:600px) {
@@ -1754,6 +1753,8 @@ label.error {
 
     /*-----------fin slider-------*/
 
+
+
 }
 
 
@@ -1787,8 +1788,11 @@ label.error {
     #affiche3 img , #affiche2 img,#affiche4 img{
         width:200px;
     }
-
-
+       
+    .reponse {
+    margin-left: 42%;
+ 
+    }
 }
 
 
