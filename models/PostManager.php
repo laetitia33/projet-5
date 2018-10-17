@@ -186,6 +186,7 @@ class PostManager extends Manager
         $this->setContent($content);
 
         $db = $this->dbConnect();
+        $set_timezone = $db->query('SET time_zone = "+02:00"');
         $post = $db->prepare('INSERT INTO posts (author, title,horaires,duree,image,video, content, date_creation) VALUES ( ?,?,?,?,?, ?, ?, NOW())');
         $createPost = $post->execute(array(
             $this->getAuthor(),
@@ -213,6 +214,7 @@ class PostManager extends Manager
         $this->setContent($content);
             
         $db = $this->dbConnect();
+        $set_timezone = $db->query('SET time_zone = "+02:00"');
         $post = $db->prepare('UPDATE posts SET  title= :title, author= :author, video= :video, horaires= :horaires,duree= :duree,image= :image,content= :content WHERE id= :post_id');
         $post->bindValue('author', $this->getAuthor(), PDO::PARAM_STR);
         $post->bindValue('title',$this->getTitle(), PDO::PARAM_STR);

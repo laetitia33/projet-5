@@ -39,7 +39,7 @@
 			<div id="affiche2"><?php echo "<img alt='affiche du film' src='".$post['image']."' />";?></div>
 
 			<?php
-			if(isset($_SESSION['id']) && $_SESSION['id_group'] == "ADMIN"): ?>
+			if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1): ?>
 				<p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($post['horaires']) ?></span></p><br>
 				<div class='adminCtrl'>
 					<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film </i></em></a>
@@ -136,10 +136,6 @@ if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']
 					<div class="reponse">     	
 			     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
 			     		<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em>
-
-			     		<?php if($getCommentReportById):;?>
-                            <p><i class='fas fa-ban'></i> Commentaire signalé</p>
-                       <?php endif;?>
                                         		       			
 			     	</div>
 

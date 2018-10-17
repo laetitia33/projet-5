@@ -197,28 +197,14 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
         return $comments;
     }
 
-//////////////////////////////////////////////////////
-public function getCommentReportById($reporting)
-{
-      
-        $this->setReporting($reporting);
-        $db = $this->dbConnect();
-        $getCommentReportById = $db->prepare('SELECT  id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE reporting = 1');
-        $getCommentReportById->execute(array($this->getReporting()));
-
-        return $getCommentReportById;
-
-
-}
-////////////////////////////////////////////////////////
 //envoi d'un commentaire
     public function createComment($post_id, $author, $comment)
     {
         $this->setIdPost($post_id);
         $this->setAuthor($author);
         $this->setComment($comment);
-
         $db = $this->dbConnect();
+        $set_timezone = $db->query('SET time_zone = "+02:00"');
         $comments = $db->prepare('INSERT INTO comments (post_id, author, comment, comment_date) VALUES( ?, ?, ?, NOW())');
         $createComment = $comments->execute(array(
             $this->getIdPost(),
