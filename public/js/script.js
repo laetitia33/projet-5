@@ -153,6 +153,7 @@ $('form[class="form"]').validate(
             
             msg:'required',
 
+
             name:
             {   
                 required: true,
@@ -188,14 +189,25 @@ $('form[class="form"]').validate(
               required:true,
               email:true,
               minlength: 3,
+            },
+
+            hiddenRecaptcha: {
+                required: function () {
+                    if (grecaptcha.getResponse() == '') {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
             }
-      
            
 
         },
         messages: 
         {
           
+            hiddenRecaptcha :'veuillez cocher la case',
+
             title:'Veuillez entrer un titre ',
 
             horaires:'Veuillez entrer un horaire ',
@@ -304,7 +316,7 @@ $('form[class="formLogin"]').validate(
                 selectnic:true 
             },
 
-          
+ 
         },
 
         messages: 
@@ -375,7 +387,6 @@ jQuery('[data-popup-close]').click(function (e) {
 
   
 });
-
 
 
 

@@ -6,7 +6,7 @@ if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1):
 <div class ="navigation_mob ">
 	<nav>
 		<a href="#" id="toggler">
-     		<i class = "fas fa-bars"> </i> 
+     		<i class = "fas fa-bars"> MENU </i> 
  		 </a>	
 		<div id="toggle">
 		<ul class="navigation_mobile">
@@ -33,7 +33,7 @@ elseif(isset($_SESSION['id']) && $_SESSION['id_group'] == 2)
 <div class ="navigation_mob ">
 	<nav>	
 		<a href="#" id="toggler">
-     		<i class = "fas fa-bars"> </i> 
+     		<i class = "fas fa-bars"> MENU </i>
  		</a>
 		<div id="toggle">
 		<ul class="navigation_mobile">
@@ -64,7 +64,7 @@ else
 <div class ="navigation_mob ">
 	<nav>	
 		<a href="#" id="toggler">
-     		<i class = "fas fa-bars"> </i> 
+     		<i class = "fas fa-bars"> MENU </i> 
  		 </a>
 		<div id="toggle">
 		<ul class="navigation_mobile">

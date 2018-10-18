@@ -34,12 +34,12 @@
                     <label for="msg"></label>
                     <textarea  name="msg" id="msg"  placeholder="Entrez votre message"></textarea>
                 </div>
-                
-              
-                
+
                 <div id ="g-recaptcha" >
-                   <div class="g-recaptcha" data-sitekey="6LcuTHUUAAAAADovyELFyViiWmcT3zL_L_hW54ef"></div>
-                </div>
+                    <div class="g-recaptcha" data-sitekey="6LcuTHUUAAAAADovyELFyViiWmcT3zL_L_hW54ef"></div>
+                    <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                </div>  
+
 
              <input type="submit" class="submit" value ="Envoyez votre message"  OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
             

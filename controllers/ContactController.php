@@ -54,7 +54,7 @@ class ContactController{
     //recaptcha
     public function recaptcha(){
         // Ma clé privée
-        $secret = "6Lfm7G4UAAAAAInBgjxGcvGnb9T52a1ScWUP49Tg";
+        $secret = "6LcuTHUUAAAAALwpwWEfBeZDf0DyXy-VHQlcNsNP";
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
         // On récupère l'IP de l'utilisateur

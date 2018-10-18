@@ -108,6 +108,7 @@ class AdministrationController
 
 
  
+ 
  //supprime tous les commentaires(page de detail de la liste des commentaires)
     public function deleteComments()
     {
@@ -145,7 +146,7 @@ class AdministrationController
         }
     }
 
-// Supprimer un commentaire dans la page film details
+// Supprimer un commentaire dans la page article details
     public function deleteOneComment($id_comment)
     {
         $deleteComment = $this->_comment->deleteComment($id_comment);
@@ -179,7 +180,6 @@ class AdministrationController
             
         }
     }
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -230,7 +230,6 @@ class AdministrationController
     public function deletePost($post_id)
     {
         $deletePost = $this->_post->deletePost($post_id);//supprimé un film selectionné
-        $deleteComments = $this->_comment->deleteAllComments($post_id);//supprime tous les films 
 
         if ($deletePost === false) {
             throw new Exception('Impossible de supprimer le film');

@@ -102,10 +102,10 @@
 					<?php 
 					if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
 				
-						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film</i></em></a><br>
-	           			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>#episodes" OnClick="return confirm('Voulez-vous  supprimer ce film?');"><em><i class="fas fa-trash-alt"> Supprimer ce film</i></em></a>
-					
-					<?php
+					<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier ce film</i></em></a><br>
+           			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>#episodes" OnClick="return confirm('Voulez-vous  supprimer ce film?');"><em><i class="fas fa-trash-alt"> Supprimer ce film</i></em></a>
+				
+						<?php
 		            endif ;?>
 					</div>
 		            <img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>
