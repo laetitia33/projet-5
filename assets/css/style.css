@@ -128,11 +128,11 @@ nav a:visited{
 }
 
 /*----bouton scroll avant footer ---*/
+
 #btntop i{
     color:white;
     margin-top:4%;
     margin-bottom:7%;
-
 }
 
 #btntop i:hover{
@@ -548,7 +548,10 @@ h2.pageList {
     margin-bottom:3%;
 }
 
-#page{
+
+/*pagination pour film liste et com,users*/
+#page,
+.page1{
     display: flex;
     display: -ms-flexbox;
     flex-wrap: wrap;
@@ -559,18 +562,35 @@ h2.pageList {
     -ms-flex-pack: space-around;
     margin-bottom: 2%;
     margin-top: 4%;
+
 }
 
-#page a{
+
+
+#page a
+.page1 a{
     text-decoration: none;  
 }
 
-ul.pagination {
+ul.pagination{
     padding-left:0px;
     margin-top:3%;
 }
 
-.pagination a{
+
+ul.pagination1{
+
+    display:flex;
+    display: -ms-flexbox;
+    list-style-type: none;
+    justify-content:  center;
+    padding:0px;
+}
+
+
+
+.pagination a,
+.pagination1 a{
     padding:12px;
     color:#343434;
     color:white;
@@ -599,7 +619,8 @@ ul.pagination {
 
 }
 
-.pagination a:hover{
+.pagination a:hover,
+.pagination1 a:hover{
     -webkit-transform: scale(0.75);
     transform: scale(0.75);
     color:black;
@@ -745,6 +766,19 @@ ul.pagination {
 
 
 /* ------------ page de detail des films -------*/
+
+
+textarea{
+    font-family:Verdana;
+    width: 100%;
+    height:250px;
+
+}
+
+.coms{
+    color:black;
+    font-style:oblique;
+}
 
 .oneMovieDetail{
     display: flex;
@@ -897,8 +931,8 @@ input[type=submit]:hover {
     display: -ms-flexbox;
     flex-direction: column;
     -ms-flex-direction:column;
-    color:black;
     width: 50%;
+    color:black;
     height: auto;
     margin: auto;
     margin-bottom: 2%;
@@ -1085,6 +1119,7 @@ iframe{
 .leaflet-popup-content{
     color:black;
 }
+
 
 /*--------------- page contact ----------------*/
 #messageMail {
@@ -1377,6 +1412,7 @@ label.error {
     color:#9B0511;
 }
 
+
 /*--------------- page liste commentaires ------*/
 
 
@@ -1396,6 +1432,8 @@ label.error {
     transform: scale(1.25);
   
 }
+
+
 /*----------- page update post--------*/
 
 #affiche4 img{
@@ -1454,12 +1492,14 @@ label.error {
     }
 
 
-    ul.pagination{
+    ul.pagination,
+    ul.pagination1{
         margin-top:5%;
         margin-bottom:5%;
     }
 
-    .pagination li{
+    .pagination li,
+    .pagination1 li{
         margin-top:9%;
         margin-bottom:9%;
         flex-direction: row;
@@ -1592,7 +1632,11 @@ label.error {
         -ms-flex-direction:column;
         align-items:center;
     }
-    
+    /* div meteo */
+    .accordion {
+        width : 80%
+    } 
+
     .error{
         margin-left:2%;
     }
@@ -1627,13 +1671,10 @@ label.error {
         width:350px ;
     } 
 
-    .accordion {
-        width : 80%
-    } 
-
     #legalnotice {
         font-size: 15px;
     }
+
   /*slideshow en responsive calculs/2*/
 
 /*-----------slider----------------*/
@@ -1776,8 +1817,8 @@ label.error {
     }
     
     .ml12{
-    margin:auto;
-    width: 81%;
+        margin:auto;
+        width: 81%;
     }
 
     #affiche3 img , #affiche2 img,#affiche4 img{

@@ -6,16 +6,16 @@ init: function () {
         // Accès à la météo de Paris
         ajaxGet("//api.wunderground.com/api/50a65432f17cf542/conditions/q/France/Paris.json", function (reponse) {
             var meteo = JSON.parse(reponse);
-            // Récupération de certains résultats
+            // Récupération des données
             var temperature = meteo.current_observation.temp_c;
 
            //conditions phrase de présentation
               if(temperature > 0 && temperature > 22){  
-                document.getElementById("messageMeteo").innerHTML = "Il fait trop chaud ? Venez profiter de notre cinéma avec nos 10 salles climatisées .Des boissons faiches ,glaces vous attendent..<br><img src='public/images/glaces.png'>";
+                document.getElementById("messageMeteo").innerHTML = "Il fait trop chaud ? Venez profiter de notre cinéma avec nos 10 salles climatisées .Des boissons faiches ,glaces vous attendent..<br><img src='assets/images/glaces.png'>";
                
               }else{
 
-                document.getElementById("messageMeteo").innerHTML ="Vous avez froid? Venez profiter de notre cinéma avec nos 10 salles chauffées .Des boissons chaudes , beignets vous attendent .. <br><img src='public/images/chocolat.png'>";
+                document.getElementById("messageMeteo").innerHTML ="Vous avez froid? Venez profiter de notre cinéma avec nos 10 salles chauffées .Des boissons chaudes , beignets vous attendent .. <br><img src='assets/images/chocolat.png'>";
               }
             var humidite = meteo.current_observation.relative_humidity;
             var imageUrl = meteo.current_observation.icon_url;

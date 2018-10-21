@@ -39,7 +39,7 @@ class PostManager extends Manager
         return $this->_duree;
     }
 
-     public function getImage()
+    public function getImage()
     {
         return $this->_image;
     }
@@ -124,9 +124,7 @@ class PostManager extends Manager
     {
         $this->_date_creation= $date_creation;
     }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//fin getters et setters
+    /********************************************* GETTERS/ SETTERS *************************************************/
 
 
 //récupère le dernier film
@@ -137,8 +135,6 @@ class PostManager extends Manager
         $post = $db->query('SELECT id, title, image,TIME_FORMAT (duree,\'%H:%i\')AS duree, TIME_FORMAT (horaires,\'%H:%i\')AS horaires ,video,content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 1');
         return $post;
     }
-
-
 
 
 //récupère tous les films
@@ -184,9 +180,8 @@ class PostManager extends Manager
         $this->setImage($image);
         $this->setVideo($video);
         $this->setContent($content);
-
         $db = $this->dbConnect();
-        $set_timezone = $db->query('SET time_zone = "+02:00"');
+
         $post = $db->prepare('INSERT INTO posts (author, title,horaires,duree,image,video, content, date_creation) VALUES ( ?,?,?,?,?, ?, ?, NOW())');
         $createPost = $post->execute(array(
             $this->getAuthor(),
@@ -211,10 +206,9 @@ class PostManager extends Manager
         $this->setDuree($duree);
         $this->setImage($image);
         $this->setVideo($video);
-        $this->setContent($content);
-            
+        $this->setContent($content);           
         $db = $this->dbConnect();
-        $set_timezone = $db->query('SET time_zone = "+02:00"');
+
         $post = $db->prepare('UPDATE posts SET  title= :title, author= :author, video= :video, horaires= :horaires,duree= :duree,image= :image,content= :content WHERE id= :post_id');
         $post->bindValue('author', $this->getAuthor(), PDO::PARAM_STR);
         $post->bindValue('title',$this->getTitle(), PDO::PARAM_STR);

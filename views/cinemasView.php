@@ -31,8 +31,8 @@
 		
 	</div>
 
-	<script src="public/js/cinema/listeCinemas.js"></script>
-	<script src ="public/js/script.js"></script>
+	<script src="assets/js/listeCinemas.js"></script>
+	<script src ="assets/js/script.js"></script>
 
 
 </body>	

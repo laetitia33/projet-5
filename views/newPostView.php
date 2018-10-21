@@ -5,9 +5,6 @@
 
 <h2 class='pageList'>Mise en ligne d'un nouveau film</h2>
 
-<?php $header = ob_get_clean(); ?>
-
-<?php ob_start(); ?>
 
 <form class ="form" action="index.php?action=createPost" method="POST">
         <div>
@@ -53,14 +50,12 @@
             <input type="text" name="video" class="inputbasic" id="video" placeholder="Insérer le lien de la bande annonce" />
         </div>
                 
-                    
+        <p>Résumé :</p>         
         <div class="inputbasic">
             <label for="content"></label>
-            <p>Résumé :</p> 
-            <textarea name="content" id="content"  placeholder="Indiquez ,ici ,le résumé du film"></textarea>
+            <textarea class="editme"  name="content" id="content"  placeholder="Indiquez ,ici ,le résumé du film"></textarea>
         </div>
         
-
         <div>
             <input type="submit" value="envoyez"></input>
         </div>

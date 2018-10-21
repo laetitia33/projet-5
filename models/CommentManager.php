@@ -94,8 +94,8 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
     {
         $this->_reporting = $reporting;
     }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//fin de getters et setters
+    /********************************************* GETTERS/ SETTERS *************************************************/
+
 
 // dernier commentaire
     public function getLastComment()
@@ -109,7 +109,7 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
     public function getAllComments()
     {
         $db = $this->dbConnect();
-        $comments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments ORDER BY comment_date DESC LIMIT 0,10');
+        $comments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments ORDER BY comment_date ');
         return $comments;
     }
 
@@ -129,7 +129,7 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
     public function getReportComments()
     {
         $db = $this->dbConnect();
-        $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY comment_date DESC LIMIT 0,10');
+        $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY comment_date ');
         return $reportComments;
     }
 

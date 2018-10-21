@@ -5,11 +5,8 @@
 
 <h2 class='pageList'>Modifier le film: <?= htmlspecialchars($post['title']); ?></h2>
 
-<?php $header = ob_get_clean(); ?>
-
-<?php ob_start(); ?>
     <div class ="oneMovieDetail">
-        <img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>   
+        <img src="assets/images/bobine.jpg" class ="bobine" alt="bobine"/>   
         <div id="affiche4"><?php echo "<img src='".$post['image']."' />";?></div>    
         <p>
             <p>Mis en ligne le <?= htmlspecialchars($post['date_creation_fr']) ?></p>
@@ -17,7 +14,7 @@
                 <p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>
             </div>
         </p>
-        <img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>
+        <img src="assets/images/bobine.jpg" class ="bobine2" alt="bobine"/>
 <form class ="form" action="index.php?action=updatePost&amp;post_id=<?= $_GET['post_id'];?>#films" method="POST">
         
      </div>             
@@ -67,9 +64,10 @@
         <p>Résumé : </p>   
         <div class="inputbasic">            
             <label for="content"></label>
-            <textarea name="content" title='Veuillez entrer un résumé' id="content" ><p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p></textarea>
+            <textarea class="editme" name="content" title='Veuillez entrer un résumé' id="content" ><p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p></textarea>
             
         </div>
+        
         <div>
             <input type="submit" value="envoyer" OnClick="return confirm('Voulez-vous vraiment modifier ce résumé ?');"></input>
         </div>

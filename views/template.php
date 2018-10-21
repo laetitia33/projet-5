@@ -11,8 +11,6 @@
 	
 		<div id="blocpage">	
 		<a id="films"></a>
-
-		<?=$header?>
 					
 		<?= $content ?>
 		
@@ -23,9 +21,10 @@
 
 		<?php  include_once 'views/include/footer.php' ?>	
 
-	<script src ="public/js/script.js"></script>
-	<script src ="public/js/placeholder.js"></script>
-	<script src ="public/js/placeholder.min.js"></script>
-	<script src="public/js/pagination/pagination.js"></script>
-</body>	
+	<script src ="assets/js/script.js"></script>
+	<script src ="assets/js/placeholder.js"></script>
+	<script src ="assets/js/placeholder.min.js"></script>
+	<script src="assets/js/pagination.js"></script>
+	<script src="assets/js/form.js"></script>
+</body>
 </html>

@@ -94,8 +94,8 @@
 		
 			
 	</div>	
-	<script src="public/js/meteo.js"></script>
-	<script src="public/js/cinema/map.js"></script>
-	<script src ="public/js/script.js"></script>
+	<script src="assets/js/meteo.js"></script>
+	<script src="assets/js/map.js"></script>
+	<script src ="assets/js/script.js"></script>
 </body>
 </html>

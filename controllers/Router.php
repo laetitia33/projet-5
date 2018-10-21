@@ -289,7 +289,7 @@ class Routeur
                     elseif ($_GET['action'] == 'login')
                     {
                         
-                        $this->_userCtrl->login();
+                        $this->_viewCtrl->login();
                        
                     }
 

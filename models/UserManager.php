@@ -8,7 +8,7 @@ use \PDO;
 class UserManager extends Manager
 {
     
-    private $_id_user, $_pseudo, $_pass, $_email, $_registration_date,$_id_group;
+    private $_id_user, $_pseudo, $_pass, $_email, $_registration_date, $_id_group;
 
 
     public function getIdUser()
@@ -45,7 +45,7 @@ class UserManager extends Manager
     }
 
 
-    /********************************************* MUTATEURS / SETTERS *************************************************/
+    /********************************************* GETTERS/ SETTERS *************************************************/
 
  
     public function setIdUser($id_user)
@@ -138,7 +138,7 @@ class UserManager extends Manager
     public function getAllUsers()
     {
         $db = $this->dbConnect();
-        $users = $db->query('SELECT * FROM users ORDER BY id_group');
+        $users = $db->query('SELECT id, id_group, pseudo, pass, email, DATE_FORMAT(registration_date, \'%d/%m/%Y\') AS registration_date FROM users ORDER BY id_group');
 
         return $users;
     }

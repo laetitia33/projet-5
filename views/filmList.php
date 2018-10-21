@@ -1,12 +1,9 @@
 
-
 <?php $title = 'cine-cinema liste des sorties'; ?>
 
 
 
 <!--///////////////////////// phrase d'accueil///////////////////////////////////////////////////-->
-
-
 
 <?php ob_start(); ?>
 
@@ -24,16 +21,15 @@
 	<div class="slideshow">
 	  <div class="contener_slideshow">
 	    <div class="contener_slide">
-	      <div class="slid_1"><img src="public/images/slider1.jpg" alt ='intérieur salle de cinéma'></div>
-	      <div class="slid_2"><img src="public/images/slider2.jpg" alt ='interiur salle de cinema sieges'></div>
-	      <div class="slid_3"><img src="public/images/slider3.jpg" alt ='coi restauration'></div>
+	      <div class="slid_1"><img src="assets/images/slider1.jpg" alt ='intérieur salle de cinéma'></div>
+	      <div class="slid_2"><img src="assets/images/slider2.jpg" alt ='interiur salle de cinema sieges'></div>
+	      <div class="slid_3"><img src="assets/images/slider3.jpg" alt ='coi restauration'></div>
 	    </div>
 	  </div>
 	</div>
 
 
 <?php
-
 		if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
 			<p class = "publishDate">  <i class="fas fa-film"></i> Bonjour, <?php
 			setlocale(LC_TIME, 'fr_FR.utf8','fra');
@@ -52,29 +48,26 @@
          endif;
          ?>
 
-<?php $header = ob_get_clean(); ?>
 
 
 <!--///////////////////////////LISTE FILMS///////////////////////////////////////-->
 
-<?php ob_start(); ?>
-<div class="container">
+<div class="container1">
 <h2 class="pageList">Liste des films en salle</h2>
 <!--///////////// pagination ////////////////////////////////////////////////////-->
   <div>
       <ul class="pagination">
-        <li id="previous-page"><a href="javascript:void(0)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
+        <li id="previous-page"><a href="javascript:void(1)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
       </ul>
     </div>
 <p class ='comSignal'></p>
 <div id="page">
 	<?php 
 	while ($data = $posts->fetch()):?>
-			
 			<div class="list-group">
         		<a href="javascript:void(0)" class="list-group-item active"></a>
 
-					<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
+					<img src="assets/images/bobine.jpg" class ="bobine" alt="bobine"/>
 					<h2><?= htmlspecialchars($data['title']) ?></h2>					
 					<div class="affiche"><?php echo "<img alt ='affiches des films proposés' src= '".$data['image']."' />";?></div>
 				    <p><span class="publishing"><i class="far fa-clock"></i> Tous les jours à <?= htmlspecialchars($data['horaires']) ?></span></p>
@@ -108,7 +101,7 @@
 						<?php
 		            endif ;?>
 					</div>
-		            <img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>
+		            <img src="assets/images/bobine.jpg" class ="bobine2" alt="bobine"/>
 	        	
 			</div> 		
 	<?php

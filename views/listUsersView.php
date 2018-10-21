@@ -4,14 +4,22 @@
 
     <h2 class  ='pageList'>Liste des membres</h2>
 
-<?php $header = ob_get_clean(); ?>
 
-<?php ob_start(); ?>
+<div class="container1">
 
+  <div>
+      <ul class="pagination1">
+        <li id="previous-page"><a href="javascript:void(0)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
+      </ul>
+    </div>
+<div class="page1">
 <?php
 while ($user = $users->fetch()) :
 ?>
-    <div class="commentaires">
+
+<div class="commentaires">
+    <a href="javascript:void(0)" class="list-group-item active"></a>
+
       
         <p>Pseudo : <?= htmlspecialchars($user['pseudo']); ?></p>
 
@@ -27,13 +35,13 @@ while ($user = $users->fetch()) :
             <?php 
             endif;?>
 
-        </div>
     </div>
-
+</div>
 <?php
-endwhile;
-
-$users->closeCursor();
+endwhile;?>
+</div>        
+</div>
+<?php $users->closeCursor();
 ?>
 
 <?php $content = ob_get_clean(); ?>

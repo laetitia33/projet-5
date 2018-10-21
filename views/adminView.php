@@ -5,11 +5,9 @@
 <?php ob_start(); ?>
     <div id="adminView"></div>
 
-<?php $header = ob_get_clean(); ?>
 
 <!--////////////////////// DERNIER FILM EN LIGNE /////////////////////////////-->
 
-<?php ob_start(); ?>
 
 <?php
     while ($data = $post->fetch()):
@@ -43,7 +41,7 @@
         <p><strong><?= htmlspecialchars($data['author']); ?></strong> le <?= htmlspecialchars($data['comment_date_fr']); ?></p>
 
         <div class="news" >
-            <p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($data['comment']), 0, 300).'...'));?></p>
+            <p><?= nl2br(preg_replace('#^<br/>$#','',htmlspecialchars(substr($data['comment'], 0, 400).'...')));?></p>
         </div>
     </div>
 
@@ -83,5 +81,5 @@
 
 <?php $content = ob_get_clean(); ?>
 
-
+<!--///////////////////////////// retourne ver template //////////////////////////-->
 <?php require('views/template.php'); ?>

@@ -13,10 +13,10 @@ class ContactController{
  
     public function message(){
         extract($_POST);
-        $this->_msg = htmlspecialchars_decode(nl2br(html_entity_decode($msg)));
-        $this->_objet = htmlspecialchars_decode(nl2br(html_entity_decode($object)));
-        $this->_expediteur = htmlspecialchars_decode(nl2br(html_entity_decode($name)));
-        $this->_email = htmlspecialchars_decode(nl2br(html_entity_decode($email)));
+        $this->_msg = nl2br(preg_replace('#^<br/>$#','',htmlspecialchars($msg)));
+        $this->_objet = nl2br(preg_replace('#^<br/>$#','',htmlspecialchars($object)));
+        $this->_expediteur = nl2br(preg_replace('#^<br/>$#','',htmlspecialchars($name)));
+        $this->_email = nl2br(preg_replace('#^<br/>$#','',htmlspecialchars($email)));
     }
   
     // Permet d'envoyer un email si les champs ne sont pas vides.

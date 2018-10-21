@@ -34,7 +34,7 @@
 
 <!---///////affichage de l'auteur , de modification ou suppression du film  admin////-->		
 		<div class ="oneMovieDetail">
-			<img src="public/images/bobine.jpg" class ="bobine" alt="bobine"/>
+			<img src="assets/images/bobine.jpg" class ="bobine" alt="bobine"/>
 			<h2><?= htmlspecialchars($post['title']) ?></h2>	
 			<div id="affiche2"><?php echo "<img alt='affiche du film' src='".$post['image']."' />";?></div>
 
@@ -76,12 +76,11 @@
 			<p><span class="publishing">Durée du film <?= htmlspecialchars($post['duree']) ?></span></p><br>	
 			<p>Article écrit par <a href="index.php?action=information"><?= $post['author'] ?></a>
 			le <?= $post['date_creation_fr'] ?></p>
-			<img src="public/images/bobine.jpg" class ="bobine2" alt="bobine"/>	
+			<img src="assets/images/bobine.jpg" class ="bobine2" alt="bobine"/>	
 		</div>
-<?php $header = ob_get_clean(); ?>
+
 
 <!--/////////////////////////-écrire commentaires admin ou utilisateur //////////////////////////-->
-<?php ob_start(); ?>
 
 <?php 
 if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']) && $_SESSION['id_group'] == 2 ): ?> 
@@ -118,18 +117,26 @@ if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']
 
 	
 <!--///////////////////////// boucle affichage commentaire admin ou visiteur ///////////-->
-    
+    <div class="container1">
+        <div>
+            <ul class="pagination1">
+              <li id="previous-page"><a href="javascript:void(0)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
+            </ul>
+          </div>
+    <div class="page1">
 	<?php 
 	while ($comment = $comments->fetch()):?>
 	
 				<div id="ancrecom"></div>
 				<div class = "commentaires">
+					<a href="javascript:void(0)" class="list-group-item active"></a>
 					<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
 					</p>
 
 					<div class="coms"> 
 
-						<span id="confirmsignal"><p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300)));?></p></span>				
+						<span id="confirmsignal"><p><?= nl2br(preg_replace('#^<br/>$#','',htmlspecialchars(substr($comment['comment'], 0, 400))));
+						?></p></span>				
 			    	</div>
 				<?php
 				if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1) : ?>
@@ -150,13 +157,14 @@ if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']
 			    <?php
 	            endif;
 	            ?>
-				</div>
-	
 
-
+				</div>	
+		
 	<?php
-	endwhile;
-	$comments->closeCursor();?>
+	endwhile;?>
+	</div>
+	</div>
+	<?php $comments->closeCursor();?>
 
 
 
