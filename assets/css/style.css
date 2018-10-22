@@ -1187,9 +1187,13 @@ label.error {
     display: -ms-flexbox;
     align-items: center;
     justify-content: space-around;
-    -ms-flex-pack: justify;
+     flex-direction: column;
+
 }
 
+.rc-anchor-light .rc-anchor-pt a:link, .rc-anchor-light .rc-anchor-pt a:visited{
+   display:none;
+}
 
 /*----- page infos------*/
 #messageMeteo img{

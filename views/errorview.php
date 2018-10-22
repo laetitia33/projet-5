@@ -4,7 +4,7 @@
 <html lang="fr">
 	<?php include_once'views/include/head.php'?>
 	<body class="errorImg">	
-
+		
 		<p class = "errorDiv"><i class="fas fa-exclamation-triangle fa-x4"></i>
 		<?= htmlspecialchars($errorMessage) ?></p>
 		

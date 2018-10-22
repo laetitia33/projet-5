@@ -10,7 +10,9 @@
 	<div class= "welcome">
 		<p class="ml12"><i class="fas fa-film"></i> Vous aimez le cinéma et aimeriez voir ou revoir des grands classiques<p>
 		<p class="ml12">Nous vous accueillons dans un cadre d’exception</p><br>
-		<h1>Bienvenue <?php if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']) && $_SESSION['id_group'] == 2 )   : 
+		<h1>Bienvenue 
+		<?php 
+			if(isset($_SESSION['id']) && $_SESSION['id_group'] == 1 OR isset($_SESSION['id']) && $_SESSION['id_group'] == 2 )   : 
 				echo ''.$_SESSION['pseudo'] . ' !' ;
 			endif ;?></h1>
 	</div>

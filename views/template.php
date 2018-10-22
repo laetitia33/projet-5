@@ -11,12 +11,14 @@
 	
 		<div id="blocpage">	
 		<a id="films"></a>
-					
+	<section>				
 		<?= $content ?>
-		
+	</section>
+
 		<span id="btntop">
 			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-4x"></i></a>
 		</span>	
+		
 	</div>
 
 		<?php  include_once 'views/include/footer.php' ?>	
