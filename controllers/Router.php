@@ -318,12 +318,13 @@ class Routeur
                         }
                     }
                     
-                   // ADMIN - connexion
+                     // ADMIN - Connexion
                     elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
+                            $this->_userCtrl->logUser(addslashes($_POST['pseudo']), $_POST['pass']);
                         }
                     }
+
 
                     // ADMIN - Deconnexion
                     elseif ($_GET['action'] == 'logout')
@@ -448,10 +449,10 @@ class Routeur
                         }
                     }
                     
-                    // INSCRITS - Connexion
+                     // INSCRITS - Connexion
                     elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
+                            $this->_userCtrl->logUser(addslashes($_POST['pseudo']), $_POST['pass']);
                         }
                     }
 
@@ -625,7 +626,7 @@ class Routeur
                     // Connexion
                     elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
+                            $this->_userCtrl->logUser(addslashes($_POST['pseudo']), $_POST['pass']);
                         }
                     }
 
