@@ -319,9 +319,9 @@ class Routeur
                     }
                     
                      // ADMIN - Connexion
-                    elseif ($_GET['action'] == 'log') {
+                      elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                            $this->_userCtrl->logUser(addslashes($_POST['pseudo']), $_POST['pass']);
+                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
                         }
                     }
 
@@ -452,7 +452,7 @@ class Routeur
                      // INSCRITS - Connexion
                     elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                            $this->_userCtrl->logUser(addslashes($_POST['pseudo']), $_POST['pass']);
+                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
                         }
                     }
 
@@ -624,11 +624,12 @@ class Routeur
                     }
 
                     // Connexion
-                    elseif ($_GET['action'] == 'log') {
+                      elseif ($_GET['action'] == 'log') {
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
-                            $this->_userCtrl->logUser(addslashes($_POST['pseudo']), $_POST['pass']);
+                            $this->_userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
                         }
                     }
+
 
 
                     // page mail

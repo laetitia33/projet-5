@@ -11,12 +11,12 @@ for (var i = 2; i <= atotalPages; i++) {
   $(".pagination").append("<li class='current-page'><a href='javascript:void(0)'>" + i + "</a></li> "); 
 }
 
-// Add next button after all the page numbers  
+// bouton next
 $(".pagination").append("<li id='next-page'><a href='javascript:void(0)' aria-label=Next><span aria-hidden=true>&raquo;</span></a></li>");
 
-// Function that displays new items based on page number that was clicked
+//// Fonction qui affiche les nouveaux éléments en fonction du numéro de page sur lequel l'utilisateur a cliqué
 $(".pagination li.current-page").on("click", function() {
-  // Check if page number that was clicked on is the current page that is being displayed
+  // Vérifie si le numéro de page sur lequel l'utilisateur a cliqué est la page en cours d'affichage
   if ($(this).hasClass('active')) {
     return false; 
   } else {
@@ -26,7 +26,8 @@ $(".pagination li.current-page").on("click", function() {
     $("#page .list-group").hide(); 
     var agrandTotal = alimitPerPage * acurrentPage; 
 
-    // Loop through total items, selecting a new set of items based on page number
+//Parcourt le nombre total d'éléments en sélectionnant un nouvel ensemble d'éléments en fonction du numéro de page.
+   
     for (var i = agrandTotal - alimitPerPage; i < agrandTotal; i++) {
       $("#page .list-group:eq(" + i + ")").show(); 
     }
@@ -34,7 +35,8 @@ $(".pagination li.current-page").on("click", function() {
 
 });
 
-// Function to navigate to the next page when users click on the next-page id (next page button)
+
+//Fonction permettant de passer à la page suivante lorsque les utilisateurs cliquent sur l'id de la page suivante (bouton de la page suivante)
 $("#next-page").on("click", function() {
   var acurrentPage = $(".pagination li.active").index(); 
   if (acurrentPage === atotalPages) {
@@ -54,10 +56,11 @@ $("#next-page").on("click", function() {
   }
 });
 
-// Function to navigate to the previous page when users click on the previous-page id (previous page button)
+
+//Fonction permettant de naviguer vers la page précédente lorsque les utilisateurs cliquent sur l'id de la page précédente (bouton de la page précédente)
 $("#previous-page").on("click", function() {
   var acurrentPage = $(".pagination li.active").index(); 
-  // Check to make sure that users is not on page 1 and attempting to navigating to a previous page
+  // Assurez-vous que les utilisateurs ne sont pas à la page 1 et tentent de naviguer vers une page précédente
   if (acurrentPage === 1) {
     return false; 
   } else {
@@ -92,10 +95,10 @@ $(".pagination1").append("<li class='current-page active'><a href='javascript:vo
 
 
 for (var i = 2; i <= totalPages; i++) {
-  $(".pagination1").append("<li class='current-page'><a href='javascript:void(0)'>" + i + "</a></li> "); // Insert page number into pagination tabs
+  $(".pagination1").append("<li class='current-page'><a href='javascript:void(0)'>" + i + "</a></li> "); 
 }
 
-// Add next button after all the page numbers  
+// Ajouter le bouton suivant après tous les numéros de page
 $(".pagination1").append("<li id='next-page'><a href='javascript:void(0)' aria-label=Next><span aria-hidden=true>&raquo;</span></a></li>");
 
 
@@ -118,7 +121,7 @@ $(".pagination1 li.current-page").on("click", function() {
 
 });
 
-// Function to navigate to the next page when users click on the next-page id (next page button)
+// Fonction permettant de passer à la page suivante lorsque les utilisateurs cliquent sur l'id de la page suivante (bouton de la page suivante)
 $("#next-page").on("click", function() {
   var currentPage = $(".pagination1 li.active").index(); 
 
@@ -130,7 +133,7 @@ $("#next-page").on("click", function() {
     $(".page1 .commentaires").hide(); 
     var grandTotal = limitPerPage * currentPage; 
 
-    // Loop through total items, selecting a new set of items based on page number
+    //Parcourt le nombre total d'éléments en sélectionnant un nouvel ensemble d'éléments en fonction du numéro de page.
     for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
       $(".page1 .commentaires:eq(" + i + ")").show(); 
     }
@@ -139,7 +142,7 @@ $("#next-page").on("click", function() {
   }
 });
 
-// Function to navigate to the previous page when users click on the previous-page id (previous page button)
+// Fonction permettant de naviguer vers la page précédente lorsque les utilisateurs cliquent sur l'id de la page précédente (bouton de la page précédente)
 $("#previous-page").on("click", function() {
   var currentPage = $(".pagination1 li.active").index(); 
   if (currentPage === 1) {

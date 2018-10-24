@@ -24,8 +24,8 @@
 		<?php  include_once 'views/include/footer.php' ?>	
 
 	<script src ="assets/js/script.js"></script>
-	<script src ="assets/js/placeholder.js"></script>
-	<script src ="assets/js/placeholder.min.js"></script>
+	<script src ="assets/js/tinymce/placeholder.js"></script>
+	<script src ="assets/js/tinymce/placeholder.min.js"></script>
 	<script src="assets/js/pagination.js"></script>
 	<script src="assets/js/form.js"></script>
 </body>
