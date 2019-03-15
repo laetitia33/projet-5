@@ -160,8 +160,6 @@ $("#previous-page").on("click", function() {
     $(".pagination1 li.current-page:eq(" + (currentPage - 1) + ")").addClass('active'); 
   }
 
-  
-
 
 });
 
